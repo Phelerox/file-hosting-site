@@ -1,6 +1,7 @@
 package se.baxemyr.filehostingsite.core;
 
 import java.util.Date;
+import se.baxemyr.filehostingsite.logic.UserAuthentication;
 
 /**
  *
@@ -11,8 +12,24 @@ public class User {
     private long id;
     private String userName;
     private String fullName;
-    private String pwd_hash;
+    private String email;
     private Date regDate;
+    private String hash; //SHA512 hash of salt + password
+    private byte[] salt; //Unique per-user per-password
+    
+    
+    public User() {
+        
+    }
+    
+    public User(long id, String userName, String fullName, String email, String password) {
+        this.id = id;
+        this.userName = userName;
+        this.fullName = fullName;
+        this.email = email;
+        regDate = new Date();
+        UserAuthentication.changePassword(this, password);
+    }
     
     public long getId() {
         return id;
@@ -34,12 +51,20 @@ public class User {
         this.fullName = fullName;
     }
 
-    public String getPwdHash() {
-        return pwd_hash;
+    public String getHash() {
+        return hash;
     }
 
-    public void setPwdHash(String password_hash) {
-        this.pwd_hash = password_hash;
+    public void setHash(String password_hash) {
+        this.hash = password_hash;
+    }
+    
+    public byte[] getSalt() {
+        return salt;
+    }
+    
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
     }
 
     public Date getRegDate() {
