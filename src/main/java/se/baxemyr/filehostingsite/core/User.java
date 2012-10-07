@@ -19,7 +19,7 @@ public class User {
     
     
     public User() {
-        
+        this.regDate = new Date();
     }
     
     public User(long id, String userName, String fullName, String email, String password) {
@@ -27,7 +27,7 @@ public class User {
         this.userName = userName;
         this.fullName = fullName;
         this.email = email;
-        regDate = new Date();
+        this.regDate = new Date();
         UserAuthentication.changePassword(this, password);
     }
     
@@ -60,7 +60,7 @@ public class User {
     }
     
     public byte[] getSalt() {
-        return salt;
+            return salt;
     }
     
     public void setSalt(byte[] salt) {
