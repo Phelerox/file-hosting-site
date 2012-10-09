@@ -16,8 +16,7 @@ public class User {
     private Date regDate;
     private String hash; //SHA512 hash of salt + password
     private byte[] salt; //Unique per-user per-password
-    
-    
+        
     public User() {
         this.regDate = new Date();
     }
@@ -75,5 +74,12 @@ public class User {
         this.regDate = regDate;
     }
     
+        public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package se.baxemyr.filehostingsite.core;
 
 import java.util.Date;
@@ -11,20 +7,31 @@ import java.util.List;
  *
  * @author Marco Baxemyr
  */
-public class HostedFile {
+public abstract class AbstractHostedFile {
     
     private long id;
     private String path;
-    private long owner;
-    private List<Long> usersWithAccess;
     private boolean isPublic;
     
+    private List<Comment> comments;
     private String fileName;
     private Date uploadDate;
     private long size;
     private long downloads;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
     
-    public HostedFile() {
+    public void removeComment(Comment comment) {
+        this.comments.remove(comment);
+    }
+    
+    public AbstractHostedFile() {
         this.downloads = 0;
         this.uploadDate = new Date();
     }
@@ -48,14 +55,6 @@ public class HostedFile {
     public void setPath(String path) {
         this.path = path;
     }
-
-    public long getOwner() {
-        return owner;
-    }
-
-    public void setOwner(long owner) {
-        this.owner = owner;
-    }
     
     public Date getUploadDate() {
         return uploadDate;
@@ -63,18 +62,6 @@ public class HostedFile {
 
     public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
-    }
-
-    public List<Long> getUsersWithAccess() {
-        return usersWithAccess;
-    }
-
-    public void grantAccess(long userID) {
-        this.usersWithAccess.add(userID);
-    }
-    
-    public void revokeAccess(long userID) {
-        this.usersWithAccess.remove(userID);
     }
 
     public boolean isPublic() {
