@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
 
@@ -20,7 +22,19 @@
             </ui:define>
 
             <ui:define name="content">
-                content
+                <h:form>
+                    <tr>
+                        <td>Path:</td>
+                        <td>
+                            <h:inputText label="path" id="path" value="c:\\myFile.txt" required="true" />
+                            <h:message for="name" showSummary="true" showDetail="false" style="color: red" />
+                        </td>
+                        <td>
+                            <h:commandLink actionListener="#{upload.actionListener(p)}"    
+                                           action="upload?faces-redirect=true" >Upload</h:commandLink>
+                        </td>
+                    </tr>
+                </h:form>
             </ui:define>
 
             <ui:define name="bottom">
