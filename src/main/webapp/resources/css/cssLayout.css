@@ -1,4 +1,3 @@
-
 #top {
     position: relative;
     background-color: #036fab;
@@ -9,10 +8,26 @@
     height: 40px;
     font-size: 30px;
 }
-#content {  
+#upload{
+    border-radius: 6px;
+    background-color: lightblue;
+}
+#maincontent {
+    display: table-cell; 
     border-radius: 6px;
 }
-
+#lists{
+    float: right;
+    display: table-cell;
+    background-color: lightgreen;
+    border-radius: 6px;
+    width: 60%;
+    
+}
+#content{
+    display: table;
+    border-radius: 6px;
+}
 #bottom {
     position: absolute;
     bottom: 1%;
@@ -23,6 +38,7 @@
 }
 
 #left {
+    display: table-cell;
     float: left;
     background-color: #ece3a5;
     padding: 5px;

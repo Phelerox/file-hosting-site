@@ -11,28 +11,44 @@
         <title>Facelets Template</title>
     </h:head>
 
-    <h:body>
-
-        <div id="top">
+    <h:body> 
+        <header id="top">
             <ui:insert name="top">Top</ui:insert>
-        </div>
-        <div>
-            <div id="left">
-                <ui:insert name="left">Left</ui:insert>
-            </div>
-            <div>
-                <div id="right">
-                    <ui:insert name="right">Right</ui:insert>
-                </div>
-                <div id="content" class="right_content">
-                    <ui:insert name="content">Content</ui:insert>
-                </div>
-            </div>
-        </div>
-        <div id="bottom">
-            <ui:insert name="bottom">bottom</ui:insert>
-        </div>
+        </header>
+        <nav>
+            <!-- if any navigation -->
+        </nav>
+        <section id="upload">
+            <h:form>
+                <tr>
+                    <td>
+                        <input type="file" name="file"/>
+                    </td>
+                    <td>
+                        <h:commandButton action="#{upload.submit}" value="Upload"></h:commandButton>
+                    </td>
+                </tr>
+            </h:form>
+        </section>
+        <section>
+            <!-- content -->
+            <ui:insert name="content">Content</ui:insert>
+            <div id="content">  
+                <div id="mainContent">  
+                    <section id="lists">  
+                         testing
+                    </section>   
+                    <aside id ="left">
+                        <ui:insert name="left"></ui:insert>
+                    </aside>
+                </div>  
+            </div> 
+        </section>
 
+
+        <footer id ="bottom">
+            <ui:insert name="bottom">bottom</ui:insert>
+        </footer>
     </h:body>
 
-</html>
+</html> 
