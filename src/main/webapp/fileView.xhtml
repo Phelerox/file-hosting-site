@@ -30,8 +30,7 @@
                             <h:message for="name" showSummary="true" showDetail="false" style="color: red" />
                         </td>
                         <td>
-                            <h:commandLink actionListener="#{upload.actionListener(p)}"    
-                                           action="upload?faces-redirect=true" >Upload</h:commandLink>
+                            <h:commandLink action="#{upload.actionListener}" >Upload</h:commandLink>
                         </td>
                     </tr>
                 </h:form>
