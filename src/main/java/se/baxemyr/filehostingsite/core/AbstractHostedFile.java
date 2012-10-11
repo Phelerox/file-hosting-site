@@ -10,7 +10,15 @@ import java.util.List;
 public abstract class AbstractHostedFile {
     
     private long id;
-    private String path;
+    private byte[] bytes;
+
+    public byte[] getBytes() {
+        return bytes;
+    }
+
+    public void setBytes(byte[] bytes) {
+        this.bytes = bytes;
+    }
     private boolean isPublic;
     
     private List<Comment> comments;
@@ -40,20 +48,12 @@ public abstract class AbstractHostedFile {
         return id;
     }
 
-    public String getFileName() {
+    public String getName() {
         return fileName;
     }
 
-    public void setFileName(String fileName) {
+    public void setName(String fileName) {
         this.fileName = fileName;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
     
     public Date getUploadDate() {

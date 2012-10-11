@@ -18,7 +18,15 @@
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
+    <welcome-file-list> 
         <welcome-file>faces/fileView.xhtml</welcome-file>
     </welcome-file-list>
+    <filter>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
 </web-app>
