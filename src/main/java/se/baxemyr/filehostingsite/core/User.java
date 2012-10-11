@@ -12,6 +12,7 @@ public class User {
     private long id;
     private String userName;
     private String fullName;
+    private boolean isAdmin;
     private String email;
     private Date regDate;
     private String hash; //SHA512 hash of salt + password
@@ -48,6 +49,14 @@ public class User {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+    
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+    
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public String getHash() {
