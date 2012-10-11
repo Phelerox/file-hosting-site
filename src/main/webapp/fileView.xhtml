@@ -24,10 +24,8 @@
             <ui:define name="content">
                 <h:form>
                     <tr>
-                        <td>Path:</td>
                         <td>
-                            <h:inputText label="path" id="path" value="c:\\myFile.txt" required="true" />
-                            <h:message for="name" showSummary="true" showDetail="false" style="color: red" />
+                            <input type="file" name="file"/>
                         </td>
                         <td>
                             <h:commandLink action="#{upload.actionListener}" >Upload</h:commandLink>
