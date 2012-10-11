@@ -1,19 +1,26 @@
 package se.baxemyr.filehostingsite.core;
 
 import java.util.Date;
+import javax.persistence.*;
 import se.baxemyr.filehostingsite.logic.UserAuthentication;
 
 /**
  *
  * @author Marco Baxemyr
  */
-public class User {
+@Entity
+public class User implements IDataObject{
 
-    private long id;
+    @Id
+    @GeneratedValue
+    private Long id;
+    
     private String userName;
     private String fullName;
     private boolean isAdmin;
     private String email;
+  
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date regDate;
     private String hash; //SHA512 hash of salt + password
     private byte[] salt; //Unique per-user per-password
@@ -22,7 +29,7 @@ public class User {
         this.regDate = new Date();
     }
     
-    public User(long id, String userName, String fullName, String email, String password) {
+    public User(Long id, String userName, String fullName, String email, String password) {
         this.id = id;
         this.userName = userName;
         this.fullName = fullName;
@@ -31,7 +38,7 @@ public class User {
         UserAuthentication.changePassword(this, password);
     }
     
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

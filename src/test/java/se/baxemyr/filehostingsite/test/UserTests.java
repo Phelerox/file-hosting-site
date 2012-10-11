@@ -14,6 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import se.baxemyr.filehostingsite.core.DatabaseHandler;
 import se.baxemyr.filehostingsite.core.User;
 import se.baxemyr.filehostingsite.logic.UserAuthentication;
 
@@ -40,7 +41,7 @@ public class UserTests {
     @Before
     public void setUp() {
         password = "password";
-        user = new User(1, "Phelerox", "Marco Baxemyr", "baxemyr@gmail.com", password);
+        user = new User(1L, "Phelerox", "Marco Baxemyr", "baxemyr@gmail.com", password);
     }
     
     @After
@@ -75,10 +76,16 @@ public class UserTests {
     
     @Test
     public void checkSalt() { // Salts should be unique per user per password
-        User user2 = new User(2, "Anders", "Anders Andersson", "anders@andersson.se", password);
+        User user2 = new User(2L, "Anders", "Anders Andersson", "anders@andersson.se", password);
         byte[] salt = user2.getSalt();
         Assert.assertFalse(user.getSalt().equals(salt));
         UserAuthentication.changePassword(user2, password+"s");
         Assert.assertFalse(salt.equals(user2.getSalt()));
+    }
+    
+    @Test
+    public void testAdd() { //tests to add a user to the database
+        DatabaseHandler databaseHandler = new DatabaseHandler("filehosting_pu");
+        databaseHandler.add(user);
     }
 }
