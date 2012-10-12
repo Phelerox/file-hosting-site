@@ -1,6 +1,7 @@
 package se.baxemyr.filehostingsite.core;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 import se.baxemyr.filehostingsite.logic.UserAuthentication;
 
@@ -24,6 +25,9 @@ public class User implements IDataObject{
     private Date regDate;
     private String hash; //SHA512 hash of salt + password
     private byte[] salt; //Unique per-user per-password
+    
+    @OneToMany(mappedBy = "owner")
+    private List<UserHostedFile> userHostedFiles;
         
     public User() {
         this.regDate = new Date();

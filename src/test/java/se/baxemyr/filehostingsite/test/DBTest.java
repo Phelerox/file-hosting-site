@@ -38,7 +38,6 @@ public class DBTest {
         this.db.addFile(this.file);
         Assert.assertTrue(true);
     }
-    
     @Test
     public void testGetFileById(){
         AbstractHostedFile fetchedFile = this.db.getFile(this.file.getId());
@@ -46,7 +45,7 @@ public class DBTest {
     }
     @Test
     public void testGetFilesByName(){
-        List<AbstractHostedFile> fetchedFiles = this.db.getFile(this.file.getName());
+        List<AbstractHostedFile> fetchedFiles = this.db.getFiles(this.file.getName());
         Assert.assertEquals(file, fetchedFiles.get(0));
     }
     

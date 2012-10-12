@@ -41,14 +41,14 @@ public class DBHandler {
     }
     public AbstractHostedFile getFile(Long id){
         EntityManager em = emf.createEntityManager();
-        String file = "select f from File f where f.id = :id";
+        String file = "select f from AbstractHostedFile f where f.id = :id";
         TypedQuery<AbstractHostedFile> tq = em.createQuery(file, AbstractHostedFile.class);
         tq.setParameter("id", id);
         return tq.getSingleResult();
     }
-    public List<AbstractHostedFile> getFile(String name){
+    public List<AbstractHostedFile> getFiles(String name){
         EntityManager em = emf.createEntityManager();
-        String file = "select f from File f where f.name = :name";
+        String file = "select f from AbstractHostedFile f where f.name = :name";
         TypedQuery<AbstractHostedFile> tq = em.createQuery(file, AbstractHostedFile.class);
         tq.setParameter("name", name);
         return tq.getResultList();

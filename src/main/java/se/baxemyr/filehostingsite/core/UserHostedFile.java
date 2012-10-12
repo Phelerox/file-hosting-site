@@ -1,13 +1,17 @@
 package se.baxemyr.filehostingsite.core;
 
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Marco Baxemyr
  */
+@Entity
 public class UserHostedFile extends AbstractHostedFile {
 
+    @ManyToOne
     private User owner;
     private List<User> usersWithAccess;
     

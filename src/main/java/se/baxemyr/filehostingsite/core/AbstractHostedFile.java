@@ -1,19 +1,23 @@
 package se.baxemyr.filehostingsite.core;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author Marco Baxemyr
  */
-
-
-public abstract class AbstractHostedFile {
+@Entity
+public abstract class AbstractHostedFile implements Serializable {
    
     //This should be generated, and accessible?!
     private static long idshouldbegenereated = 0;
     
+    @Id
     private long id;
     private byte[] bytes;
 
@@ -28,8 +32,10 @@ public abstract class AbstractHostedFile {
     
     private List<Comment> comments;
     private String fileName;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date uploadDate;
-    private long size;
+    //size is reserved
+    private long ssize;
     private long downloads;
 
     public List<Comment> getComments() {
@@ -81,11 +87,11 @@ public abstract class AbstractHostedFile {
     }
 
     public long getSize() {
-        return size;
+        return ssize;
     }
 
     public void setSize(long size) {
-        this.size = size;
+        this.ssize = size;
     }
 
     public long getDownloads() {
