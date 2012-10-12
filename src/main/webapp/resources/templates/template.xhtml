@@ -18,34 +18,9 @@
         <nav>
             <!-- if any navigation -->
         </nav>
-        <section id="upload">
-            <h:form>
-                <tr>
-                    <td>
-                        <input type="file" name="file"/>
-                    </td>
-                    <td>
-                        <h:commandButton action="#{upload.submit}" value="Upload"></h:commandButton>
-                    </td>
-                </tr>
-            </h:form>
-        </section>
         <section>
-            <!-- content -->
             <ui:insert name="content">Content</ui:insert>
-            <div id="content">  
-                <div id="mainContent">  
-                    <section id="lists">  
-                         testing
-                    </section>   
-                    <aside id ="left">
-                        <ui:insert name="left"></ui:insert>
-                    </aside>
-                </div>  
-            </div> 
         </section>
-
-
         <footer id ="bottom">
             <ui:insert name="bottom">bottom</ui:insert>
         </footer>

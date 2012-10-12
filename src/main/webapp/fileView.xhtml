@@ -12,21 +12,27 @@
             <ui:define name="top">
                 File-Hosting-Site
             </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
-            <ui:define name="right">
-                right
-            </ui:define>
-
             <ui:define name="content">
-           
+                <section id="upload">
+                    <h:form>
+                        <tr>
+                            <td>
+                                <input type="file" name="file"/>
+                            </td>
+                            <td>
+                                <h:commandButton action="#{upload.submit}" value="Upload"></h:commandButton>
+                            </td>
+                        </tr>
+                    </h:form>
+                </section>
+                <section id="lists">
+                    List Here List Here
+                    List Here List Here
+                </section> 
             </ui:define>
 
             <ui:define name="bottom">
-                bottom
+                Copyright huxflux!
             </ui:define>
 
         </ui:composition>

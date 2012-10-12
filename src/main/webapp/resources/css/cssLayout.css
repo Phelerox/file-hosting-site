@@ -17,7 +17,8 @@
     border-radius: 6px;
 }
 #lists{
-    float: right;
+    margin: 0.5em;
+    float: left;
     display: table-cell;
     background-color: lightgreen;
     border-radius: 6px;
