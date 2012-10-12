@@ -16,45 +16,38 @@ import se.baxemyr.filehostingsite.core.UserHostedFile;
  * @author Sam
  */
 public class DBTest {
-    
+
     private AbstractHostedFile file;
     private DBHandler db;
-    
-    public void setUp(){
+
+    public void setUp() {
         this.file = new UserHostedFile();
         this.file.setName("filen");
         byte[] bytes = new byte[2];
-        bytes[0] = (byte)2;
-        bytes[1] = (byte)4;
+        bytes[0] = (byte) 2;
+        bytes[1] = (byte) 4;
         this.file.setBytes(bytes);
-        
+
         this.db = new DBHandler();
-        
+
     }
+
     @Test
-    public void testAddFile()
-    {
+    public void testAddFile() {
         setUp();
         this.db.addFile(this.file);
         Assert.assertTrue(true);
     }
+
     @Test
-    public void testGetFileById(){
+    public void testGetFileById() {
         AbstractHostedFile fetchedFile = this.db.getFile(this.file.getId());
         Assert.assertEquals(file, fetchedFile);
     }
+
     @Test
-    public void testGetFilesByName(){
+    public void testGetFilesByName() {
         List<AbstractHostedFile> fetchedFiles = this.db.getFiles(this.file.getName());
         Assert.assertEquals(file, fetchedFiles.get(0));
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

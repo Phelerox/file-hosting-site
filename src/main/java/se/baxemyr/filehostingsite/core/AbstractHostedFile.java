@@ -101,5 +101,4 @@ public abstract class AbstractHostedFile implements Serializable {
     public void download() {
         this.downloads++;
     }
-
 }

@@ -15,7 +15,7 @@ import javax.persistence.TypedQuery;
  * @author Sam
  */
 public class DBHandler {
-    
+
     //Static refrence to our persistance, is there another better way to do this?
     private final static String puName = "filehosting_pu";
     private EntityManagerFactory emf;
@@ -39,14 +39,16 @@ public class DBHandler {
             }
         }
     }
-    public AbstractHostedFile getFile(Long id){
+
+    public AbstractHostedFile getFile(Long id) {
         EntityManager em = emf.createEntityManager();
         String file = "select f from AbstractHostedFile f where f.id = :id";
         TypedQuery<AbstractHostedFile> tq = em.createQuery(file, AbstractHostedFile.class);
         tq.setParameter("id", id);
         return tq.getSingleResult();
     }
-    public List<AbstractHostedFile> getFiles(String name){
+
+    public List<AbstractHostedFile> getFiles(String name) {
         EntityManager em = emf.createEntityManager();
         String file = "select f from AbstractHostedFile f where f.name = :name";
         TypedQuery<AbstractHostedFile> tq = em.createQuery(file, AbstractHostedFile.class);
