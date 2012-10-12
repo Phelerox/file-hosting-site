@@ -21,7 +21,7 @@ public class DBTest {
     private static DBHandler db;
 
     @BeforeClass
-    public static void onlyOnce(){
+    public static void onlyOnce() {
         DBTest.file = new UserHostedFile();
         DBTest.file.setName("filen");
         byte[] bytes = new byte[2];
@@ -40,13 +40,25 @@ public class DBTest {
 
     @Test
     public void testGetFileById() {
+        try {
+            DBTest.db.addFile(DBTest.file);
+        } catch (Exception e) {
+            System.err.println("we assume the file was already added");
+        }
         AbstractHostedFile fetchedFile = DBTest.db.getFile(DBTest.file.getId());
-        Assert.assertEquals(file, fetchedFile);
+        Assert.assertEquals(file.getName(), fetchedFile.getName());
+        Assert.assertEquals(file.getId(), fetchedFile.getId());
     }
 
     @Test
     public void testGetFilesByName() {
+        try {
+            DBTest.db.addFile(DBTest.file);
+        } catch (Exception e) {
+            System.err.println("we assume the file was already added");
+        }
         List<AbstractHostedFile> fetchedFiles = DBTest.db.getFiles(DBTest.file.getName());
-        Assert.assertEquals(file, fetchedFiles.get(0));
+        Assert.assertEquals(file.getName(), fetchedFiles.get(0).getName());
+        Assert.assertEquals(file.getId(), fetchedFiles.get(0).getId());
     }
 }
