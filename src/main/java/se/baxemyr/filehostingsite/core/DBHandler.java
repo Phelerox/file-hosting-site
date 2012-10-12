@@ -50,7 +50,7 @@ public class DBHandler {
 
     public List<AbstractHostedFile> getFiles(String name) {
         EntityManager em = emf.createEntityManager();
-        String file = "select f from AbstractHostedFile f where f.name = :name";
+        String file = "select f from AbstractHostedFile f where f.fileName = :name";
         TypedQuery<AbstractHostedFile> tq = em.createQuery(file, AbstractHostedFile.class);
         tq.setParameter("name", name);
         return tq.getResultList();
