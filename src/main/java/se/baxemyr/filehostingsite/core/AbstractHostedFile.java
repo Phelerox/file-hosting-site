@@ -7,7 +7,12 @@ import java.util.List;
  *
  * @author Marco Baxemyr
  */
+
+
 public abstract class AbstractHostedFile {
+   
+    //This should be generated, and accessible?!
+    private static long idshouldbegenereated = 0;
     
     private long id;
     private byte[] bytes;
@@ -40,6 +45,9 @@ public abstract class AbstractHostedFile {
     }
     
     public AbstractHostedFile() {
+        this.id = AbstractHostedFile.idshouldbegenereated;
+        AbstractHostedFile.idshouldbegenereated += 1;
+        
         this.downloads = 0;
         this.uploadDate = new Date();
     }
