@@ -14,6 +14,7 @@ import javax.inject.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import se.baxemyr.filehostingsite.core.AbstractHostedFile;
+import se.baxemyr.filehostingsite.core.DBHandler;
 import se.baxemyr.filehostingsite.core.UserHostedFile;
 
 /**
@@ -24,12 +25,14 @@ import se.baxemyr.filehostingsite.core.UserHostedFile;
 @ConversationScoped
 public class UploadBB implements Serializable {
     @Inject
-    private Conversation conversation;
-    
+    private Conversation conversation; 
     private UploadedFile file;
     
+   @Inject
+   private DBHandler dbhandler;
+    
     public UploadBB() {
-        
+  
     }
     
     public UploadedFile getFile() {
@@ -53,7 +56,8 @@ public class UploadBB implements Serializable {
         hostedFile.setName(fileName);
         hostedFile.setBytes(bytes);
         
-        //TODO: Save in DB.
+        //Save in DB.
+        dbhandler.addFile(hostedFile);
 
         FacesContext.getCurrentInstance().addMessage(null, 
             new FacesMessage(String.format("File '%s' of type '%s' successfully uploaded! Contents: %s", fileName, contentType, new String(bytes))));

@@ -4,6 +4,7 @@
  */
 package se.baxemyr.filehostingsite.core;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,7 +15,7 @@ import javax.persistence.TypedQuery;
  *
  * @author Sam
  */
-public class DBHandler {
+public class DBHandler implements Serializable{
 
     //Static refrence to our persistance, is there another better way to do this?
     private final static String puName = "filehosting_pu";
