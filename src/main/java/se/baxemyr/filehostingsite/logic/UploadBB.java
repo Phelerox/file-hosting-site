@@ -60,6 +60,6 @@ public class UploadBB implements Serializable {
         dbhandler.addFile(hostedFile);
 
         FacesContext.getCurrentInstance().addMessage(null, 
-            new FacesMessage(String.format("File '%s' of type '%s' successfully uploaded! Contents: %s", fileName, contentType, new String(bytes))));
+            new FacesMessage(String.format("File '%s' of type '%s' successfully uploaded!", fileName, contentType)));
     }
 }
