@@ -41,6 +41,7 @@ public class DBTest {
     @Test
     public void testGetFileById() {
         try {
+            System.err.println("DBHandler kommer skriva ut att något gått fel, men det är så testet är utformat. Vi antar då att filen vi försöker hämta redan är tillagd");
             DBTest.db.addFile(DBTest.file);
         } catch (Exception e) {
             System.err.println("we assume the file was already added");
@@ -53,6 +54,7 @@ public class DBTest {
     @Test
     public void testGetFilesByName() {
         try {
+            System.err.println("DBHandler kommer skriva ut att något gått fel, men det är så testet är utformat. Vi antar då att filen vi försöker hämta redan är tillagd");
             DBTest.db.addFile(DBTest.file);
         } catch (Exception e) {
             System.err.println("we assume the file was already added");

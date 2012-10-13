@@ -13,6 +13,5 @@
       <property name="javax.persistence.jdbc.user" value="app"/>
       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
     </properties>
-    <jta-data-source>filehostingdb</jta-data-source>
   </persistence-unit>
 </persistence>
