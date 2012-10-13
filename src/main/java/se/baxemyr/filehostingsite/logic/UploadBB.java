@@ -13,9 +13,9 @@ import javax.faces.event.ActionEvent;
 import javax.inject.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
-import se.baxemyr.filehostingsite.core.AbstractHostedFile;
-import se.baxemyr.filehostingsite.core.DBHandler;
+import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.UserHostedFile;
+import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
 
 /**
  *
@@ -28,8 +28,7 @@ public class UploadBB implements Serializable {
     private Conversation conversation; 
     private UploadedFile file;
     
-   @Inject
-   private DBHandler dbhandler;
+   private UserHostedFileDatabase userHostedFileDB;
     
     public UploadBB() {
   
@@ -52,12 +51,13 @@ public class UploadBB implements Serializable {
         String contentType = file.getContentType();
         byte[] bytes = file.getBytes();
 
-        AbstractHostedFile hostedFile = new UserHostedFile(); //TODO: dynamically determine if it should be User or Group hosted, and which user/group
+        UserHostedFile hostedFile = new UserHostedFile(); //TODO: dynamically determine if it should be User or Group hosted, and which user/group
         hostedFile.setName(fileName);
         hostedFile.setBytes(bytes);
         
         //Save in DB.
-        dbhandler.addFile(hostedFile);
+        userHostedFileDB = DatabaseManager.INSTANCE.getUserHostedFileDatabase();
+        userHostedFileDB.add(hostedFile);
 
         FacesContext.getCurrentInstance().addMessage(null, 
             new FacesMessage(String.format("File '%s' of type '%s' successfully uploaded!", fileName, contentType)));

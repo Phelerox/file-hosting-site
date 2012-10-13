@@ -1,5 +1,6 @@
 package se.baxemyr.filehostingsite.core;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import se.baxemyr.filehostingsite.logic.UserAuthentication;
  * @author Marco Baxemyr
  */
 @Entity
-public class User implements IDataObject{
+public class User implements Serializable {
 
     @Id
     @GeneratedValue

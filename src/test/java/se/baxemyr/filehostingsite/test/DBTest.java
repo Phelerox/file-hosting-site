@@ -8,8 +8,8 @@ import java.util.List;
 import junit.framework.Assert;
 import org.junit.*;
 import se.baxemyr.filehostingsite.core.AbstractHostedFile;
-import se.baxemyr.filehostingsite.core.DBHandler;
 import se.baxemyr.filehostingsite.core.UserHostedFile;
+import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
 
 /**
  *
@@ -17,8 +17,8 @@ import se.baxemyr.filehostingsite.core.UserHostedFile;
  */
 public class DBTest {
 
-    private static AbstractHostedFile file;
-    private static DBHandler db;
+    private static UserHostedFile file;
+    private static UserHostedFileDatabase userHostedFileDB;
 
     @BeforeClass
     public static void onlyOnce() {
@@ -29,12 +29,12 @@ public class DBTest {
         bytes[1] = (byte) 4;
         DBTest.file.setBytes(bytes);
 
-        DBTest.db = new DBHandler();
+        DBTest.userHostedFileDB = UserHostedFileDatabase.newInstance("filehosting_pu");
     }
 
     @Test
     public void testAddFile() {
-        DBTest.db.addFile(DBTest.file);
+        DBTest.userHostedFileDB.add(DBTest.file);
         Assert.assertTrue(true);
     }
 
@@ -42,11 +42,11 @@ public class DBTest {
     public void testGetFileById() {
         try {
             System.err.println("DBHandler kommer skriva ut att något gått fel, men det är så testet är utformat. Vi antar då att filen vi försöker hämta redan är tillagd");
-            DBTest.db.addFile(DBTest.file);
+            DBTest.userHostedFileDB.add(DBTest.file);
         } catch (Exception e) {
             System.err.println("we assume the file was already added");
         }
-        AbstractHostedFile fetchedFile = DBTest.db.getFile(DBTest.file.getId());
+        AbstractHostedFile fetchedFile = DBTest.userHostedFileDB.getFile(DBTest.file.getId());
         Assert.assertEquals(file.getName(), fetchedFile.getName());
         Assert.assertEquals(file.getId(), fetchedFile.getId());
     }
@@ -55,11 +55,11 @@ public class DBTest {
     public void testGetFilesByName() {
         try {
             System.err.println("DBHandler kommer skriva ut att något gått fel, men det är så testet är utformat. Vi antar då att filen vi försöker hämta redan är tillagd");
-            DBTest.db.addFile(DBTest.file);
+            DBTest.userHostedFileDB.add(DBTest.file);
         } catch (Exception e) {
             System.err.println("we assume the file was already added");
         }
-        List<AbstractHostedFile> fetchedFiles = DBTest.db.getFiles(DBTest.file.getName());
+        List<UserHostedFile> fetchedFiles = DBTest.userHostedFileDB.getFiles(DBTest.file.getName());
         Assert.assertEquals(file.getName(), fetchedFiles.get(0).getName());
         Assert.assertEquals(file.getId(), fetchedFiles.get(0).getId());
     }

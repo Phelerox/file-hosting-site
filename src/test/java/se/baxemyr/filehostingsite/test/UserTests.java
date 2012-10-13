@@ -14,7 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import se.baxemyr.filehostingsite.core.DatabaseHandler;
+import se.baxemyr.filehostingsite.core.AbstractDAO;
 import se.baxemyr.filehostingsite.core.User;
 import se.baxemyr.filehostingsite.logic.UserAuthentication;
 
@@ -81,11 +81,5 @@ public class UserTests {
         Assert.assertFalse(user.getSalt().equals(salt));
         UserAuthentication.changePassword(user2, password+"s");
         Assert.assertFalse(salt.equals(user2.getSalt()));
-    }
-    
-    @Test
-    public void testAdd() { //tests to add a user to the database
-        DatabaseHandler databaseHandler = new DatabaseHandler("filehosting_pu");
-        databaseHandler.add(user);
     }
 }
