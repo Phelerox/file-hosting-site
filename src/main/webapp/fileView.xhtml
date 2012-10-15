@@ -13,18 +13,9 @@
                 File-Hosting-Site
             </ui:define>
             <ui:define name="content">
-                <section id="upload">
-<!--                    Note the enctype="multipart/form-data" attribute on <h:form>, this is very important in order to be able to send files with HTTP.-->
-                    <h:form enctype="multipart/form-data">
-                        <t:inputFileUpload value="#{upload.file}" />
-                        <h:commandButton value="submit" action="#{upload.submit}" />
-                        <h:messages />
-                    </h:form>
-                </section>
-                <section id="lists">
-                    List Here List Here
-                    List Here List Here
-                </section> 
+               
+<!-- Här ska en upladdad fil visas, uppladdning sker i upload.xhtml.     .-->
+                   
             </ui:define>
 
             <ui:define name="bottom">

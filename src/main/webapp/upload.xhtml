@@ -5,33 +5,30 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:t="http://myfaces.apache.org/tomahawk">
-
     <body>
 
         <ui:composition template="./resources/templates/template.xhtml">
 
             <ui:define name="top">
-                top
+                File-Hosting-Site
             </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
-            <ui:define name="right">
-                right
-            </ui:define>
-
             <ui:define name="content">
-                <h:form enctype="multipart/form-data">
-                    <!--<t:inputFileUpload value="#{upload.file}" />
-                    <h:commandButton value="Upload" action="#{upload.submit}"/>-->
-                    <h:messages />
-                </h:form>
+                <section id="upload">
+<!--                    Note the enctype="multipart/form-data" attribute on <h:form>, this is very important in order to be able to send files with HTTP.-->
+                    <h:form enctype="multipart/form-data">
+                        <t:inputFileUpload value="#{upload.file}" />
+                        <h:commandButton value="submit" action="#{upload.submit}" />
+                        <h:messages />
+                    </h:form>
+                </section>
+                <section id="lists">
+                    List Here List Here
+                    List Here List Here
+                </section> 
             </ui:define>
 
             <ui:define name="bottom">
-                bottom
+                Copyright huxflux!
             </ui:define>
 
         </ui:composition>
