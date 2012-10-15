@@ -13,8 +13,6 @@ import javax.faces.event.ActionEvent;
 import javax.inject.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
-import se.baxemyr.filehostingsite.core.AbstractHostedFile;
-import se.baxemyr.filehostingsite.core.AbstractHostedFileDatabase;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.UserHostedFile;
 import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
@@ -48,7 +46,7 @@ public class UploadBB implements Serializable {
         
     }
     
-    public void submit() throws IOException {
+    public String submit() throws IOException {
         String fileName = FilenameUtils.getName(file.getName());
         String contentType = file.getContentType();
         byte[] bytes = file.getBytes();
@@ -62,7 +60,15 @@ public class UploadBB implements Serializable {
         userHostedFileDB = DatabaseManager.INSTANCE.getUserHostedFileDatabase();
         userHostedFileDB.add(hostedFile);
 
+        //Detta blir onödigt när vi skcikar vidare direkt
         FacesContext.getCurrentInstance().addMessage(null, 
             new FacesMessage(String.format("File '%s' of type '%s' successfully uploaded!", fileName, contentType)));
+        
+        //Skickar vidare till fileview
+        try{
+            return "fileView?faces-redirect=true";
+        }catch(Exception e){
+            return null;
+        }
     }
 }
