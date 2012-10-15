@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package se.baxemyr.filehostingsite.core;
 
 import java.util.List;
@@ -16,7 +12,7 @@ import javax.persistence.Persistence;
  * 
  * @author hajo
  */
-public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
+public abstract class AbstractDAO<T extends IEntity<K>, K> implements IDAO<T, K> {
 
     protected EntityManagerFactory emf;
     private final Class<T> clazz;
@@ -41,7 +37,7 @@ public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
             }
         }
     }
-
+  
     @Override
     public void remove(K T) {
         EntityManager em = null;

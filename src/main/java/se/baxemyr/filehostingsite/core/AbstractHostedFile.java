@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 
@@ -12,13 +13,14 @@ import javax.persistence.Temporal;
  * @author Marco Baxemyr
  */
 @Entity
-public abstract class AbstractHostedFile implements Serializable {
+public abstract class AbstractHostedFile implements IEntity<Long> {
    
     //This should be generated, and accessible?!
-    private static long idshouldbegenereated = 0;
+   // private static long idshouldbegenereated = 0;
     
     @Id
-    private long id;
+    @GeneratedValue
+    private Long id;
     private byte[] bytes;
 
     public byte[] getBytes() {
@@ -51,14 +53,14 @@ public abstract class AbstractHostedFile implements Serializable {
     }
     
     public AbstractHostedFile() {
-        this.id = AbstractHostedFile.idshouldbegenereated;
-        AbstractHostedFile.idshouldbegenereated += 1;
+        //this.id = AbstractHostedFile.idshouldbegenereated;
+        //AbstractHostedFile.idshouldbegenereated += 1;
         
         this.downloads = 0;
         this.uploadDate = new Date();
     }
     
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

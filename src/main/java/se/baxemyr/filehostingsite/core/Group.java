@@ -28,7 +28,5 @@ public class Group {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
-    }
-    
-    
+    } 
 }

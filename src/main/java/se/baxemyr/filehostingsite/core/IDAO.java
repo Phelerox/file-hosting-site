@@ -14,7 +14,7 @@ import java.util.List;
  * 
  * @author hajo
  */
-public interface IDAO<T, K> {
+public interface IDAO<T extends IEntity<K>, K> {
 
     public void add(T t);
 
