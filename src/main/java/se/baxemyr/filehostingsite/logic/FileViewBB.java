@@ -5,10 +5,13 @@
 package se.baxemyr.filehostingsite.logic;
 
 import java.io.Serializable;
+import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-import se.baxemyr.filehostingsite.core.AbstractHostedFile;
+import se.baxemyr.filehostingsite.core.HostedFile;
+import se.baxemyr.filehostingsite.core.HostedFile;
 
 /**
  *
@@ -17,25 +20,34 @@ import se.baxemyr.filehostingsite.core.AbstractHostedFile;
 @Named("fileviewBB")
 @ConversationScoped
 public class FileViewBB implements Serializable {
-    private AbstractHostedFile file;
+    @Inject
+    private Conversation conversation;
+    
+    private HostedFile file;
     
     public void FileViewBB() {
         
     }
     
-    public FileViewBB(Long id) {
-        
-    }
-    
-    public AbstractHostedFile getFile() {
+    public HostedFile getFile() {
         return file;
     }
     
-    public void setFile(AbstractHostedFile file) {
+    public void setFile(HostedFile file) {
         this.file = file;
     }
     
     public void download() {
+        
+    }
+    
+    public void init(ActionEvent e) {
+        if (conversation.isTransient()) {
+            conversation.begin();
+        } else {
+        }
+        
+        this.file = (HostedFile) e.getComponent().getAttributes().get("file");
         
     }
 }

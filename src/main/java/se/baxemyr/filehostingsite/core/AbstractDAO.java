@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  * A container for entities
@@ -63,7 +64,13 @@ public abstract class AbstractDAO<T extends IEntity<K>, K> implements IDAO<T, K>
 
     @Override
     public T find(K id) {    
-        return null;
+        EntityManager em = emf.createEntityManager();
+        //Testa det här sedan
+        //clazz.getSimpleName();
+        String file = "select f from "+this.clazz.getSimpleName()+" f where f.id = :id";
+        TypedQuery<T> tq = em.createQuery(file, clazz);
+        tq.setParameter("id", id);
+        return tq.getSingleResult();
     }
 
     @Override

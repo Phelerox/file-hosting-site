@@ -1,6 +1,9 @@
 package se.baxemyr.filehostingsite.core;
 
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -9,6 +12,9 @@ import java.util.List;
 public class Group {
     private List<User> members;
     private List<Comment> comments;
+    
+    @OneToMany(mappedBy = "ggroup", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private List<HostedFile> userHostedFiles;
 
     public List<User> getMembers() {
         return this.members;

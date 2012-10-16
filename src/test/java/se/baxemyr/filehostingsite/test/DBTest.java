@@ -7,9 +7,9 @@ package se.baxemyr.filehostingsite.test;
 import java.util.List;
 import junit.framework.Assert;
 import org.junit.*;
-import se.baxemyr.filehostingsite.core.AbstractHostedFile;
-import se.baxemyr.filehostingsite.core.UserHostedFile;
-import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
+import se.baxemyr.filehostingsite.core.HostedFile;
+import se.baxemyr.filehostingsite.core.HostedFile;
+import se.baxemyr.filehostingsite.core.HostedFileDatabase;
 
 /**
  *
@@ -17,19 +17,19 @@ import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
  */
 public class DBTest {
 
-    private static UserHostedFile file;
-    private static UserHostedFileDatabase userHostedFileDB;
+    private static HostedFile file;
+    private static HostedFileDatabase userHostedFileDB;
 
     @BeforeClass
     public static void onlyOnce() {
-        DBTest.file = new UserHostedFile();
+        DBTest.file = new HostedFile();
         DBTest.file.setFilename("filen");
         byte[] bytes = new byte[2];
         bytes[0] = (byte) 2;
         bytes[1] = (byte) 4;
         DBTest.file.setBytes(bytes);
 
-        DBTest.userHostedFileDB = UserHostedFileDatabase.newInstance("filehosting_pu");
+        DBTest.userHostedFileDB = HostedFileDatabase.newInstance("filehosting_pu");
     }
 
     @Test
@@ -46,7 +46,7 @@ public class DBTest {
         } catch (Exception e) {
             System.err.println("we assume the file was already added");
         }
-        AbstractHostedFile fetchedFile = DBTest.userHostedFileDB.getFile(DBTest.file.getId());
+        HostedFile fetchedFile = DBTest.userHostedFileDB.find(DBTest.file.getId());
         Assert.assertEquals(file.getFilename(), fetchedFile.getFilename());
         Assert.assertEquals(file.getId(), fetchedFile.getId());
     }
@@ -59,7 +59,7 @@ public class DBTest {
         } catch (Exception e) {
             System.err.println("we assume the file was already added");
         }
-        List<UserHostedFile> fetchedFiles = DBTest.userHostedFileDB.getFiles(DBTest.file.getFilename());
+        List<HostedFile> fetchedFiles = DBTest.userHostedFileDB.getFiles(DBTest.file.getFilename());
         Assert.assertEquals(file.getFilename(), fetchedFiles.get(0).getFilename());
         Assert.assertEquals(file.getId(), fetchedFiles.get(0).getId());
     }

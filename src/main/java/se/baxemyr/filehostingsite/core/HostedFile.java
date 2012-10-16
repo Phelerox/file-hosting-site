@@ -1,11 +1,13 @@
 package se.baxemyr.filehostingsite.core;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -13,7 +15,7 @@ import javax.persistence.Temporal;
  * @author Marco Baxemyr
  */
 @Entity
-public abstract class AbstractHostedFile implements IEntity<Long> {
+public class HostedFile implements IEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;
@@ -28,7 +30,40 @@ public abstract class AbstractHostedFile implements IEntity<Long> {
     //size is reserved
     private long ssize;
     private long downloads;
+    
+    @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private Group ggroup;
+    
+    @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private User owner;
+    private List<User> usersWithAccess;
+    
+    
+    public HostedFile() {
+     this.downloads = 0;
+        this.uploadDate = new Date();
+    }
+    
+    public User getOwner() {
+        return owner;
+    }
 
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+    
+    public List<User> getUsersWithAccess() {
+        return usersWithAccess;
+    }
+
+    public void grantAccess(User user) {
+        this.usersWithAccess.add(user);
+    }
+    
+    public void revokeAccess(User user) {
+        this.usersWithAccess.remove(user);
+    }  
+    
     public byte[] getBytes() {
         return bytes;
     }
@@ -49,15 +84,18 @@ public abstract class AbstractHostedFile implements IEntity<Long> {
         this.comments.remove(comment);
     }
     
-    public AbstractHostedFile() {
-     this.downloads = 0;
-        this.uploadDate = new Date();
-    }
-    
     public Long getId() {
         return id;
     }
 
+    public Group getGroup() {
+        return this.ggroup;
+    }
+
+    public void setGroup(Group group) {
+        this.ggroup = group;
+    }
+    
     public String getFilename() {
         return filename;
     }

@@ -14,8 +14,8 @@ import javax.inject.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
-import se.baxemyr.filehostingsite.core.UserHostedFile;
-import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
+import se.baxemyr.filehostingsite.core.HostedFile;
+import se.baxemyr.filehostingsite.core.HostedFileDatabase;
 import se.baxemyr.filehostingsite.core.UserManager;
 
 /**
@@ -29,7 +29,7 @@ public class UploadBB implements Serializable {
     private Conversation conversation; 
     private UploadedFile file;
     
-   private UserHostedFileDatabase userHostedFileDB;
+   private HostedFileDatabase userHostedFileDB;
     
     public UploadBB() {
   
@@ -52,8 +52,8 @@ public class UploadBB implements Serializable {
         String contentType = file.getContentType();
         byte[] bytes = file.getBytes();
 
-        //TODO: bör vara AbstractHostedFile hostedFile = new UserHostedFile();
-        UserHostedFile hostedFile = new UserHostedFile(); //TODO: dynamically determine if it should be User or Group hosted, and which user/group
+        //TODO: bör vara AbstractHostedFile hostedFile = new HostedFile();
+        HostedFile hostedFile = new HostedFile(); //TODO: dynamically determine if it should be User or Group hosted, and which user/group
         hostedFile.setFilename(fileName);
         hostedFile.setBytes(bytes);
         
@@ -70,7 +70,7 @@ public class UploadBB implements Serializable {
         
         //Skickar vidare till fileview
         try{
-            return "fileView?faces-redirect=true";
+            return "userPage?faces-redirect=true";
         }catch(Exception e){
             return null;
         }
