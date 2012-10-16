@@ -27,7 +27,7 @@ public class User implements IEntity<Long> {
     private byte[] salt; //Unique per-user per-password
     
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private List<UserHostedFile> userHostedFiles;
+    private List<HostedFile> userHostedFiles;
         
     public User() {
         this.regDate = new Date();

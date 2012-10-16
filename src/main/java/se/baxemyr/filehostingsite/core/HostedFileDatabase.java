@@ -8,28 +8,28 @@ import javax.persistence.TypedQuery;
  *
  * @author Sam, Marco
  */
-public class AbstractHostedFileDatabase extends AbstractDAO<UserHostedFile, Long> {
+public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
 
-    private AbstractHostedFileDatabase(String puName) {
-        super(UserHostedFile.class, puName);
+    private HostedFileDatabase(String puName) {
+        super(HostedFile.class, puName);
     }
     
-    public static AbstractHostedFileDatabase newInstance(String puName){
-        return new AbstractHostedFileDatabase(puName);
+    public static HostedFileDatabase newInstance(String puName){
+        return new HostedFileDatabase(puName);
     }
 
-    public List<UserHostedFile> getFiles(String name) {
+    public List<HostedFile> getFiles(String name) {
         EntityManager em = super.emf.createEntityManager();
         String file = "select f from UserHostedFile f where f.filename = :name";
-        TypedQuery<UserHostedFile> tq = em.createQuery(file, UserHostedFile.class);
+        TypedQuery<HostedFile> tq = em.createQuery(file, HostedFile.class);
         tq.setParameter("name", name);
         return tq.getResultList();
     }
     
-    public List<UserHostedFile> getFilesFromOwner(User owner) {
+    public List<HostedFile> getFilesFromOwner(User owner) {
         EntityManager em = super.emf.createEntityManager();
         String file = "select f from UserHostedFile f where f.owner = :owner";
-        TypedQuery<UserHostedFile> tq = em.createQuery(file, UserHostedFile.class);
+        TypedQuery<HostedFile> tq = em.createQuery(file, HostedFile.class);
         tq.setParameter("owner", owner);
         return tq.getResultList();
     }

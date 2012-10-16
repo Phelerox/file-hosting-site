@@ -10,8 +10,8 @@ import javax.enterprise.context.ConversationScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-import se.baxemyr.filehostingsite.core.AbstractHostedFile;
-import se.baxemyr.filehostingsite.core.UserHostedFile;
+import se.baxemyr.filehostingsite.core.HostedFile;
+import se.baxemyr.filehostingsite.core.HostedFile;
 
 /**
  *
@@ -23,17 +23,17 @@ public class FileViewBB implements Serializable {
     @Inject
     private Conversation conversation;
     
-    private AbstractHostedFile file;
+    private HostedFile file;
     
     public void FileViewBB() {
         
     }
     
-    public AbstractHostedFile getFile() {
+    public HostedFile getFile() {
         return file;
     }
     
-    public void setFile(AbstractHostedFile file) {
+    public void setFile(HostedFile file) {
         this.file = file;
     }
     
@@ -47,7 +47,7 @@ public class FileViewBB implements Serializable {
         } else {
         }
         
-        this.file = (AbstractHostedFile) e.getComponent().getAttributes().get("file");
+        this.file = (HostedFile) e.getComponent().getAttributes().get("file");
         
     }
 }

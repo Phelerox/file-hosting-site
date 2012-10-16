@@ -8,19 +8,19 @@ package se.baxemyr.filehostingsite.core;
 public enum DatabaseManager {
 
     INSTANCE;
-    private AbstractHostedFileDatabase userHostedFileDatabase;
+    private HostedFileDatabase userHostedFileDatabase;
     private UserDatabase userDatabase;
 
     private DatabaseManager() {
-        userHostedFileDatabase = AbstractHostedFileDatabase.newInstance("filehosting_pu");
+        userHostedFileDatabase = HostedFileDatabase.newInstance("filehosting_pu");
         userDatabase = UserDatabase.newInstance("filehosting_pu");
     }
     
     private DatabaseManager(String pu) {
-        userHostedFileDatabase = AbstractHostedFileDatabase.newInstance(pu);
+        userHostedFileDatabase = HostedFileDatabase.newInstance(pu);
     }  
     
-    public AbstractHostedFileDatabase getUserHostedFileDatabase() {
+    public HostedFileDatabase getUserHostedFileDatabase() {
         return userHostedFileDatabase;
     }
     
