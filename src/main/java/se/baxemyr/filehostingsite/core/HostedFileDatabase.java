@@ -33,4 +33,17 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
         tq.setParameter("owner", owner);
         return tq.getResultList();
     }
+        public List<HostedFile> getLatestFiles() {
+        EntityManager em = super.emf.createEntityManager();
+        String query = "select f from UserHostedFile f order by f.uploadDate desc";
+        TypedQuery<HostedFile> tq = em.createQuery(query, HostedFile.class);
+        return tq.getResultList();
+    }
+    
+    public List<HostedFile> getMostDownloaded(){
+        EntityManager em = super.emf.createEntityManager();
+        String query = "select f from UserHostedFile f order by f.downloads desc";
+        TypedQuery<HostedFile> tq = em.createQuery(query, HostedFile.class);
+        return tq.getResultList();
+    }
 }

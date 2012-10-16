@@ -33,13 +33,13 @@ public class UserPageBB {
         return filelist;
     }
     
-    public List<UserHostedFile> getLatestFiles(){
-        List<UserHostedFile> filelist = new ArrayList<UserHostedFile>();
+    public List<HostedFile> getLatestFiles(){
+        List<HostedFile> filelist = new ArrayList<HostedFile>();
         filelist.addAll(userHostedFileDB.getLatestFiles());
         return filelist;
     }
-    public List<UserHostedFile> getMostDownloaded(){
-        List<UserHostedFile> filelist = new ArrayList<UserHostedFile>();
+    public List<HostedFile> getMostDownloaded(){
+        List<HostedFile> filelist = new ArrayList<HostedFile>();
         filelist.addAll(userHostedFileDB.getMostDownloaded());
         return filelist;
     }
