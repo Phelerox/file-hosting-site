@@ -70,7 +70,7 @@ public class UploadBB implements Serializable {
         
         //Skickar vidare till fileview
         try{
-            return "fileView?faces-redirect=true";
+            return "userPage?faces-redirect=true";
         }catch(Exception e){
             return null;
         }

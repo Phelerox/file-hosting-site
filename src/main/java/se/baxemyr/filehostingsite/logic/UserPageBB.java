@@ -27,7 +27,7 @@ public class UserPageBB {
     }
     
     public List<UserHostedFile> getAll() {
-        List<UserHostedFile> filelist = new ArrayList<UserHostedFile>();
+        List<UserHostedFile> filelist = new ArrayList<>();
         filelist.addAll(userHostedFileDB.getFilesFromOwner(UserManager.getInstance().getCurrentUser())); 
         filelist.add(userHostedFileDB.getFile(1L)); //endast tills vidare
         return filelist;
