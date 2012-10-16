@@ -32,7 +32,7 @@ public class rest {
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response getFileById(@PathParam("id") Long id) {
         HostedFile uhf = this.userHostedFileDB.find(id);
-        
+        uhf.download();
         return Response.ok(uhf.getBytes()).header("content-disposition","attachment; filename = "+uhf.getFilename()).build();
     }
 }

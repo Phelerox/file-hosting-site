@@ -32,14 +32,4 @@ public class UserPageBB {
         return filelist;
     }
     
-    public List<HostedFile> getLatestFiles(){
-        List<HostedFile> filelist = new ArrayList<HostedFile>();
-        filelist.addAll(hostedFileDB.getLatestFiles());
-        return filelist;
-    }
-    public List<HostedFile> getMostDownloaded(){
-        List<HostedFile> filelist = new ArrayList<HostedFile>();
-        filelist.addAll(hostedFileDB.getMostDownloaded());
-        return filelist;
-    }
 }

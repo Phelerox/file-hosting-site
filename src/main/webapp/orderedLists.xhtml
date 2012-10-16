@@ -15,7 +15,7 @@
 
             <ui:define name="content">
                 <section id="lists">
-                 <h:dataTable value="#{userpageBB.latestFiles}" var="file"
+                 <h:dataTable value="#{orderedlistsBB.latestFiles}" var="file"
     			styleClass="order-table"
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row">
@@ -40,7 +40,7 @@
                     </h:column>
                     
                 </h:dataTable>
-                       <h:dataTable value="#{userpageBB.mostDownloaded}" var="file"
+                       <h:dataTable value="#{orderedlistsBB.mostDownloaded}" var="file"
     			styleClass="order-table"
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row">
