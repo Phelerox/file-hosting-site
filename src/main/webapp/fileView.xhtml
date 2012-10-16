@@ -13,9 +13,10 @@
                 File-Hosting-Site
             </ui:define>
             <ui:define name="content">
-                FILEVIEW: Här ska en upladdad fil visas
-<!-- Här ska en upladdad fil visas, uppladdning sker i upload.xhtml.     .-->
-                   <h:commandButton value="download file" action="#{fileviewBB.download}" />
+                <p> Filename: #{fileviewBB.file.filename}</p>
+                <p>Uploaded: #{fileviewBB.file.uploadDate}</p>
+                <p>Number of downloads: #{fileviewBB.file.downloads}</p>
+                <p><h:commandButton value="download file" action="#{fileviewBB.download}" /></p>
             </ui:define>
 
             <ui:define name="bottom">

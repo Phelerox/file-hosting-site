@@ -1,7 +1,9 @@
 package se.baxemyr.filehostingsite.core;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 /**
@@ -11,7 +13,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class UserHostedFile extends AbstractHostedFile {
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private User owner;
     private List<User> usersWithAccess;
     
