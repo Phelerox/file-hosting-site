@@ -40,8 +40,7 @@ public class HostedFile implements IEntity<Long> {
     
     
     public HostedFile() {
-     this.downloads = 0;
-        this.uploadDate = new Date();
+     this.uploadDate = new Date();
     }
     
     public User getOwner() {
