@@ -1,5 +1,6 @@
 package se.baxemyr.filehostingsite.core;
 
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,6 +42,20 @@ public class UserHostedFileDatabase extends AbstractDAO<UserHostedFile, Long> {
         String file = "select f from UserHostedFile f where f.owner = :owner";
         TypedQuery<UserHostedFile> tq = em.createQuery(file, UserHostedFile.class);
         tq.setParameter("owner", owner);
+        return tq.getResultList();
+    }
+
+    public Collection<UserHostedFile> getLatestFiles() {
+        EntityManager em = super.emf.createEntityManager();
+        String query = "select f from UserHostedFile f order by f.uploadDate desc";
+        TypedQuery<UserHostedFile> tq = em.createQuery(query, UserHostedFile.class);
+        return tq.getResultList();
+    }
+    
+    public Collection<UserHostedFile> getMostDownloaded(){
+        EntityManager em = super.emf.createEntityManager();
+        String query = "select f from UserHostedFile f order by f.downloads desc";
+        TypedQuery<UserHostedFile> tq = em.createQuery(query, UserHostedFile.class);
         return tq.getResultList();
     }
 }

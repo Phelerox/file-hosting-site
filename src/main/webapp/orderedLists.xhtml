@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./resources/templates/template.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+                <section id="lists">
+                 <h:dataTable value="#{userpageBB.latestFiles}" var="file"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+                     <f:facet name="header">
+                        <h:outputText value="Latest Uploads" />
+                     </f:facet> 
+                     <h:column>
+    				<f:facet name="header">ID</f:facet>
+    				#{file.id}
+                    </h:column>
+                    <h:column>
+    				<f:facet name="header">Name</f:facet>
+    				#{file.filename}
+                    </h:column>
+                     <h:column>
+    				<f:facet name="header">Owner</f:facet>
+    				#{file.owner}
+                    </h:column>
+                    <h:column>
+                         <f:facet name="header">Date</f:facet>
+                         #{file.uploadDate}
+                    </h:column>
+                    
+                </h:dataTable>
+                       <h:dataTable value="#{userpageBB.mostDownloaded}" var="file"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+                     <f:facet name="header">
+                        <h:outputText value="Most downloaded" />
+                     </f:facet> 
+                     <h:column>
+    				<f:facet name="header">ID</f:facet>
+    				#{file.id}
+                    </h:column>
+                    <h:column>
+    				<f:facet name="header">Name</f:facet>
+    				#{file.filename}
+                    </h:column>
+                     <h:column>
+    				<f:facet name="header">Owner</f:facet>
+    				#{file.owner}
+                    </h:column>
+                    <h:column>
+                         <f:facet name="header"># downloads</f:facet>
+                         #{file.downloads}
+                    </h:column>
+                    
+                </h:dataTable>
+                </section>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
