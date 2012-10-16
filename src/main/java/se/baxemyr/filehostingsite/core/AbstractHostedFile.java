@@ -14,14 +14,20 @@ import javax.persistence.Temporal;
  */
 @Entity
 public abstract class AbstractHostedFile implements IEntity<Long> {
-   
-    //This should be generated, and accessible?!
-   // private static long idshouldbegenereated = 0;
-    
     @Id
     @GeneratedValue
     private Long id;
     private byte[] bytes;
+
+    private boolean isPublic;
+    
+    private List<Comment> comments;
+    private String filename;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date uploadDate;
+    //size is reserved
+    private long ssize;
+    private long downloads;
 
     public byte[] getBytes() {
         return bytes;
@@ -30,16 +36,7 @@ public abstract class AbstractHostedFile implements IEntity<Long> {
     public void setBytes(byte[] bytes) {
         this.bytes = bytes;
     }
-    private boolean isPublic;
     
-    private List<Comment> comments;
-    private String fileName;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date uploadDate;
-    //size is reserved
-    private long ssize;
-    private long downloads;
-
     public List<Comment> getComments() {
         return comments;
     }
@@ -53,10 +50,7 @@ public abstract class AbstractHostedFile implements IEntity<Long> {
     }
     
     public AbstractHostedFile() {
-        //this.id = AbstractHostedFile.idshouldbegenereated;
-        //AbstractHostedFile.idshouldbegenereated += 1;
-        
-        this.downloads = 0;
+     this.downloads = 0;
         this.uploadDate = new Date();
     }
     
@@ -64,12 +58,12 @@ public abstract class AbstractHostedFile implements IEntity<Long> {
         return id;
     }
 
-    public String getName() {
-        return fileName;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setName(String fileName) {
-        this.fileName = fileName;
+    public void setFilename(String fileName) {
+        this.filename = fileName;
     }
     
     public Date getUploadDate() {

@@ -33,8 +33,7 @@ public class User implements IEntity<Long> {
         this.regDate = new Date();
     }
     
-    public User(Long id, String userName, String fullName, String email, String password) {
-        this.id = id;
+    public User(String userName, String fullName, String email, String password) {
         this.userName = userName;
         this.fullName = fullName;
         this.email = email;

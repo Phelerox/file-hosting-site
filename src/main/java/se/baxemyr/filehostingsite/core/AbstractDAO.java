@@ -22,6 +22,7 @@ public abstract class AbstractDAO<T extends IEntity<K>, K> implements IDAO<T, K>
     }
 
     @Override
+    //Ta emot subklass till T?
     public void add(T t) {
         EntityManager em = null;
         try {

@@ -41,7 +41,7 @@ public class UserTests {
     @Before
     public void setUp() {
         password = "password";
-        user = new User(1L, "Phelerox", "Marco Baxemyr", "baxemyr@gmail.com", password);
+        user = new User("Phelerox", "Marco Baxemyr", "baxemyr@gmail.com", password);
     }
     
     @After
@@ -76,7 +76,7 @@ public class UserTests {
     
     @Test
     public void checkSalt() { // Salts should be unique per user per password
-        User user2 = new User(2L, "Anders", "Anders Andersson", "anders@andersson.se", password);
+        User user2 = new User("Anders", "Anders Andersson", "anders@andersson.se", password);
         byte[] salt = user2.getSalt();
         Assert.assertFalse(user.getSalt().equals(salt));
         UserAuthentication.changePassword(user2, password+"s");

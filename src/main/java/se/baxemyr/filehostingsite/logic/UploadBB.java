@@ -16,6 +16,7 @@ import org.apache.myfaces.custom.fileupload.UploadedFile;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.UserHostedFile;
 import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
+import se.baxemyr.filehostingsite.core.UserManager;
 
 /**
  * This backing bean is used to upload new files to the hosting site.
@@ -53,8 +54,11 @@ public class UploadBB implements Serializable {
 
         //TODO: bör vara AbstractHostedFile hostedFile = new UserHostedFile();
         UserHostedFile hostedFile = new UserHostedFile(); //TODO: dynamically determine if it should be User or Group hosted, and which user/group
-        hostedFile.setName(fileName);
+        hostedFile.setFilename(fileName);
         hostedFile.setBytes(bytes);
+        
+        //Filen sparas inte i databasen om den har en owner??
+        //hostedFile.setOwner(UserManager.getInstance().getCurrentUser());
         
         //Save in DB.
         userHostedFileDB = DatabaseManager.INSTANCE.getUserHostedFileDatabase();

@@ -37,6 +37,5 @@ public class UserHostedFile extends AbstractHostedFile {
     
     public void revokeAccess(User user) {
         this.usersWithAccess.remove(user);
-    }
-    
+    }  
 }

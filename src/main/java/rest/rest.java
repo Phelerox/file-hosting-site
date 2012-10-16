@@ -33,6 +33,6 @@ public class rest {
     public Response getFileById(@PathParam("id") Long id) {
         UserHostedFile uhf = this.userHostedFileDB.getFile(id);
         
-        return Response.ok(uhf.getBytes()).header("content-disposition","attachment; filename = "+uhf.getName()).build();
+        return Response.ok(uhf.getBytes()).header("content-disposition","attachment; filename = "+uhf.getFilename()).build();
     }
 }
