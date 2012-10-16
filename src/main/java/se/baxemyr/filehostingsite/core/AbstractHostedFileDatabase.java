@@ -8,22 +8,14 @@ import javax.persistence.TypedQuery;
  *
  * @author Sam, Marco
  */
-public class UserHostedFileDatabase extends AbstractDAO<UserHostedFile, Long> {
+public class AbstractHostedFileDatabase extends AbstractDAO<UserHostedFile, Long> {
 
-    private UserHostedFileDatabase(String puName) {
+    private AbstractHostedFileDatabase(String puName) {
         super(UserHostedFile.class, puName);
     }
     
-    public static UserHostedFileDatabase newInstance(String puName){
-        return new UserHostedFileDatabase(puName);
-    }
-
-    public UserHostedFile getFile(Long id) {
-        EntityManager em = super.emf.createEntityManager();
-        String file = "select f from UserHostedFile f where f.id = :id";
-        TypedQuery<UserHostedFile> tq = em.createQuery(file, UserHostedFile.class);
-        tq.setParameter("id", id);
-        return tq.getSingleResult();
+    public static AbstractHostedFileDatabase newInstance(String puName){
+        return new AbstractHostedFileDatabase(puName);
     }
 
     public List<UserHostedFile> getFiles(String name) {

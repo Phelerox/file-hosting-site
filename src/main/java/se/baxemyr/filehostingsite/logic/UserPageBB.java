@@ -10,7 +10,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import se.baxemyr.filehostingsite.core.AbstractHostedFile;
 import se.baxemyr.filehostingsite.core.UserHostedFile;
-import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
+import se.baxemyr.filehostingsite.core.AbstractHostedFileDatabase;
 import se.baxemyr.filehostingsite.core.UserManager;
 
 /**
@@ -20,7 +20,7 @@ import se.baxemyr.filehostingsite.core.UserManager;
 @RequestScoped //?
 @Named("userpageBB")
 public class UserPageBB {
-    private UserHostedFileDatabase userHostedFileDB = UserHostedFileDatabase.newInstance("filehosting_pu");
+    private AbstractHostedFileDatabase userHostedFileDB = AbstractHostedFileDatabase.newInstance("filehosting_pu");
     
     public UserPageBB() {
         
@@ -29,7 +29,7 @@ public class UserPageBB {
     public List<UserHostedFile> getAll() {
         List<UserHostedFile> filelist = new ArrayList<UserHostedFile>();
         filelist.addAll(userHostedFileDB.getFilesFromOwner(UserManager.getInstance().getCurrentUser())); 
-        filelist.add(userHostedFileDB.getFile(1L)); //endast tills vidare
+        filelist.add(userHostedFileDB.find(1L)); //endast tills vidare
         return filelist;
     }
 }

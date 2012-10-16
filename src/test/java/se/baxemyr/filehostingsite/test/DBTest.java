@@ -9,7 +9,7 @@ import junit.framework.Assert;
 import org.junit.*;
 import se.baxemyr.filehostingsite.core.AbstractHostedFile;
 import se.baxemyr.filehostingsite.core.UserHostedFile;
-import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
+import se.baxemyr.filehostingsite.core.AbstractHostedFileDatabase;
 
 /**
  *
@@ -18,7 +18,7 @@ import se.baxemyr.filehostingsite.core.UserHostedFileDatabase;
 public class DBTest {
 
     private static UserHostedFile file;
-    private static UserHostedFileDatabase userHostedFileDB;
+    private static AbstractHostedFileDatabase userHostedFileDB;
 
     @BeforeClass
     public static void onlyOnce() {
@@ -29,7 +29,7 @@ public class DBTest {
         bytes[1] = (byte) 4;
         DBTest.file.setBytes(bytes);
 
-        DBTest.userHostedFileDB = UserHostedFileDatabase.newInstance("filehosting_pu");
+        DBTest.userHostedFileDB = AbstractHostedFileDatabase.newInstance("filehosting_pu");
     }
 
     @Test
@@ -46,7 +46,7 @@ public class DBTest {
         } catch (Exception e) {
             System.err.println("we assume the file was already added");
         }
-        AbstractHostedFile fetchedFile = DBTest.userHostedFileDB.getFile(DBTest.file.getId());
+        AbstractHostedFile fetchedFile = DBTest.userHostedFileDB.find(DBTest.file.getId());
         Assert.assertEquals(file.getFilename(), fetchedFile.getFilename());
         Assert.assertEquals(file.getId(), fetchedFile.getId());
     }
