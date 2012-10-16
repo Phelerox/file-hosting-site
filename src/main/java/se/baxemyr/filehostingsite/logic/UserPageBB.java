@@ -20,7 +20,7 @@ import se.baxemyr.filehostingsite.core.UserManager;
 @RequestScoped //?
 @Named("userpageBB")
 public class UserPageBB {
-    private HostedFileDatabase userHostedFileDB = HostedFileDatabase.newInstance("filehosting_pu");
+    private HostedFileDatabase hostedFileDB = HostedFileDatabase.newInstance("filehosting_pu");
     
     public UserPageBB() {
         
@@ -28,19 +28,19 @@ public class UserPageBB {
     
     public List<HostedFile> getAll() {
         List<HostedFile> filelist = new ArrayList<>();
-        filelist.addAll(userHostedFileDB.getFilesFromOwner(UserManager.getInstance().getCurrentUser())); 
-        filelist.add(userHostedFileDB.find(1L)); //endast tills vidare
+        filelist.addAll(hostedFileDB.getFilesFromOwner(UserManager.getInstance().getCurrentUser())); 
+        filelist.add(hostedFileDB.find(1L)); //endast tills vidare
         return filelist;
     }
     
     public List<HostedFile> getLatestFiles(){
         List<HostedFile> filelist = new ArrayList<HostedFile>();
-        filelist.addAll(userHostedFileDB.getLatestFiles());
+        filelist.addAll(hostedFileDB.getLatestFiles());
         return filelist;
     }
     public List<HostedFile> getMostDownloaded(){
         List<HostedFile> filelist = new ArrayList<HostedFile>();
-        filelist.addAll(userHostedFileDB.getMostDownloaded());
+        filelist.addAll(hostedFileDB.getMostDownloaded());
         return filelist;
     }
 }
