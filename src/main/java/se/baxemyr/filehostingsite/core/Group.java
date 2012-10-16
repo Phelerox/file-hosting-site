@@ -1,15 +1,24 @@
 package se.baxemyr.filehostingsite.core;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
  *
  * @author Marco Baxemyr
  */
-public class Group {
+
+@Entity
+public class Group implements Serializable {
+    @Id
+    @GeneratedValue
+    private Long id;
     private List<User> members;
     private List<Comment> comments;
     
@@ -35,4 +44,12 @@ public class Group {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     } 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

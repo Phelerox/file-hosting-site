@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>se.baxemyr.filehostingsite.core.User</class>
     <class>se.baxemyr.filehostingsite.core.HostedFile</class>
+    <class>se.baxemyr.filehostingsite.core.Group</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/filehostingdb"/>
