@@ -61,7 +61,7 @@ public class UploadBB implements Serializable {
         //hostedFile.setOwner(UserManager.getInstance().getCurrentUser());
         
         //Save in DB.
-        userHostedFileDB = DatabaseManager.INSTANCE.getUserHostedFileDatabase();
+        userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
         userHostedFileDB.add(hostedFile);
 
         //Detta blir onödigt när vi skcikar vidare direkt
