@@ -16,7 +16,8 @@
             <ui:define name="content">
                 <section id="registration">
                     <legend>Register here</legend>
-                    <h:form>
+                    <form action="#{registrationviewBB.submit}">
+                        
                         <p>First name: <input type="text" name="FirstName"/></p>
                            
                         <p>Last name: <input type="text" name="LastName"/></p>
@@ -29,8 +30,8 @@
                         
                         <p>Confirm Password: <input type="password" name="RepeatedPassword"/></p>
                         
-                        <h:commandButton value="submit" action="#{registrationviewBB.submit}"/>
-                    </h:form>
+                        <input type="submit" value="submit"/>
+                    </form>
                 </section>
             </ui:define>
 

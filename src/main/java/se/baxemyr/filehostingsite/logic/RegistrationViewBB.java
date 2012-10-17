@@ -11,7 +11,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
-import se.baxemyr.filehostingsite.core.HostedFileDatabase;
+import se.baxemyr.filehostingsite.core.User;
 import se.baxemyr.filehostingsite.core.UserDatabase;
 
 /**
@@ -23,22 +23,20 @@ import se.baxemyr.filehostingsite.core.UserDatabase;
 public class RegistrationViewBB implements Serializable{
    @Inject
    private Conversation conversation;
-   private HostedFileDatabase userHostedFileDB;
+   private UserDatabase userDB;
    
    public RegistrationViewBB(){  
    }
    
-   public void submit() throws IOException {
+   public String submit() throws IOException {
         //Save in DB.
-        //UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
-        
-        
+        userDB = DatabaseManager.INSTANCE.getUserDatabase();
         //Skickar vidare till Userpage
-        //try{
-        //    return "userPage?faces-redirect=true";
-        //}catch(Exception e){
-        //    return null;
-        //}
+        try{
+            return "userPage?faces-redirect=true";
+        }catch(Exception e){
+            return null;
+        }
     }
    
 }

@@ -29,7 +29,7 @@ public class UploadBB implements Serializable {
     private Conversation conversation; 
     private UploadedFile file;
     
-   private HostedFileDatabase userHostedFileDB;
+    private HostedFileDatabase userHostedFileDB;
     
     public UploadBB() {
   
