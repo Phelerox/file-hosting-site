@@ -40,6 +40,9 @@ public class FileViewBB implements Serializable {
     public void download() {
         
     }
+    public void delete(){
+        
+    }
     
     public void init(ActionEvent e) {
         if (conversation.isTransient()) {
