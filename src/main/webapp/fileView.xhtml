@@ -13,12 +13,21 @@
                 File-Hosting-Site
             </ui:define>
             <ui:define name="content">
-                <p> Filename: #{fileviewBB.file.filename}</p>
-                <p>Uploaded: #{fileviewBB.file.uploadDate}</p>
-                <p>Number of downloads: #{fileviewBB.file.downloads}</p>
-                <p><h:commandButton value="download file" action="#{fileviewBB.download}" />
-                    <h:commandButton value="delete file" action="#{fileviewBB.delete}" />
-                </p>
+                <section id="registration">
+                    <h:form action="#{fileviewBB.delete}">
+                        <h:outputLabel value="Filename: " style="font-weight:bold" />
+                        <h:outputText value="#{fileviewBB.file.filename}" />
+                        <br/>
+                        <h:outputLabel value="Upload date: " style="font-weight:bold" />
+                        <h:outputText value="#{fileviewBB.file.uploadDate}" />
+                        <br/> 
+                        <h:outputLabel value="Downloads: " style="font-weight:bold" />
+                        <h:outputText value="#{fileviewBB.file.downloads}" />
+                        <br/> 
+                        <h:commandButton value="download file" action="#{fileviewBB.download}" />
+                        <h:commandButton value="delete file" actionListener="#{fileviewBB.delete}" action="userPage?faces-redirect=true" />
+                    </h:form>
+                </section>
             </ui:define>
 
             <ui:define name="bottom">

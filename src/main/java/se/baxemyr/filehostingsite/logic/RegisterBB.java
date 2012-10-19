@@ -27,7 +27,6 @@ public class RegisterBB implements Serializable {
    private String password;
    private String repeatedPassword;
    
-   
    public RegisterBB(){  
    }
    

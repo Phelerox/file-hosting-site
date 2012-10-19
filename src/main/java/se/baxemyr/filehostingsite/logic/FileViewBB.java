@@ -14,13 +14,13 @@ import se.baxemyr.filehostingsite.core.*;
 
 /**
  *
- * @author Gustav
+ * @author Gustav & Anders
  */
 @Named("fileviewBB")
 @ConversationScoped
 public class FileViewBB implements Serializable {
     @Inject
-    private Conversation conversation;
+    private Conversation conversation; 
     private HostedFileDatabase hostedFileDB = HostedFileDatabase.newInstance("filehosting_pu");
     private HostedFile file;
     
@@ -41,7 +41,6 @@ public class FileViewBB implements Serializable {
     }
     
     public void delete(){
-
         hostedFileDB.remove(this.file.getId());
     }
     
@@ -49,9 +48,8 @@ public class FileViewBB implements Serializable {
         if (conversation.isTransient()) {
             conversation.begin();
         } else {
+        
         }
-        
-        this.file = (HostedFile) e.getComponent().getAttributes().get("file");
-        
+        this.file = (HostedFile) e.getComponent().getAttributes().get("file");   
     }
 }
