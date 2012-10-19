@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import se.baxemyr.filehostingsite.core.HostedFile;
 import se.baxemyr.filehostingsite.core.HostedFile;
+import se.baxemyr.filehostingsite.core.HostedFileDatabase;
 
 /**
  *
@@ -22,7 +23,7 @@ import se.baxemyr.filehostingsite.core.HostedFile;
 public class FileViewBB implements Serializable {
     @Inject
     private Conversation conversation;
-    
+    private HostedFileDatabase hostedFileDB = HostedFileDatabase.newInstance("filehosting_pu");
     private HostedFile file;
     
     public void FileViewBB() {
@@ -41,7 +42,7 @@ public class FileViewBB implements Serializable {
         
     }
     public void delete(){
-        
+        hostedFileDB.remove(this.file.getId());
     }
     
     public void init(ActionEvent e) {
