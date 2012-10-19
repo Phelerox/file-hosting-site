@@ -27,7 +27,7 @@ public class UserPageBB {
     
     public List<HostedFile> getAll() {
         List<HostedFile> filelist = new ArrayList<>();
-        filelist.addAll(hostedFileDB.getFilesFromOwner(UserManager.getInstance().getCurrentUser())); 
+//        filelist.addAll(hostedFileDB.getFilesFromOwner(UserManager.getInstance().getCurrentUser()));  //Orsakar exception
         filelist.add(hostedFileDB.find(1L)); //endast tills vidare
         return filelist;
     }

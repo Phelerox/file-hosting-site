@@ -11,7 +11,6 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import se.baxemyr.filehostingsite.core.HostedFile;
-import se.baxemyr.filehostingsite.core.HostedFile;
 
 /**
  *

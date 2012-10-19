@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./resources/templates/template.xhtml">
+
+            <ui:define name="top">
+                File-Hosting-Site
+            </ui:define>
+
+            <ui:define name="content">
+                <section id="registration">
+                    <legend>Register here</legend>
+                    <h:form action="#{registerBB.submit}">
+                        <h:outputLabel value="Username: " style="font-weight:bold" />
+                        <h:inputText value="#{registerBB.username}" />
+                        <br/> 
+                        <h:outputLabel value="Full name: " style="font-weight:bold" />
+                        <h:inputText value="#{registerBB.name}" />
+                        <br/> 
+                        <h:outputLabel value="E-mail: " style="font-weight:bold" />
+                        <h:inputText value="#{registerBB.email}" />
+                        <br/>
+                        <h:outputLabel value="Password: " style="font-weight:bold" />
+                        <h:inputSecret value="#{registerBB.password}" />
+                        <br/>
+                        <h:outputLabel value="Confirm Password: " style="font-weight:bold" />
+                        <h:inputSecret value="#{registerBB.repeatedPassword}" />
+                        <br/> 
+                        <br/> 
+                        <h:commandButton value="Register" action="#{registerBB.submit}" />
+                        <h:messages />
+                    </h:form>
+                </section>
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>
