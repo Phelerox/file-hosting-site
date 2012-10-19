@@ -39,7 +39,7 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
         EntityManager em = super.emf.createEntityManager();
         String query = "select f from HostedFile f order by f.uploadDate desc";
         TypedQuery<HostedFile> tq = em.createQuery(query, HostedFile.class);
-        return tq.getResultList().subList(0, 10);
+        return tq.getResultList();
     }
     
     public List<HostedFile> getMostDownloaded(){

@@ -33,6 +33,7 @@ public class RegistrationViewBB implements Serializable{
         userDB = DatabaseManager.INSTANCE.getUserDatabase();
         //Skickar vidare till Userpage
         try{
+            System.out.println("hej");
             return "userPage?faces-redirect=true";
         }catch(Exception e){
             return null;
