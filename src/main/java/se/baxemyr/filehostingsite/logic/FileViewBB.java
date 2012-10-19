@@ -10,9 +10,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-import se.baxemyr.filehostingsite.core.HostedFile;
-import se.baxemyr.filehostingsite.core.HostedFile;
-import se.baxemyr.filehostingsite.core.HostedFileDatabase;
+import se.baxemyr.filehostingsite.core.*;
 
 /**
  *
@@ -39,9 +37,11 @@ public class FileViewBB implements Serializable {
     }
     
     public void download() {
-        
+    
     }
+    
     public void delete(){
+
         hostedFileDB.remove(this.file.getId());
     }
     

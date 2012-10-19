@@ -13,7 +13,7 @@ import javax.persistence.TypedQuery;
  * 
  * @author hajo
  */
-public abstract class AbstractDAO<T extends IEntity<K>, K> implements IDAO<T, K> {
+public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
 
     protected EntityManagerFactory emf;
     private final Class<T> clazz;
@@ -70,7 +70,11 @@ public abstract class AbstractDAO<T extends IEntity<K>, K> implements IDAO<T, K>
         String file = "select f from "+this.clazz.getSimpleName()+" f where f.id = :id";
         TypedQuery<T> tq = em.createQuery(file, clazz);
         tq.setParameter("id", id);
-        return tq.getSingleResult();
+        List<T> results = tq.getResultList();
+        if (results.size() == 1) {
+            return results.get(0);
+        }
+        return null;
     }
 
     @Override
