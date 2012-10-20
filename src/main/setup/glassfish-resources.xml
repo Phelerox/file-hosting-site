@@ -10,5 +10,5 @@
         <property name="URL" value="jdbc:derby://localhost:1527/filehostingdb"/>
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="filehostingdb" object-type="user" pool-name="derby_net_filehostingdb_appPool"/>
+    <jdbc-resource enabled="true" jndi-name="jdbc/filehostingdb" object-type="user" pool-name="derby_net_filehostingdb_appPool"/>
 </resources>

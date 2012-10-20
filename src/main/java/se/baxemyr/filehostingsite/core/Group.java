@@ -18,21 +18,21 @@ public class Group implements IEntity {
     @Id
     @GeneratedValue
     private Long id;
-    private List<User> members;
+    private List<AppUser> members;
     private List<Comment> comments;
     
     @OneToMany(mappedBy = "ggroup", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<HostedFile> userHostedFiles;
 
-    public List<User> getMembers() {
+    public List<AppUser> getMembers() {
         return this.members;
     }
     
-    public void addMember(User user) {
+    public void addMember(AppUser user) {
         this.members.add(user);
     }
     
-    public void removeMember(User user) {
+    public void removeMember(AppUser user) {
         this.members.remove(user);
     }
 

@@ -9,8 +9,9 @@ import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
-import se.baxemyr.filehostingsite.core.User;
+import se.baxemyr.filehostingsite.core.AppUser;
 import se.baxemyr.filehostingsite.core.UserDatabase;
+import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
 
 /**
  *
@@ -34,7 +35,7 @@ public class RegisterBB implements Serializable {
         //Save in DB.
         userDB = DatabaseManager.INSTANCE.getUserDatabase();
         System.out.println(username);
-        User user = new User(username, name, email, password); //password won't be saved, User constructor makes sure a hash and salt is created
+        AppUser user = new AppUser(username, name, email, password,SubjectGroup.USER); //password won't be saved, User constructor makes sure a hash and salt is created
 //        userDB.add(user); //Still won't work, damn database
         //Skickar vidare till Userpage
         try{

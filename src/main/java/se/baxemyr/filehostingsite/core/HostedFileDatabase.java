@@ -26,7 +26,7 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
         return tq.getResultList();
     }
     
-    public List<HostedFile> getFilesFromOwner(User owner) {
+    public List<HostedFile> getFilesFromOwner(AppUser owner) {
         EntityManager em = super.emf.createEntityManager();
         String file = "select f from HostedFile f where f.owner = :owner";
         TypedQuery<HostedFile> tq = em.createQuery(file, HostedFile.class);

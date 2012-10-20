@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <h1>Login to access secure pages</h1>
+        <!-- Can't use <h:form, no action IMPLIES: Can't use UEL !!-->
+        <form method="post" action="j_security_check">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="j_username" value="Username" />
+                <h:inputText id="j_username" size="10" autocomplete="off"/>             
+                <h:outputLabel for="j_password" value="Password (should use h:secret..)" />
+                <h:inputText id="j_password" size="10" autocomplete="off" />
+                <h:panelGrid columns="2">
+                    <h:commandButton id="login" value="Login" />
+                    <h:button outcome="/JEE_Security/index" value="Cancel"  />
+                </h:panelGrid>
+            </h:panelGrid>
+        </form>
+    </h:body>
+</html>

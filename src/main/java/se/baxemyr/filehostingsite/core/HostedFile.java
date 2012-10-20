@@ -35,31 +35,31 @@ public class HostedFile implements IEntity<Long> {
     private Group ggroup;
     
     @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private User owner;
-    private List<User> usersWithAccess;
+    private AppUser owner;
+    private List<AppUser> usersWithAccess;
     
     
     public HostedFile() {
      this.uploadDate = new Date();
     }
     
-    public User getOwner() {
+    public AppUser getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(AppUser owner) {
         this.owner = owner;
     }
     
-    public List<User> getUsersWithAccess() {
+    public List<AppUser> getUsersWithAccess() {
         return usersWithAccess;
     }
 
-    public void grantAccess(User user) {
+    public void grantAccess(AppUser user) {
         this.usersWithAccess.add(user);
     }
     
-    public void revokeAccess(User user) {
+    public void revokeAccess(AppUser user) {
         this.usersWithAccess.remove(user);
     }  
     
