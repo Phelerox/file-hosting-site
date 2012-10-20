@@ -6,8 +6,13 @@ package se.baxemyr.filehostingsite.logic;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.AppUser;
 import se.baxemyr.filehostingsite.core.UserDatabase;
@@ -20,31 +25,33 @@ import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
 @Named("registerBB")
 @RequestScoped
 public class RegisterBB implements Serializable {
-   private UserDatabase userDB;
    
+   @NotNull
    private String username;
    private String name;
    private String email;
+   @NotNull
    private String password;
    private String repeatedPassword;
+   
+   private UserDatabase udb;
+   private static final Logger log = Logger.getLogger(se.baxemyr.filehostingsite.logic.login.RegisterBB.class.getName());
    
    public RegisterBB(){  
    }
    
    public String submit() throws IOException {
-        //Save in DB.
-        userDB = DatabaseManager.INSTANCE.getUserDatabase();
-        System.out.println(username);
-        AppUser user = new AppUser(username, name, email, password,SubjectGroup.USER); //password won't be saved, User constructor makes sure a hash and salt is created
-//        userDB.add(user); //Still won't work, damn database
-        //Skickar vidare till Userpage
-        try{
-            
-            return "userPage?faces-redirect=true";
-        }catch(Exception e){
-            return null;
+        
+   log.log(Level.INFO, "New Customer Login: {0} Passwd: {1}", new Object[]{username, password});
+        try {
+            udb = DatabaseManager.INSTANCE.getUserDatabase();
+            udb.add(new AppUser(username,name,email,password, SubjectGroup.USER));
+            return "/JEE_Security/login";
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Bad Login name"));
+            return null; // Same page
         }
-    }
+}
    
     public String getUsername() {
         return username;

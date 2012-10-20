@@ -16,25 +16,35 @@
             <ui:define name="content">
                 <section id="registration">
                     <legend>Register here</legend>
-                    <h:form action="#{registerBB.submit}">
-                        <h:outputLabel value="Username: " style="font-weight:bold" />
-                        <h:inputText value="#{registerBB.username}" />
-                        <br/> 
-                        <h:outputLabel value="Full name: " style="font-weight:bold" />
-                        <h:inputText value="#{registerBB.name}" />
-                        <br/> 
-                        <h:outputLabel value="E-mail: " style="font-weight:bold" />
-                        <h:inputText value="#{registerBB.email}" />
-                        <br/>
-                        <h:outputLabel value="Password: " style="font-weight:bold" />
-                        <h:inputSecret value="#{registerBB.password}" />
-                        <br/>
-                        <h:outputLabel value="Confirm Password: " style="font-weight:bold" />
-                        <h:inputSecret value="#{registerBB.repeatedPassword}" />
-                        <br/> 
-                        <br/> 
-                        <h:commandButton value="Register" action="#{registerBB.submit}" />
-                        <h:messages />
+                    <h:form>
+                        <h:panelGrid columns="3">
+                            <h:outputLabel for="username" value="Username" style="font-weight:bold"/>
+                            <h:inputText id="username" value="#{registerBB.username}" size="10" autocomplete="off" /> 
+                            <h:message for="username" showSummary="true" showDetail="false" style="color: red" />
+
+                            <h:outputLabel for="fullname" value="Full name: " style="font-weight:bold" />
+                            <h:inputText id="fullname" value="#{registerBB.name}" size="25" autocomplete="off"/>
+                            <h:message for="fullname" showSummary="true" showDetail="false" style="color: red" />
+
+                            <h:outputLabel for="mail" value="E-mail: " style="font-weight:bold" />
+                            <h:inputText id="mail" value="#{registerBB.email}" size="25" autocomplete="off"/>
+                            <h:message for="mail" showSummary="true" showDetail="false" style="color: red" />
+
+                            <h:outputLabel  for="passwd" value="Password: " style="font-weight:bold" />
+                            <h:inputSecret id="passwd" value="#{registerBB.password}" size="10" autocomplete="off"/>
+                            <h:message for="passwd" showSummary="true" showDetail="false" style="color: red" />
+
+                            <h:outputLabel for="pwrepeat" value="Confirm Password: " style="font-weight:bold" />
+                            <h:inputSecret id="pwrepeat" value="#{registerBB.repeatedPassword}" size="10" autocomplete="off"/>
+                            <h:message for="pwrepeat" showSummary="true" showDetail="false" style="color: red" />
+
+
+                            <h:panelGrid columns="2">
+                                <h:commandButton id="login" value="Register" action="#{registerBB.submit}" />
+                                <h:button outcome="/JEE_Security/index" value="Cancel"  />
+                            </h:panelGrid>
+                            <h:messages showSummary="true" showDetail="false" style="color: red"/>
+                        </h:panelGrid>
                     </h:form>
                 </section>
             </ui:define>
