@@ -48,4 +48,11 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
         TypedQuery<HostedFile> tq = em.createQuery(query, HostedFile.class);
         return tq.getResultList();
     }
+    public void updateDownloads(HostedFile file){
+        EntityManager em = super.emf.createEntityManager();
+        String query = "update HostedFile f set downloads = "+file.getDownloads()+" where f.id = :id";
+        TypedQuery<HostedFile> tq = em.createQuery(query, HostedFile.class);
+        tq.setParameter("id", file.getId());
+        
+    }
 }

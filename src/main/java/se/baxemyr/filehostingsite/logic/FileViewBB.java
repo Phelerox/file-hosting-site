@@ -40,6 +40,10 @@ public class FileViewBB implements Serializable {
     
     }
     
+    public void comment(){
+        
+    }
+    
     public void delete(){
         hostedFileDB.remove(this.file.getId());
     }
