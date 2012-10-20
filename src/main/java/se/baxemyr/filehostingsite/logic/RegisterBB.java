@@ -35,7 +35,7 @@ public class RegisterBB implements Serializable {
         userDB = DatabaseManager.INSTANCE.getUserDatabase();
         System.out.println(username);
         AppUser user = new AppUser(username, name, email, password); //password won't be saved, User constructor makes sure a hash and salt is created
-        userDB.add(user); //Still won't work, damn database
+        userDB.add(user); 
         //Skickar vidare till Userpage
         try{
             
