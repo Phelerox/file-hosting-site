@@ -17,7 +17,7 @@ public class Comment implements IEntity{
     @GeneratedValue
     private Long id;
     
-    private User author;
+    private AppUser author;
     private String content;
  
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -27,11 +27,11 @@ public class Comment implements IEntity{
         
     }
     
-    public User getAuthor() {
+    public AppUser getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AppUser author) {
         this.author = author;
     }
 

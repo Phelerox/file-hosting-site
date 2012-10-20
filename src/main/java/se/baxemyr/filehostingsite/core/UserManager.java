@@ -13,12 +13,12 @@ package se.baxemyr.filehostingsite.core;
  */
 public class UserManager {
     private static UserManager instance = new UserManager();
-    private static User currentUser;
+    private static AppUser currentUser;
     
     private UserManager() {
         //singleton
         
-        currentUser = new User("default_user", "Default User", "default@user.com", "default");
+        currentUser = new AppUser("default_user", "Default User", "default@user.com", "default");
         DatabaseManager.INSTANCE.getUserDatabase().add(currentUser);
     }
     
@@ -26,11 +26,11 @@ public class UserManager {
         return instance;
     }
     
-    public void setCurrentUser(User user) {
+    public void setCurrentUser(AppUser user) {
         currentUser = user;
     }
     
-    public User getCurrentUser() {
+    public AppUser getCurrentUser() {
         return currentUser;
     }
 }

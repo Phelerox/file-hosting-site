@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
-import se.baxemyr.filehostingsite.core.User;
+import se.baxemyr.filehostingsite.core.AppUser;
 
 /**
  * Based on info from http://crackstation.net/hashing-security.htm
@@ -13,12 +13,12 @@ import se.baxemyr.filehostingsite.core.User;
  */
 public class UserAuthentication {
     
-    public static boolean authenticate(User user, String attemptedPassword) {
+    public static boolean authenticate(AppUser user, String attemptedPassword) {
         String correctHash = user.getHash();
         return correctHash.equals(hash(attemptedPassword, user.getSalt()));
     }
     
-    public static void changePassword(User user, String newPassword) {
+    public static void changePassword(AppUser user, String newPassword) {
         byte[] salt = generateSalt();
         user.setSalt(salt);
         user.setHash(hash(newPassword, salt));
