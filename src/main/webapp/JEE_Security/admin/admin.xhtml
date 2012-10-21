@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../resources/templates/template.xhtml">
+
+            <ui:define name="top">
+                <h:head>
+                    <title>Admin</title>
+                </h:head>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:body>
+
+                    <p>Welcome to admin pages</p>
+                    <!-- This is the HttpRequest object -->
+                    <h:outputText value="Logged in as ${request.remoteUser}" /><br/>
+                    <p>
+                        <h:link id="public" outcome="/JEE_Security/index">Back to public part</h:link>
+                    </p>
+                    <h:form>
+                        <h:commandButton action="#{auth.logout}" value="Logout" />
+                    </h:form>
+
+                </h:body>
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom_bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

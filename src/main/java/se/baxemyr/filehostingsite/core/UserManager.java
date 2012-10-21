@@ -4,6 +4,8 @@
  */
 package se.baxemyr.filehostingsite.core;
 
+import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
+
 /**
  *
  * @author Gustav
@@ -18,7 +20,7 @@ public class UserManager {
     private UserManager() {
         //singleton
         
-        currentUser = new AppUser("default_user", "Default User", "default@user.com", "default");
+        currentUser = new AppUser("default_user", "Default User", "default@user.com", "default",SubjectGroup.USER);
         DatabaseManager.INSTANCE.getUserDatabase().add(currentUser);
     }
     
@@ -32,5 +34,10 @@ public class UserManager {
     
     public AppUser getCurrentUser() {
         return currentUser;
+    }
+    
+    public AppUser getUser(String username){
+        return null;
+        //Should fetch user from database
     }
 }

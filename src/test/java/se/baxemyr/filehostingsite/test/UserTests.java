@@ -17,6 +17,7 @@ import org.junit.Test;
 import se.baxemyr.filehostingsite.core.AbstractDAO;
 import se.baxemyr.filehostingsite.core.AppUser;
 import se.baxemyr.filehostingsite.logic.UserAuthentication;
+import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
 
 /**
  *
@@ -41,7 +42,7 @@ public class UserTests {
     @Before
     public void setUp() {
         password = "password";
-        user = new AppUser("Phelerox", "Marco Baxemyr", "baxemyr@gmail.com", password);
+        user = new AppUser("Phelerox", "Marco Baxemyr", "baxemyr@gmail.com", password, SubjectGroup.USER);
     }
     
     @After
@@ -76,7 +77,7 @@ public class UserTests {
     
     @Test
     public void checkSalt() { // Salts should be unique per user per password
-        AppUser user2 = new AppUser("Anders", "Anders Andersson", "anders@andersson.se", password);
+        AppUser user2 = new AppUser("Anders", "Anders Andersson", "anders@andersson.se", password, SubjectGroup.USER);
         byte[] salt = user2.getSalt();
         Assert.assertFalse(user.getSalt().equals(salt));
         UserAuthentication.changePassword(user2, password+"s");

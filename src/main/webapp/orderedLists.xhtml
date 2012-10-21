@@ -22,13 +22,14 @@
                      <f:facet name="header">
                         <h:outputText value="Latest Uploads" />
                      </f:facet> 
+                     
                      <h:column>
-    				<f:facet name="header">ID</f:facet>
-    				#{file.id}
-                    </h:column>
-                    <h:column>
-    				<f:facet name="header">Name</f:facet>
-    				#{file.filename}
+                         <f:facet name="header">Name</f:facet>
+                                <h:form>
+                                    <h:commandLink value="#{file.filename}" actionListener="#{fileviewBB.init}" action="fileView?faces-redirect=true">
+                                        <f:attribute name="file" value="#{file}"/>
+                                    </h:commandLink>
+                                 </h:form>
                     </h:column>
                      <h:column>
     				<f:facet name="header">Owner</f:facet>
@@ -47,20 +48,21 @@
                      <f:facet name="header">
                         <h:outputText value="Most downloaded" />
                      </f:facet> 
-                     <h:column>
-    				<f:facet name="header">ID</f:facet>
-    				#{file.id}
-                    </h:column>
+                    
                     <h:column>
     				<f:facet name="header">Name</f:facet>
-    				#{file.filename}
+    				<h:form>
+                                    <h:commandLink value="#{file.filename}" actionListener="#{fileviewBB.init}" action="fileView?faces-redirect=true">
+                                        <f:attribute name="file" value="#{file}"/>
+                                    </h:commandLink>
+                                 </h:form>
                     </h:column>
                      <h:column>
     				<f:facet name="header">Owner</f:facet>
     				#{file.owner}
                     </h:column>
                     <h:column>
-                         <f:facet name="header"># downloads</f:facet>
+                         <f:facet name="header">Downloads</f:facet>
                          #{file.downloads}
                     </h:column>
                     

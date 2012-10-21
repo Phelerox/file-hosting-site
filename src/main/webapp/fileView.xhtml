@@ -28,6 +28,12 @@
                         <h:commandButton value="delete file" actionListener="#{fileviewBB.delete}" action="userPage?faces-redirect=true" />
                     </h:form>
                 </section>
+                <section id="commentArea">
+                    <h:form action="#{fileviewBB.comment}">
+                        <h:inputTextarea cols="50" rows="10"/>
+                        <p><h:commandButton value="comment file" actionListener="#{fileviewBB.comment}" action="fileView?faces-redirect=true"/></p>
+                    </h:form>
+                </section>
             </ui:define>
 
             <ui:define name="bottom">
