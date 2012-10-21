@@ -16,15 +16,40 @@
     display: table-cell; 
     border-radius: 6px;
 }
-#lists{
+
+#Menu{
+    background-color: azure;
+    border-radius: 2em;
+    margin: 1em; 
+}
+
+#latestfileslists{
     margin: 0.5em;
     float: left;
     display: table-cell;
     background-color: lightgreen;
     border-radius: 6px;
-    width: 60%;
-    
+    width: 49%; 
 }
+#mostdownloadedfileslists{
+    margin: 0.5em;
+    float: right;
+    display: table-cell;
+    background-color: lightgreen;
+    border-radius: 6px;
+    width: 49%;
+}
+li{
+    margin-left: 2em;
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+}
+nav ul li{
+    display: inline;
+}
+
 #content{
     display: table;
     border-radius: 6px;

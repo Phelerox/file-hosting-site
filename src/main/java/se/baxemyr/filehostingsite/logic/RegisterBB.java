@@ -35,7 +35,7 @@ public class RegisterBB implements Serializable {
    private String repeatedPassword;
    
    private UserDatabase udb;
-   private static final Logger log = Logger.getLogger(se.baxemyr.filehostingsite.logic.login.RegisterBB.class.getName());
+   private static final Logger log = Logger.getLogger(RegisterBB.class.getName());
    
    public RegisterBB(){  
    }
@@ -46,7 +46,7 @@ public class RegisterBB implements Serializable {
         try {
             udb = DatabaseManager.INSTANCE.getUserDatabase();
             udb.add(new AppUser(username,name,email,password, SubjectGroup.USER));
-            return "/JEE_Security/login";
+            return "/login/login";
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Bad Login name"));
             return null; // Same page

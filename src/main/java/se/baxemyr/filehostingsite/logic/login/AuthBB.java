@@ -15,7 +15,7 @@ public class AuthBB {
     private static final Logger log = Logger.getLogger(AuthBB.class.getName());
 
     public String logout() {
-        String result = "/JEE_Security/index?faces-redirect=true";
+        String result = "/orderedLists?faces-redirect=true";
 
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -24,7 +24,7 @@ public class AuthBB {
             request.logout();
         } catch (ServletException e) {
             log.log(Level.SEVERE, "Failed to logout user!", e);
-            result = "/JEE_Security/loginError?faces-redirect=true";
+            result = "/login/loginError?faces-redirect=true";
         }
 
         return result;

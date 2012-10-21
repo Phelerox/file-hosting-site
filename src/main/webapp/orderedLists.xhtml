@@ -3,71 +3,87 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
 
         <ui:composition template="./resources/templates/template.xhtml">
-
             <ui:define name="top">
-                top
+                File-Hosting-Site&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logged in as: ${request.remoteUser}
+<!--                Vad det skulle vara svårt att få in några mellanslag...-->
             </ui:define>
-
             <ui:define name="content">
-                <section id="lists">
-                 <h:dataTable value="#{orderedlistsBB.latestFiles}" var="file"
-    			styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row">
-                     <f:facet name="header">
-                        <h:outputText value="Latest Uploads" />
-                     </f:facet> 
-                     
-                     <h:column>
-                         <f:facet name="header">Name</f:facet>
-                                <h:form>
-                                    <h:commandLink value="#{file.filename}" actionListener="#{fileviewBB.init}" action="fileView?faces-redirect=true">
-                                        <f:attribute name="file" value="#{file}"/>
-                                    </h:commandLink>
-                                 </h:form>
-                    </h:column>
-                     <h:column>
-    				<f:facet name="header">Owner</f:facet>
-    				#{file.owner}
-                    </h:column>
-                    <h:column>
-                         <f:facet name="header">Date</f:facet>
-                         #{file.uploadDate}
-                    </h:column>
-                    
-                </h:dataTable>
-                       <h:dataTable value="#{orderedlistsBB.mostDownloaded}" var="file"
-    			styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row">
-                     <f:facet name="header">
-                        <h:outputText value="Most downloaded" />
-                     </f:facet> 
-                    
-                    <h:column>
-    				<f:facet name="header">Name</f:facet>
-    				<h:form>
-                                    <h:commandLink value="#{file.filename}" actionListener="#{fileviewBB.init}" action="fileView?faces-redirect=true">
-                                        <f:attribute name="file" value="#{file}"/>
-                                    </h:commandLink>
-                                 </h:form>
-                    </h:column>
-                     <h:column>
-    				<f:facet name="header">Owner</f:facet>
-    				#{file.owner}
-                    </h:column>
-                    <h:column>
-                         <f:facet name="header">Downloads</f:facet>
-                         #{file.downloads}
-                    </h:column>
-                    
-                </h:dataTable>
+                <section id="Menu">
+                    <nav> 
+                        <ul>
+                            <li><h:link id="home" outcome="/orderedLists">Home</h:link></li>
+                            <li><h:link id="login" outcome="/login/login">Login</h:link></li>
+                            <li><h:link id="register" outcome="/register">Register</h:link></li>
+                            <li><h:link id="uploadd" outcome="/orderedLists">Upload</h:link></li>
+                            <li><h:link id="users" outcome="/users/users">TestUserAccess</h:link></li>
+                            <li><h:link id="admin" outcome="/admin/admin">TestAdminAccess</h:link></li>
+                        </ul>
+                    </nav>
                 </section>
+                <section id="latestfileslists" >
+                    <h:dataTable value="#{orderedlistsBB.latestFiles}" var="file"
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row">
+                        <f:facet name="header">
+                            <h:outputText value="Latest Uploads" />
+                        </f:facet> 
+
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            <h:form>
+                                <h:commandLink value="#{file.filename}" actionListener="#{fileviewBB.init}" action="fileView?faces-redirect=true">
+                                    <f:attribute name="file" value="#{file}"/>
+                                </h:commandLink>
+                            </h:form>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Owner</f:facet>
+                            #{file.owner}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            #{file.uploadDate}
+                        </h:column>
+
+                    </h:dataTable>
+                </section>
+                <section id="mostdownloadedfileslists">
+                    <h:dataTable value="#{orderedlistsBB.mostDownloaded}" var="file"
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row">
+                        <f:facet name="header">
+                            <h:outputText value="Most downloaded" />
+                        </f:facet> 
+
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            <h:form>
+                                <h:commandLink value="#{file.filename}" actionListener="#{fileviewBB.init}" action="fileView?faces-redirect=true">
+                                    <f:attribute name="file" value="#{file}"/>
+                                </h:commandLink>
+                            </h:form>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Owner</f:facet>
+                            #{file.owner}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Downloads</f:facet>
+                            #{file.downloads}
+                        </h:column>
+
+                    </h:dataTable>
+                </section>
+            </ui:define>
+            <ui:define name="bottom">
+                Copyright huxflux!
             </ui:define>
         </ui:composition>
 

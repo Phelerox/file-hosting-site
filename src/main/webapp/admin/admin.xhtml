@@ -7,22 +7,22 @@
 
     <body>
 
-        <ui:composition template="./../../resources/templates/template.xhtml">
+        <ui:composition template="./../resources/templates/template.xhtml">
 
             <ui:define name="top">
                 <h:head>
-                    <title>Users</title>
+                    <title>Admin</title>
                 </h:head>
             </ui:define>
 
             <ui:define name="content">
                 <h:body>
 
-                    <p>Welcome to user pages</p>
+                    <p>Welcome to admin pages</p>
                     <!-- This is the HttpRequest object -->
                     <h:outputText value="Logged in as ${request.remoteUser}" /><br/>
                     <p>
-                        <h:link id="public" outcome="/index">Back to public part</h:link>
+                        <h:link id="public" outcome="/orderedLists">Back to public part</h:link>
                     </p>
                     <h:form>
                         <h:commandButton action="#{auth.logout}" value="Logout" />
