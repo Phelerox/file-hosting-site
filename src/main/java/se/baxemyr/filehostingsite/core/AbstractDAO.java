@@ -41,12 +41,12 @@ public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
     }
   
     @Override
-    public void remove(K T) {
+    public void remove(K id) {
         EntityManager em = null;
         try {
             em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.remove(em.find(clazz, T));
+            em.remove(em.find(clazz, id));
             em.getTransaction().commit();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -59,7 +59,19 @@ public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
 
     @Override
     public void update(T t) {
-        
+            EntityManager em = null;
+        try {
+            em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.merge(t);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (em != null) {
+                em.close(); 
+            }
+        }
     }
 
     @Override
