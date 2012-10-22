@@ -20,7 +20,6 @@ public class AppUser implements Serializable {
     @Column(nullable=false, name="ID")
     private String id;
     private String fullName;
-    private boolean isAdmin;
     private String email;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date regDate;
@@ -47,6 +46,14 @@ public class AppUser implements Serializable {
         UserAuthentication.changePassword(this, password);
     }
 
+    public void addSubjectGroup(SubjectGroup group) {
+        this.groups.add(group);
+    }
+    
+    public List<SubjectGroup> getSubjectGroups() {
+        return new ArrayList<SubjectGroup>(this.groups);
+    }
+
     public String getId() {
         return id;  //id
     }
@@ -65,14 +72,6 @@ public class AppUser implements Serializable {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
     }
 
     public String getPasswordHash() {
