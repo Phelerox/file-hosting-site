@@ -14,14 +14,14 @@ import se.baxemyr.filehostingsite.core.AppUser;
 public class UserAuthentication {
     
     public static boolean authenticate(AppUser user, String attemptedPassword) {
-        String correctHash = user.getHash();
+        String correctHash = user.getPasswordHash();
         return correctHash.equals(hash(attemptedPassword, user.getSalt()));
     }
     
     public static void changePassword(AppUser user, String newPassword) {
         byte[] salt = generateSalt();
         user.setSalt(salt);
-        user.setHash(hash(newPassword, salt));
+        user.setPasswordHash(hash(newPassword, salt));
     }
     
     public static byte[] generateSalt() {

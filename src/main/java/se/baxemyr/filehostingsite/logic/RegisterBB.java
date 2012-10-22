@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import se.baxemyr.filehostingsite.core.AppUser;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.UserDatabase;
-import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
+import se.baxemyr.filehostingsite.core.SubjectGroup;
 
 /**
  *
@@ -44,16 +44,20 @@ public class RegisterBB implements Serializable {
    
    public RegisterBB(){  
    }
-   
+     
    public String submit() throws IOException {
-        
-   log.log(Level.INFO, "New Customer Login: {0} Passwd: {1}", new Object[]{username, password});
         try {
+            
             udb = DatabaseManager.INSTANCE.getUserDatabase();
-            udb.add(new AppUser(username,name,email,password, SubjectGroup.USER));
-            return "/login/login";
+            if (udb.find(username) == null) {
+                udb.add(new AppUser(username,name,email,password, SubjectGroup.USER));
+                return "/login/login";
+            }
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username taken.", null));
+            return null;
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Bad Login name"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error"));
+            e.printStackTrace();
             return null; // Same page
         }
 }

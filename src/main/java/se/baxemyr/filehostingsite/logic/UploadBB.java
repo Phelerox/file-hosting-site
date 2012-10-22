@@ -11,11 +11,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.*;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
+import se.baxemyr.filehostingsite.core.AppUser;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.HostedFile;
 import se.baxemyr.filehostingsite.core.HostedFileDatabase;
+import se.baxemyr.filehostingsite.core.UserDatabase;
 
 /**
  * This backing bean is used to upload new files to the hosting site.
@@ -51,25 +54,34 @@ public class UploadBB implements Serializable {
         String contentType = file.getContentType();
         byte[] bytes = file.getBytes();
 
-        //TODO: bör vara AbstractHostedFile hostedFile = new HostedFile();
-        HostedFile hostedFile = new HostedFile(); //TODO: dynamically determine if it should be User or Group hosted, and which user/group
+        HostedFile hostedFile = new HostedFile();
         hostedFile.setFilename(fileName);
         hostedFile.setBytes(bytes);
         
-        //Filen sparas inte i databasen om den har en owner??
-        //hostedFile.setOwner(UserManager.getInstance().getCurrentUser());
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        String username = request.getRemoteUser();
+        if (username != null) {    
+            UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
+            AppUser user = userDB.find(username);
+            if (user != null) {
+                hostedFile.setOwner(user);
+            }
+        }
+        
         
         //Save in DB.
         userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
         userHostedFileDB.add(hostedFile);
 
         //Detta blir onödigt när vi skcikar vidare direkt
-        FacesContext.getCurrentInstance().addMessage(null, 
+        context.addMessage(null, 
             new FacesMessage(String.format("File '%s' of type '%s' successfully uploaded!", fileName, contentType)));
         
         //Skickar vidare till fileview
         try{
-            return "/users/userPage?faces-redirect=true";
+            return "userPage?faces-redirect=true";
         }catch(Exception e){
             return null;
         }

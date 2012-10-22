@@ -17,7 +17,7 @@ import org.junit.Test;
 import se.baxemyr.filehostingsite.core.AbstractDAO;
 import se.baxemyr.filehostingsite.core.AppUser;
 import se.baxemyr.filehostingsite.logic.UserAuthentication;
-import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
+import se.baxemyr.filehostingsite.core.SubjectGroup;
 
 /**
  *
@@ -54,8 +54,8 @@ public class UserTests {
         System.out.println("Password: " + password);
         System.out.println("Salt: " + user.getSalt());
         System.out.println("Salt length in bytes: " + user.getSalt().length);
-        System.out.println("Hash: " + user.getHash());
-        System.out.println("Hash length (base 16): " + user.getHash().length());
+        System.out.println("Hash: " + user.getPasswordHash());
+        System.out.println("Hash length (base 16): " + user.getPasswordHash().length());
         
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-512", "SUN");
@@ -66,7 +66,7 @@ public class UserTests {
             System.arraycopy(passwordBytes, 0, saltAndPassword, user.getSalt().length, passwordBytes.length);
             digest.update(saltAndPassword, 0, saltAndPassword.length);
             String hash = new BigInteger(1, digest.digest()).toString(16);
-            Assert.assertTrue("Testing if hashes match", user.getHash().equals(hash));
+            Assert.assertTrue("Testing if hashes match", user.getPasswordHash().equals(hash));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             Assert.assertTrue(false);

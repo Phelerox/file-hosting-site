@@ -8,23 +8,18 @@
         <title>Login</title>
     </h:head>
     <h:body>
-        <h1>Login to access secure pages</h1>
-        <!-- Can't use <h:form, no action IMPLIES: Can't use UEL !!!-->
-        <form method="post" action="j_security_check">
-            <h:panelGrid columns="3">
-                <h:outputLabel for="j_username" value="Username" />
-                <h:inputText id="j_username" size="10" autocomplete="off" required="true"/>
-                <h:message for="j_username" showSummary="true" showDetail="false" style="color: red" />
-                
-                <h:outputLabel for="j_password" value="Password" />
-                <h:inputSecret id="j_password" size="10" autocomplete="off" required="true"/>
-                <h:message for="j_password" showSummary="true" showDetail="false" style="color: red" />
-                
-                <h:panelGrid columns="2">
-                    <h:commandButton id="login" value="Login" />
-                    <h:button outcome="/orderedLists" value="Cancel"  />
-                </h:panelGrid>
-            </h:panelGrid>
-        </form>
+        <h1>Please login</h1>
+        <h:form>
+            <h:outputLabel value="Username: " />
+            <h:inputText value="#{authBB.username}" required="true" />
+            <br />
+            <h:outputLabel value="Password: " />
+            <h:inputSecret value="#{authBB.password}" required="true" />
+            <br />
+            <h:commandButton value="login" type="submit" action="#{authBB.login}">
+
+            </h:commandButton>
+            <h:messages />
+        </h:form>
     </h:body>
 </html>
