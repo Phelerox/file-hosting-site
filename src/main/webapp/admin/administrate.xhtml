@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/template.xhtml">
+
+            <ui:define name="top">
+                <h:head>
+                    <title>Administrate</title>
+                </h:head>
+                <h:outputText value="Logged in as ${request.remoteUser}" />
+                <p>
+                    <h:link id="public" outcome="/orderedLists">Back to public part</h:link>
+                </p>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+            <h:dataTable var="file" value="#{administrate.all}" >   
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText  value="Id"/>
+                    </f:facet>
+                    <h:outputText value="#{file.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText  value="FileName"/> 
+                    </f:facet>
+                    <h:outputText value="#{file.filename}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText  value="Owner"/>
+                    </f:facet>
+                    <h:outputText value="#{file.owner}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText  value="UploadDate"/>
+                    </f:facet>
+                    <h:outputText value="#{file.uploadDate}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText  value="Downloads"/>
+                    </f:facet>
+                    <h:outputText value="#{file.downloads}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText  value="IsPublic"/>
+                    </f:facet>
+                    <h:outputText value="#{file.public}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText  value="Del"/>
+                    </f:facet>
+                    <h:commandLink actionListener="#{administrate.remove(file)}"    
+                                   action="/admin/administrate?faces-redirect=true" >Del</h:commandLink>                    
+                </h:column>
+            </h:dataTable>
+        </h:form>
+                
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
