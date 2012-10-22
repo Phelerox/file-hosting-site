@@ -1,5 +1,6 @@
 package se.baxemyr.filehostingsite.core;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -8,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -23,7 +26,9 @@ public class HostedFile implements IEntity<Long> {
 
     private boolean isPublic;
     
-    private List<Comment> comments;
+    @OneToMany
+    private List<Comment> commentlist = new ArrayList();
+    
     private String filename;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date uploadDate;
@@ -36,11 +41,18 @@ public class HostedFile implements IEntity<Long> {
     
     @ManyToOne (cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private AppUser owner;
-    private List<AppUser> usersWithAccess;
+    //private List<AppUser> usersWithAccess;
     
     
     public HostedFile() {
      this.uploadDate = new Date();
+    }
+    
+    public void setComment(Comment c){
+        this.commentlist.add(c);
+    }
+    public List<Comment> getComments(){
+        return this.commentlist;
     }
     
     public AppUser getOwner() {
@@ -51,17 +63,17 @@ public class HostedFile implements IEntity<Long> {
         this.owner = owner;
     }
     
-    public List<AppUser> getUsersWithAccess() {
-        return usersWithAccess;
-    }
-
-    public void grantAccess(AppUser user) {
-        this.usersWithAccess.add(user);
-    }
-    
-    public void revokeAccess(AppUser user) {
-        this.usersWithAccess.remove(user);
-    }  
+//    public List<AppUser> getUsersWithAccess() {
+//        return usersWithAccess;
+//    }
+//
+//    public void grantAccess(AppUser user) {
+//        this.usersWithAccess.add(user);
+//    }
+//    
+//    public void revokeAccess(AppUser user) {
+//        this.usersWithAccess.remove(user);
+//    }  
     
     public byte[] getBytes() {
         return bytes;
@@ -69,18 +81,6 @@ public class HostedFile implements IEntity<Long> {
 
     public void setBytes(byte[] bytes) {
         this.bytes = bytes;
-    }
-    
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void addComment(Comment comment) {
-        this.comments.add(comment);
-    }
-    
-    public void removeComment(Comment comment) {
-        this.comments.remove(comment);
     }
     
     public Long getId() {

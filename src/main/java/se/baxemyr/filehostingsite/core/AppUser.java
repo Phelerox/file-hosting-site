@@ -15,9 +15,7 @@ import se.baxemyr.filehostingsite.logic.UserAuthentication;
 @Table(name = "APPUSER")
 public class AppUser implements Serializable {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long id;
+
     @Id
     @Column(nullable=false, name="ID")
     private String id;
