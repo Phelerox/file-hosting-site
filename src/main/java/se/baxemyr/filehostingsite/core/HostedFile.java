@@ -43,6 +43,8 @@ public class HostedFile implements IEntity<Long> {
     private AppUser owner;
     //private List<AppUser> usersWithAccess;
     
+    private String contentType;
+    
     
     public HostedFile() {
      this.uploadDate = new Date();
@@ -133,5 +135,13 @@ public class HostedFile implements IEntity<Long> {
 
     public void download() {
         this.downloads++;
+    }
+
+    public String getContentType() {
+        return this.contentType;
+    }
+    
+    public void setContentType(String contentType){
+        this.contentType = contentType;
     }
 }

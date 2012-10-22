@@ -4,18 +4,24 @@
  */
 package se.baxemyr.filehostingsite.logic;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import se.baxemyr.filehostingsite.core.*;
 
 /**
@@ -44,8 +50,24 @@ public class FileViewBB implements Serializable {
     public void setFile(HostedFile file) {
         this.file = file;
     }
+    
+    public void download() throws IOException {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
 
-    public void download() {
+        ec.responseReset(); 
+        ec.setResponseContentType(this.file.getContentType()); 
+        ec.setResponseContentLength(this.file.getBytes().length); 
+        ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + this.file.getFilename() + "\""); 
+
+        OutputStream output = ec.getResponseOutputStream();
+        output.write(this.file.getBytes());
+        output.close();
+
+        fc.responseComplete();
+        this.file.download();
+        hostedFileDB.update(file);
+        
     }
 
     public String submit() {
@@ -61,7 +83,7 @@ public class FileViewBB implements Serializable {
 
         return null; //"/fileView?faces-redirect=true";
     }
-
+/*
     public List<Comment> getAllComments() {
         List<Long> ids = new ArrayList();
         List<Comment> comments = new ArrayList();
@@ -69,7 +91,7 @@ public class FileViewBB implements Serializable {
         
         return comments;     
     }
-
+*/
     public void setComment(String text) {
         this.comment = text;
     }
