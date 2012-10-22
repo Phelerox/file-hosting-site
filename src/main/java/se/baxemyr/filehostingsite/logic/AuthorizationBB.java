@@ -71,6 +71,12 @@ public class AuthorizationBB implements Serializable {
 
         return result;
     }
+    
+    public boolean isLoggedIn() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        return (request.getRemoteUser() != null);
+    }
    
 
    

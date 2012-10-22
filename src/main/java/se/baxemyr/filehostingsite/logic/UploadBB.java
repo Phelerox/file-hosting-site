@@ -30,6 +30,7 @@ public class UploadBB implements Serializable {
     @Inject
     private Conversation conversation; 
     private UploadedFile file;
+    private boolean isPublic;
     
     private HostedFileDatabase userHostedFileDB;
     
@@ -45,8 +46,15 @@ public class UploadBB implements Serializable {
         this.file = file;
     }
     
+    public boolean getIsPublic() {
+        return isPublic;
+    }
+    
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+    
     public void actionListener(ActionEvent e) {
-        
     }
     
     public String submit() throws IOException {
@@ -57,7 +65,7 @@ public class UploadBB implements Serializable {
         HostedFile hostedFile = new HostedFile();
         hostedFile.setFilename(fileName);
         hostedFile.setBytes(bytes);
-        
+        hostedFile.setPublic(isPublic);
         
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -75,15 +83,9 @@ public class UploadBB implements Serializable {
         userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
         userHostedFileDB.add(hostedFile);
 
-        //Detta blir onödigt när vi skcikar vidare direkt
         context.addMessage(null, 
-            new FacesMessage(String.format("File '%s' of type '%s' successfully uploaded!", fileName, contentType)));
+            new FacesMessage(String.format("File successfully uploaded!")));
         
-        //Skickar vidare till fileview
-        try{
-            return "userPage?faces-redirect=true";
-        }catch(Exception e){
-            return null;
-        }
+        return null;
     }
 }
