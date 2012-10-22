@@ -9,7 +9,7 @@
 
         <ui:composition template="./resources/templates/template.xhtml">
             <ui:define name="top">
-                File-Hosting-Site&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logged in as: #{request.remoteUser}
+                File Hosting Site
             </ui:define>
             <ui:define name="content">
                 <section id="Menu">
@@ -23,8 +23,10 @@
                                 </ui:fragment>
                                 <ui:fragment rendered="#{authBB.isLoggedIn() eq 'true'}">
                                 <li><h:link id="userPage" outcome="/users/userPage">#{request.remoteUser}</h:link></li>
+                                <li><h:commandLink id="logoutBtn" action="#{authBB.logout}" value="Logout" /></li>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{authBB.isAdminLoggedIn() eq 'true'}">
                                 <li><h:link id="admin" outcome="/admin/admin">Administrator</h:link></li>
-                                <li><h:commandButton action="#{authBB.logout}" value="Logout" /></li>
                                 </ui:fragment>
                             </h:form>
                         </ul>

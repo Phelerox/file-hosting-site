@@ -78,7 +78,21 @@ public class AuthorizationBB implements Serializable {
         return (request.getRemoteUser() != null);
     }
    
-
+    public boolean isAdminLoggedIn() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        String username = request.getRemoteUser();
+        if (username != null) {
+            udb = DatabaseManager.INSTANCE.getUserDatabase();
+            AppUser user = udb.find(username);
+            if (user != null) {
+                if (user.getSubjectGroups().contains(SubjectGroup.ADMIN)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
    
     public String getUsername() {
         return username;
