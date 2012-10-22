@@ -36,7 +36,9 @@
                 </section>
                 <section>
                     <h:form>
-                        <h:outputLabel cols="50" rows="10" value="#{fileviewBB.comment}"/>
+                        <ui:repeat value="#{fileviewBB.allComments}" var="comments">
+                            <li><h:outputText value="#{comments.content}"/></li>
+                        </ui:repeat>
                     </h:form>
                 </section>
             </ui:define>

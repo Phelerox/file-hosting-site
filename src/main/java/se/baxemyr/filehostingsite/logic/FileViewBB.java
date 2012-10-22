@@ -25,60 +25,68 @@ import se.baxemyr.filehostingsite.core.*;
 @Named("fileviewBB")
 @ConversationScoped
 public class FileViewBB implements Serializable {
+
     @Inject
-    private Conversation conversation; 
-    private HostedFileDatabase hostedFileDB = HostedFileDatabase.newInstance("filehosting_pu");
+    private Conversation conversation;
+    private HostedFileDatabase hostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
     private UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
+    private CommentDatabase commentDB = DatabaseManager.INSTANCE.getCommentDatabase();
     private HostedFile file;
     private String comment;
-    
+
     public void FileViewBB() {
-        
     }
-    
+
     public HostedFile getFile() {
         return file;
     }
-    
+
     public void setFile(HostedFile file) {
         this.file = file;
     }
-    
+
     public void download() {
-    
     }
-    public String submit(){
+
+    public String submit() {
         String content = this.comment;
-        
+
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String username = req.getRemoteUser();
         AppUser author = userDB.find(username);
-        
+
         file.setComment(new Comment(content, author));
-        
+
         this.hostedFileDB.update(file);
-        
-        return  null; //"/fileView?faces-redirect=true";
+
+        return null; //"/fileView?faces-redirect=true";
     }
-    
-    public void setComment(String text){
+
+    public List<Comment> getAllComments() {
+        List<Long> ids = new ArrayList();
+        List<Comment> comments = new ArrayList();
+        comments = commentDB.getCommentsIdbyFileId(file.getId());
+        
+        return comments;     
+    }
+
+    public void setComment(String text) {
         this.comment = text;
     }
-    
-    public String getComment(){
+
+    public String getComment() {
         return this.comment;
     }
-    
-    public void delete(){
+
+    public void delete() {
         hostedFileDB.remove(this.file.getId());
     }
-    
+
     public void init(ActionEvent e) {
         if (conversation.isTransient()) {
             conversation.begin();
         } else {
-        
         }
-        this.file = (HostedFile) e.getComponent().getAttributes().get("file");   
+        this.file = (HostedFile) e.getComponent().getAttributes().get("file");
     }
 }

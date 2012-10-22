@@ -10,10 +10,12 @@ public enum DatabaseManager {
     INSTANCE;
     private HostedFileDatabase hostedFileDatabase;
     private UserDatabase userDatabase;
+    private CommentDatabase commentDatabase;
 
     private DatabaseManager() {
         hostedFileDatabase = HostedFileDatabase.newInstance("filehosting_pu");
         userDatabase = UserDatabase.newInstance("filehosting_pu");
+        commentDatabase = CommentDatabase.newInstance("filehosting_pu");
     }
     
     private DatabaseManager(String pu) {
@@ -28,4 +30,7 @@ public enum DatabaseManager {
         return userDatabase;
     }
     
+    public CommentDatabase getCommentDatabase(){
+        return commentDatabase;
+    }
 }
