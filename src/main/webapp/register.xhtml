@@ -19,23 +19,23 @@
                     <h:form>
                         <h:panelGrid columns="3">
                             <h:outputLabel for="username" value="Username" style="font-weight:bold"/>
-                            <h:inputText id="username" value="#{registerBB.username}" size="10" autocomplete="off" /> 
+                            <h:inputText id="username" value="#{registerBB.username}" size="10" autocomplete="off" required="true"/> 
                             <h:message for="username" showSummary="true" showDetail="false" style="color: red" />
 
                             <h:outputLabel for="fullname" value="Full name: " style="font-weight:bold" />
-                            <h:inputText id="fullname" value="#{registerBB.name}" size="25" autocomplete="off"/>
+                            <h:inputText id="fullname" value="#{registerBB.name}" size="25" autocomplete="off" required="true"/>
                             <h:message for="fullname" showSummary="true" showDetail="false" style="color: red" />
 
                             <h:outputLabel for="mail" value="E-mail: " style="font-weight:bold" />
-                            <h:inputText id="mail" value="#{registerBB.email}" size="25" autocomplete="off"/>
+                            <h:inputText id="mail" value="#{registerBB.email}" size="25" autocomplete="off" required="true"/>
                             <h:message for="mail" showSummary="true" showDetail="false" style="color: red" />
 
                             <h:outputLabel  for="passwd" value="Password: " style="font-weight:bold" />
-                            <h:inputSecret id="passwd" value="#{registerBB.password}" size="10" autocomplete="off"/>
+                            <h:inputSecret id="passwd" value="#{registerBB.password}" size="10" autocomplete="off" required="true"/>
                             <h:message for="passwd" showSummary="true" showDetail="false" style="color: red" />
 
                             <h:outputLabel for="pwrepeat" value="Confirm Password: " style="font-weight:bold" />
-                            <h:inputSecret id="pwrepeat" value="#{registerBB.repeatedPassword}" size="10" autocomplete="off"/>
+                            <h:inputSecret id="pwrepeat" value="#{registerBB.repeatedPassword}" size="10" autocomplete="off" required="true"/>
                             <h:message for="pwrepeat" showSummary="true" showDetail="false" style="color: red" />
 
 
