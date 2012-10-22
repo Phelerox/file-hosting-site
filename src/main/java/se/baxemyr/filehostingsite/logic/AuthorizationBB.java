@@ -44,7 +44,7 @@ public class AuthorizationBB implements Serializable {
 
         try {
             udb = DatabaseManager.INSTANCE.getUserDatabase();
-            AppUser user = (AppUser) udb.find(username);
+            AppUser user = udb.find(username);
             if (user != null) {
                 request.login(username, UserAuthentication.hash(password, user.getSalt()));
                 return "/orderedLists?faces-redirect=true";
@@ -71,8 +71,28 @@ public class AuthorizationBB implements Serializable {
 
         return result;
     }
+    
+    public boolean isLoggedIn() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        return (request.getRemoteUser() != null);
+    }
    
-
+    public boolean isAdminLoggedIn() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        String username = request.getRemoteUser();
+        if (username != null) {
+            udb = DatabaseManager.INSTANCE.getUserDatabase();
+            AppUser user = udb.find(username);
+            if (user != null) {
+                if (user.getSubjectGroups().contains(SubjectGroup.ADMIN)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
    
     public String getUsername() {
         return username;

@@ -28,36 +28,42 @@
                     </f:facet>
                     <h:outputText value="#{file.id}"/>
                 </h:column>
+                <h:column/><h:column/><h:column/> //Just for spacing
                 <h:column>
                     <f:facet name="header">
                         <h:outputText  value="FileName"/> 
                     </f:facet>
                     <h:outputText value="#{file.filename}"/>
                 </h:column>
+                <h:column/><h:column/><h:column/> //Just for spacing
                 <h:column>
                     <f:facet name="header">
                         <h:outputText  value="Owner"/>
                     </f:facet>
-                    <h:outputText value="#{file.owner}"/>
+                    <h:outputText value="#{file.owner.userName}"/>
                 </h:column>
+                <h:column/><h:column/><h:column/> //Just for spacing
                 <h:column>
                     <f:facet name="header">
                         <h:outputText  value="UploadDate"/>
                     </f:facet>
                     <h:outputText value="#{file.uploadDate}"/>
                 </h:column>
+                <h:column/><h:column/><h:column/> //Just for spacing
                 <h:column>
                     <f:facet name="header">
                         <h:outputText  value="Downloads"/>
                     </f:facet>
                     <h:outputText value="#{file.downloads}"/>
                 </h:column>
+                <h:column/><h:column/><h:column/> //Just for spacing
                 <h:column>
                     <f:facet name="header">
                         <h:outputText  value="IsPublic"/>
                     </f:facet>
                     <h:outputText value="#{file.public}"/>
                 </h:column>
+                <h:column/><h:column/><h:column/> //Just for spacing
                 <h:column>
                     <f:facet name="header">
                         <h:outputText  value="Del"/>
@@ -72,7 +78,7 @@
             </ui:define>
 
             <ui:define name="bottom">
-                bottom
+                <p>Super secret page footer</p>
             </ui:define>
 
         </ui:composition>

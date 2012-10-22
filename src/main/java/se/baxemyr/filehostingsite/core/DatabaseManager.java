@@ -22,12 +22,13 @@ public enum DatabaseManager {
     }
     
     private void addAdmin(){
-        try{
         AppUser admin = new AppUser("admin","admin", "admin@admin.com", "admin", SubjectGroup.ADMIN);
+        try{
         if(!(userDatabase.find("admin").getUserName().equals(admin.getUserName()))){
            userDatabase.add(admin); 
         }
         }catch(Exception e){
+            userDatabase.add(admin); 
         }
     }
     

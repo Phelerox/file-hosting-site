@@ -9,18 +9,26 @@
 
         <ui:composition template="./resources/templates/template.xhtml">
             <ui:define name="top">
-                File-Hosting-Site&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logged in as: ${request.remoteUser}
-<!--                Vad det skulle vara svårt att få in några mellanslag...-->
+                File Hosting Site
             </ui:define>
             <ui:define name="content">
                 <section id="Menu">
                     <nav> 
                         <ul>
-                            <li><h:link id="home" outcome="/orderedLists">Home</h:link></li>
-                            <li><h:link id="login" outcome="/login/login">Login</h:link></li>
-                            <li><h:link id="register" outcome="/register">Register</h:link></li>
-                            <li><h:link id="users" outcome="/users/userPage">UserPage</h:link></li>
-                            <li><h:link id="admin" outcome="/admin/administrate">Administrate</h:link></li>
+                            <h:form>
+                                <li><h:link id="home" outcome="/orderedLists">Home</h:link></li>
+                                <ui:fragment rendered="#{authBB.isLoggedIn() eq 'false'}">
+                                <li><h:link id="login" outcome="/login/login">Login</h:link></li>
+                                <li><h:link id="register" outcome="/register">Register</h:link></li>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{authBB.isLoggedIn() eq 'true'}">
+                                <li><h:link id="userPage" outcome="/users/userPage">#{request.remoteUser}</h:link></li>
+                                <li><h:commandLink id="logoutBtn" action="#{authBB.logout}" value="Logout" /></li>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{authBB.isAdminLoggedIn() eq 'true'}">
+                                <li><h:link id="admin" outcome="/admin/administrate">Administrator</h:link></li>
+                                </ui:fragment>
+                            </h:form>
                         </ul>
                     </nav>
                 </section>

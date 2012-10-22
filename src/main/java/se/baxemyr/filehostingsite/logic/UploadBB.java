@@ -30,6 +30,7 @@ public class UploadBB implements Serializable {
     @Inject
     private Conversation conversation; 
     private UploadedFile file;
+    private boolean isPublic;
     
     private HostedFileDatabase userHostedFileDB;
     
@@ -45,45 +46,52 @@ public class UploadBB implements Serializable {
         this.file = file;
     }
     
+    public boolean getIsPublic() {
+        return isPublic;
+    }
+    
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+    
     public void actionListener(ActionEvent e) {
-        
     }
     
     public String submit() throws IOException {
-        String fileName = FilenameUtils.getName(file.getName());
-        String contentType = file.getContentType();
-        byte[] bytes = file.getBytes();
-
-        HostedFile hostedFile = new HostedFile();
-        hostedFile.setFilename(fileName);
-        hostedFile.setBytes(bytes);
-        
-        
         FacesContext context = FacesContext.getCurrentInstance();
-        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        String username = request.getRemoteUser();
-        if (username != null) {    
-            UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
-            AppUser user = userDB.find(username);
-            if (user != null) {
-                hostedFile.setOwner(user);
-            }
-        }
-        
-        
-        //Save in DB.
-        userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
-        userHostedFileDB.add(hostedFile);
+        if (file != null) {
+            String fileName = FilenameUtils.getName(file.getName());
+            String contentType = file.getContentType();
+            byte[] bytes = file.getBytes();
 
-        //Detta blir onödigt när vi skcikar vidare direkt
-        context.addMessage(null, 
-            new FacesMessage(String.format("File '%s' of type '%s' successfully uploaded!", fileName, contentType)));
-        
-        //Skickar vidare till fileview
-        try{
-            return "/users/userPage?faces-redirect=true";
-        }catch(Exception e){
+            HostedFile hostedFile = new HostedFile();
+            hostedFile.setFilename(fileName);
+            hostedFile.setBytes(bytes);
+            hostedFile.setPublic(isPublic);
+
+            HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+            String username = request.getRemoteUser();
+            if (username != null) {    
+                UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
+                AppUser user = userDB.find(username);
+                if (user != null) {
+                    hostedFile.setOwner(user);
+                }
+            }
+
+
+            //Save in DB.
+            userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
+            userHostedFileDB.add(hostedFile);
+
+            context.addMessage(null, 
+                new FacesMessage(String.format("File successfully uploaded!")));
             return null;
         }
+        context.addMessage(null, 
+                new FacesMessage(String.format("Select a file!")));
+            return null;
+        
+        
     }
 }
