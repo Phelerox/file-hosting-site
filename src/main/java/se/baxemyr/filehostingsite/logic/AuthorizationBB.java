@@ -44,7 +44,7 @@ public class AuthorizationBB implements Serializable {
 
         try {
             udb = DatabaseManager.INSTANCE.getUserDatabase();
-            AppUser user = (AppUser) udb.find(username);
+            AppUser user = udb.find(username);
             if (user != null) {
                 request.login(username, UserAuthentication.hash(password, user.getSalt()));
                 return "/orderedLists?faces-redirect=true";

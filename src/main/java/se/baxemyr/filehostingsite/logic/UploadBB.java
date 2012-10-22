@@ -58,34 +58,40 @@ public class UploadBB implements Serializable {
     }
     
     public String submit() throws IOException {
-        String fileName = FilenameUtils.getName(file.getName());
-        String contentType = file.getContentType();
-        byte[] bytes = file.getBytes();
-
-        HostedFile hostedFile = new HostedFile();
-        hostedFile.setFilename(fileName);
-        hostedFile.setBytes(bytes);
-        hostedFile.setPublic(isPublic);
-        
         FacesContext context = FacesContext.getCurrentInstance();
-        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        String username = request.getRemoteUser();
-        if (username != null) {    
-            UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
-            AppUser user = userDB.find(username);
-            if (user != null) {
-                hostedFile.setOwner(user);
-            }
-        }
-        
-        
-        //Save in DB.
-        userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
-        userHostedFileDB.add(hostedFile);
+        if (file != null) {
+            String fileName = FilenameUtils.getName(file.getName());
+            String contentType = file.getContentType();
+            byte[] bytes = file.getBytes();
 
+            HostedFile hostedFile = new HostedFile();
+            hostedFile.setFilename(fileName);
+            hostedFile.setBytes(bytes);
+            hostedFile.setPublic(isPublic);
+
+            HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+            String username = request.getRemoteUser();
+            if (username != null) {    
+                UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
+                AppUser user = userDB.find(username);
+                if (user != null) {
+                    hostedFile.setOwner(user);
+                }
+            }
+
+
+            //Save in DB.
+            userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
+            userHostedFileDB.add(hostedFile);
+
+            context.addMessage(null, 
+                new FacesMessage(String.format("File successfully uploaded!")));
+            return null;
+        }
         context.addMessage(null, 
-            new FacesMessage(String.format("File successfully uploaded!")));
+                new FacesMessage(String.format("Select a file!")));
+            return null;
         
-        return null;
+        
     }
 }
