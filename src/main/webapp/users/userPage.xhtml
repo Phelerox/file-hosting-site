@@ -7,10 +7,16 @@
 
     <body>
 
-        <ui:composition template="./resources/templates/template.xhtml">
+        <ui:composition template="./../resources/templates/template.xhtml">
 
             <ui:define name="top">
-                top
+                <h:outputText value="Logged in as ${request.remoteUser}" /> 
+                <h:form>
+                    <h:commandButton action="#{auth.logout}" value="Logout" />
+                </h:form>
+                <h:form>
+                    <h:commandButton action="/upload?faces-redirect=true" value="Upload" />
+                </h:form>
             </ui:define>
 
             <ui:define name="content">

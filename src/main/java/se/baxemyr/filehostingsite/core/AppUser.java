@@ -1,5 +1,6 @@
 package se.baxemyr.filehostingsite.core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
  */
 @Entity
 @Table(name = "APPUSER")
-public class AppUser implements IEntity<Long> {
+public class AppUser implements Serializable {
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,9 +52,8 @@ public class AppUser implements IEntity<Long> {
         UserAuthentication.changePassword(this, password);
     }
 
-    @Override
-    public Long getId() {
-        return null;  //id
+    public String getId() {
+        return userName;  //id
     }
 
     public String getUserName() {
