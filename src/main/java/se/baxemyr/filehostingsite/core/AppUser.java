@@ -1,5 +1,6 @@
 package se.baxemyr.filehostingsite.core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,14 +14,12 @@ import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
  */
 @Entity
 @Table(name = "APPUSER")
-public class AppUser implements IEntity<Long> {
+public class AppUser implements Serializable {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long id;
+
     @Id
     @Column(nullable=false, name="ID")
-    private String userName;
+    private String id;
     private String fullName;
     private boolean isAdmin;
     private String email;
@@ -43,7 +42,7 @@ public class AppUser implements IEntity<Long> {
 
     public AppUser(String userName, String fullName, String email, String password, SubjectGroup group) {
         this.groups.add(group);
-        this.userName = userName;
+        this.id = userName;
         this.fullName = fullName;
         this.email = email;
         this.regDate = new Date();
@@ -51,17 +50,16 @@ public class AppUser implements IEntity<Long> {
         UserAuthentication.changePassword(this, password);
     }
 
-    @Override
-    public Long getId() {
-        return null;  //id
+    public String getId() {
+        return id;  //id
     }
 
     public String getUserName() {
-        return userName;
+        return id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setId(String userName) {
+        this.id = userName;
     }
 
     public String getFullName() {
@@ -129,7 +127,7 @@ public class AppUser implements IEntity<Long> {
             return false;
         }
         final AppUser other = (AppUser) obj;
-        if ((this.userName == null) ? (other.userName != null) : !this.userName.equals(other.userName)) {
+        if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
             return false;
         }
         if ((this.password == null) ? (other.password != null) : !this.password.equals(other.password)) {
@@ -141,7 +139,7 @@ public class AppUser implements IEntity<Long> {
     @Override
     public int hashCode() {
         int rhash = 3;
-        rhash = 29 * rhash + (this.userName != null ? this.userName.hashCode() : 0);
+        rhash = 29 * rhash + (this.id != null ? this.id.hashCode() : 0);
         rhash = 29 * rhash + (this.password != null ? this.password.hashCode() : 0);
         return rhash;
     }
