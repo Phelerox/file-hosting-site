@@ -29,9 +29,14 @@
                     </h:form>
                 </section>
                 <section id="commentArea">
-                    <h:form action="#{fileviewBB.comment}">
-                        <h:inputTextarea cols="50" rows="10"/>
-                        <p><h:commandButton value="comment file" actionListener="#{fileviewBB.comment}" action="fileView?faces-redirect=true"/></p>
+                    <h:form>
+                        <h:inputTextarea cols="50" rows="5" value="#{fileviewBB.comment}"/>
+                        <p><h:commandButton value="comment file" action="#{fileviewBB.submit}"/></p>
+                    </h:form>
+                </section>
+                <section>
+                    <h:form>
+                        <h:outputLabel cols="50" rows="10" value="#{fileviewBB.comment}"/>
                     </h:form>
                 </section>
             </ui:define>

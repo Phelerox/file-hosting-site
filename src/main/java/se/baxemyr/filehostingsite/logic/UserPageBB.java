@@ -10,7 +10,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import se.baxemyr.filehostingsite.core.HostedFile;
 import se.baxemyr.filehostingsite.core.HostedFileDatabase;
-import se.baxemyr.filehostingsite.core.UserManager;
 
 /**
  *

@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -17,14 +18,20 @@ public class Comment implements IEntity{
     @GeneratedValue
     private Long id;
     
+    @ManyToOne
     private AppUser author;
     private String content;
+    
  
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datePosted;
 
     public Comment() {
         
+    }
+    public Comment(String content, AppUser author){
+        this.content = content;
+        this.author = author;
     }
     
     public AppUser getAuthor() {
@@ -54,8 +61,5 @@ public class Comment implements IEntity{
     @Override
     public Object getId() {
         return id;
-    }
-    
-    
-    
+    } 
 }

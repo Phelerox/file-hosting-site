@@ -16,7 +16,6 @@ import org.apache.myfaces.custom.fileupload.UploadedFile;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.HostedFile;
 import se.baxemyr.filehostingsite.core.HostedFileDatabase;
-import se.baxemyr.filehostingsite.core.UserManager;
 
 /**
  * This backing bean is used to upload new files to the hosting site.
