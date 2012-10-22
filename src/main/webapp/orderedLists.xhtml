@@ -27,7 +27,7 @@
                                 <li><h:commandLink id="logoutBtn" action="#{authBB.logout}" value="Logout" /></li>
                                 </ui:fragment>
                                 <ui:fragment rendered="#{authBB.isAdminLoggedIn() eq 'true'}">
-                                <li><h:link id="admin" outcome="/admin/admin">Administrator</h:link></li>
+                                <li><h:link id="admin" outcome="/admin/administrate">Administrator</h:link></li>
                                 </ui:fragment>
                             </h:form>
                         </ul>
