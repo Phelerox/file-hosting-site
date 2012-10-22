@@ -23,6 +23,7 @@
                                 </ui:fragment>
                                 <ui:fragment rendered="#{authBB.isLoggedIn() eq 'true'}">
                                 <li><h:link id="userPage" outcome="/users/userPage">#{request.remoteUser}</h:link></li>
+                                <li><h:link id="settings" outcome="/users/settings">Settings</h:link></li>
                                 <li><h:commandLink id="logoutBtn" action="#{authBB.logout}" value="Logout" /></li>
                                 </ui:fragment>
                                 <ui:fragment rendered="#{authBB.isAdminLoggedIn() eq 'true'}">

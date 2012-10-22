@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="../resources/templates/template.xhtml">
+
+            <ui:define name="top">
+                File Hosting Site
+            </ui:define>
+
+            <ui:define name="content">
+                <section id="settings">
+                    <legend>Settings</legend>
+                    <h:form>
+                        <h:panelGrid columns="3">
+
+                            <h:outputLabel for="fullname" value="Full name: " style="font-weight:bold" />
+                            <h:inputText id="fullname" value="#{settingsBB.name}" size="25" autocomplete="off" required="true"/>
+                            <h:message for="fullname" showSummary="true" showDetail="false" style="color: red" />
+
+                            <h:outputLabel for="mail" value="E-mail: " style="font-weight:bold" />
+                            <h:inputText id="mail" value="#{settingsBB.email}" size="25" autocomplete="off" required="true"/>
+                            <h:message for="mail" showSummary="true" showDetail="false" style="color: red" />
+
+                            <h:outputLabel  for="passwd" value="Password: " style="font-weight:bold" />
+                            <h:inputSecret id="passwd" value="#{settingsBB.password}" size="10" autocomplete="off" required="true"/>
+                            <h:message for="passwd" showSummary="true" showDetail="false" style="color: red" />
+
+                            <h:outputLabel for="pwrepeat" value="Confirm Password: " style="font-weight:bold" />
+                            <h:inputSecret id="pwrepeat" value="#{settingsBB.repeatedPassword}" size="10" autocomplete="off" required="true"/>
+                            <h:message for="pwrepeat" showSummary="true" showDetail="false" style="color: red" />
+
+
+                            <h:panelGrid columns="2">
+                                <h:commandButton id="settingsChange" value="Register" action="#{settingsBB.submit}" />
+                                <h:button outcome="/orderedLists" value="Cancel"  />
+                            </h:panelGrid>
+                            <h:messages showSummary="true" showDetail="false" style="color: red"/>
+                        </h:panelGrid>
+                    </h:form>
+                </section>
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>
