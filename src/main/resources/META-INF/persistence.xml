@@ -5,6 +5,7 @@
     <class>se.baxemyr.filehostingsite.core.HostedFile</class>
     <class>se.baxemyr.filehostingsite.core.Group</class>
     <class>se.baxemyr.filehostingsite.core.AppUser</class>
+    <class>se.baxemyr.filehostingsite.core.Comment</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/filehostingdb"/>

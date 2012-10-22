@@ -12,9 +12,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.validation.constraints.NotNull;
-import se.baxemyr.filehostingsite.core.DatabaseManager;
+import javax.validation.constraints.*;
 import se.baxemyr.filehostingsite.core.AppUser;
+import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.UserDatabase;
 import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
 
@@ -26,12 +26,17 @@ import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
 @RequestScoped
 public class RegisterBB implements Serializable {
    
-   @NotNull
+   @NotNull(message = "Can't be null")
+   @Pattern(regexp="\\p{Alpha}+", message="Only Alphabetic chars allowed")
    private String username;
+   @NotNull(message = "Can't be null")
+   @Pattern(regexp="\\p{Alpha}+", message="Only Alphabetic chars allowed")
    private String name;
+   @NotNull(message = "Can't be null")
    private String email;
-   @NotNull
+   @NotNull(message = "Can't be null")
    private String password;
+   @NotNull(message = "Can't be null")
    private String repeatedPassword;
    
    private UserDatabase udb;

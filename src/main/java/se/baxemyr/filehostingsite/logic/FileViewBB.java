@@ -13,7 +13,10 @@ import javax.inject.Named;
 import se.baxemyr.filehostingsite.core.*;
 
 /**
- *
+ *  HttpServletRequest request=(HttpServeltRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()
+ *  request.getRemoteUser();
+ * 
+ * 
  * @author Gustav & Anders
  */
 @Named("fileviewBB")

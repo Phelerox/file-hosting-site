@@ -12,14 +12,14 @@ import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
  * @author Marco Baxemyr
  */
 @Entity
-@Table(name = "APP_USER")
+@Table(name = "APPUSER")
 public class AppUser implements IEntity<Long> {
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
 //    private Long id;
     @Id
-    @Column(nullable=false)
+    @Column(nullable=false, name="ID")
     private String userName;
     private String fullName;
     private boolean isAdmin;
