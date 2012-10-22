@@ -28,13 +28,13 @@ public class OrderedListsBB {
     
     public List<HostedFile> getLatestFiles(){
         List<HostedFile> filelist = new ArrayList<>();
-        filelist.addAll(hostedFileDB.getLatestFiles());
+        filelist.addAll(hostedFileDB.getLatestPublicFiles());
         return filelist;
     }
     
     public List<HostedFile> getMostDownloaded(){
         List<HostedFile> filelist = new ArrayList<>();
-        filelist.addAll(hostedFileDB.getMostDownloaded());
+        filelist.addAll(hostedFileDB.getMostPublicDownloaded());
         return filelist;
     }
 }

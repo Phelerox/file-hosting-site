@@ -88,10 +88,14 @@ public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
         }
         return null;
     }
-
+    
+    //Need to test this one, maybe useful for admins?
     @Override
     public List<T> getAll() {
-        return null;
+        EntityManager em = emf.createEntityManager();
+        String query = "select f from " + this.clazz.getSimpleName()+" f";
+        TypedQuery<T> tq = em.createQuery(query, clazz);
+        return tq.getResultList();
     }
 
     @Override
