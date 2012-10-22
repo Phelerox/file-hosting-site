@@ -28,6 +28,8 @@ import se.baxemyr.filehostingsite.core.SubjectGroup;
 @RequestScoped
 public class AuthorizationBB implements Serializable {
    
+   private UserDatabase udb;
+    
    @NotNull
    private String username;
    @NotNull
@@ -41,12 +43,17 @@ public class AuthorizationBB implements Serializable {
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 
         try {
-            AppUser user = new AppUser();
-            request.login(username, UserAuthentication.hash(password, user.getSalt()));
-            return "/orderedLists?faces-redirect=true";
+            udb = DatabaseManager.INSTANCE.getUserDatabase();
+            AppUser user = (AppUser) udb.find(username);
+            if (user != null) {
+                request.login(username, UserAuthentication.hash(password, user.getSalt()));
+                return "/orderedLists?faces-redirect=true";
+            }
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown username", null));
+            return null;
         } catch (ServletException e) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown login", null));
-            return "/login/loginError?faces-redirect=true";
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown password", null));
+            return null;
         }
     }
    

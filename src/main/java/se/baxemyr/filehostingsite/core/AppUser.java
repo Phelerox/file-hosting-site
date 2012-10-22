@@ -29,7 +29,7 @@ public class AppUser implements Serializable {
     @Column(nullable=false, name = "PASSWORD")
     private String passwordHash; //SHA512 hash of salt + password
     private byte[] salt; //Unique per-user per-password
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<HostedFile> userHostedFiles;
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "SUBJECT_GROUP")
