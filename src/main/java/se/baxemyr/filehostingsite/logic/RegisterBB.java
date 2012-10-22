@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.AppUser;
 import se.baxemyr.filehostingsite.core.UserDatabase;
-import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
+import se.baxemyr.filehostingsite.core.SubjectGroup;
 
 /**
  *
@@ -39,7 +39,7 @@ public class RegisterBB implements Serializable {
    
    public RegisterBB(){  
    }
-   
+     
    public String submit() throws IOException {
         
    log.log(Level.INFO, "New Customer Login: {0} Passwd: {1}", new Object[]{username, password});

@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import se.baxemyr.filehostingsite.logic.UserAuthentication;
-import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
 
 /**
  *
@@ -24,11 +23,10 @@ public class AppUser implements IEntity<Long> {
     private String fullName;
     private boolean isAdmin;
     private String email;
-    @Column(nullable=false)
-    private String password;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date regDate;
-    private String hhash; //SHA512 hash of salt + password
+    @Column(nullable=false, name = "PASSWORD")
+    private String passwordHash; //SHA512 hash of salt + password
     private byte[] salt; //Unique per-user per-password
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<HostedFile> userHostedFiles;
@@ -47,7 +45,6 @@ public class AppUser implements IEntity<Long> {
         this.fullName = fullName;
         this.email = email;
         this.regDate = new Date();
-        this.password = password;
         UserAuthentication.changePassword(this, password);
     }
 
@@ -80,12 +77,12 @@ public class AppUser implements IEntity<Long> {
         this.isAdmin = isAdmin;
     }
 
-    public String getHash() {
-        return hhash;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setHash(String password_hash) {
-        this.hhash = password_hash;
+    public void setPasswordHash(String password_hash) {
+        this.passwordHash = password_hash;
     }
 
     public byte[] getSalt() {
@@ -112,14 +109,6 @@ public class AppUser implements IEntity<Long> {
         this.email = email;
     }
 
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String pw) {
-        this.password = pw;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -132,7 +121,7 @@ public class AppUser implements IEntity<Long> {
         if ((this.userName == null) ? (other.userName != null) : !this.userName.equals(other.userName)) {
             return false;
         }
-        if ((this.password == null) ? (other.password != null) : !this.password.equals(other.password)) {
+        if ((this.passwordHash == null) ? (other.passwordHash != null) : !this.passwordHash.equals(other.passwordHash)) {
             return false;
         }
         return true;
@@ -142,7 +131,7 @@ public class AppUser implements IEntity<Long> {
     public int hashCode() {
         int rhash = 3;
         rhash = 29 * rhash + (this.userName != null ? this.userName.hashCode() : 0);
-        rhash = 29 * rhash + (this.password != null ? this.password.hashCode() : 0);
+        rhash = 29 * rhash + (this.passwordHash != null ? this.passwordHash.hashCode() : 0);
         return rhash;
     }
 }

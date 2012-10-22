@@ -4,8 +4,6 @@
  */
 package se.baxemyr.filehostingsite.core;
 
-import se.baxemyr.filehostingsite.logic.login.SubjectGroup;
-
 /**
  *
  * @author Gustav
