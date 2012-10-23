@@ -27,7 +27,7 @@ import se.baxemyr.filehostingsite.core.SubjectGroup;
 public class SettingsBB implements Serializable {
    
    @NotNull(message = "Can't be null")
-   @Pattern(regexp="\\p{Alpha}+", message="Only Alphabetic chars allowed")
+   @Pattern(regexp="[\\p{Alpha}\\p{Blank}]+",message="Only Alphabetic and Blank chars allowed")
    private String name;
    @NotNull(message = "Can't be null")
    private String email;

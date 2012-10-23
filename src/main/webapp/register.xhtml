@@ -4,15 +4,18 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-
+    <head>
+<!--        <script type="text/javascript" src="./resources/js/jquery-1.8.2.min.js" />
+        <script type="text/javascript" src="./resources/js/registervalidation.js" />-->
+    </head>
+    
     <body>
-
         <ui:composition template="./resources/templates/template.xhtml">
-
+        
             <ui:define name="content">
                 <section id="registration">
                     <legend>Register here</legend>
-                    <h:form>
+                    <h:form id="reg-form">
                         <h:panelGrid columns="3">
                             <h:outputLabel for="username" value="Username" style="font-weight:bold"/>
                             <h:inputText id="username" value="#{registerBB.username}" size="10" autocomplete="off" required="true"/> 
@@ -36,7 +39,7 @@
 
 
                             <h:panelGrid columns="2">
-                                <h:commandButton id="register" value="Register" action="#{registerBB.submit}" />
+                                <h:commandButton id="btn-submit" value="Register" action="#{registerBB.submit}" />
                                 <h:button outcome="/orderedLists" value="Cancel"  />
                             </h:panelGrid>
                             <h:messages showSummary="true" showDetail="false" style="color: red"/>
