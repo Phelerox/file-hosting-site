@@ -24,7 +24,7 @@ import se.baxemyr.filehostingsite.core.HostedFileDatabase;
 */
 @Path("file")
 public class Rest {
-    private HostedFileDatabase userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
+    private HostedFileDatabase hostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
     
     public Rest(){
         
@@ -36,9 +36,12 @@ public class Rest {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response getFileById(@PathParam("id") Long id) {
-        HostedFile uhf = this.userHostedFileDB.find(id);
-        uhf.download();
-        userHostedFileDB.update(uhf);
-        return Response.ok(uhf.getBytes()).header("content-disposition","attachment; filename = "+uhf.getFilename()).build();
+        HostedFile hf = this.hostedFileDB.find(id);
+        if (hf.isPublic()) {
+            hf.download();
+            hostedFileDB.update(hf);
+            return Response.ok(hf.getBytes()).header("content-disposition","attachment; filename = "+hf.getFilename()).build();
+        }
+        return Response.noContent().build();
     }
 }

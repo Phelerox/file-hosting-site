@@ -84,6 +84,7 @@ public class FileViewBB implements Serializable {
             file.addComment(c);
             this.hostedFileDB.update(file);   
         }
+        comment="";
     }
     
     public List<Comment> getAllComments(String id) {
@@ -106,11 +107,14 @@ public class FileViewBB implements Serializable {
     }
     
     public boolean access(String id) {
-        HostedFile file = getFile(id);
-        if (file.isPublic()) {
+        if (isPublic(id)) {
             return true;
         }
         return owner(id);
+    }
+    
+    public boolean isPublic(String id) {
+        return getFile(id).isPublic();
     }
     
     public boolean owner(String id) {

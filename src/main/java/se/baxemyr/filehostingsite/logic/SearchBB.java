@@ -28,8 +28,7 @@ public class SearchBB implements Serializable {
     }
     
     public List<HostedFile> getSearchResults(){
-        searchResults = new ArrayList<>();
-        searchResults.addAll(hostedFileDB.getFilesContaining(keyword));
+        searchResults = hostedFileDB.getFilesContaining(keyword);
         return searchResults;
     }
     
@@ -38,8 +37,7 @@ public class SearchBB implements Serializable {
     }
     
     public void search() {
-        searchResults = new ArrayList<>();
-        searchResults.addAll(hostedFileDB.getFilesContaining(keyword));
+        searchResults = hostedFileDB.getFilesContaining(keyword);
     }
     
     public void setKeyword(String keyword) {
