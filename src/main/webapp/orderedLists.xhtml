@@ -13,9 +13,9 @@
                 
                 <section id="latestfileslists" >
                     <h:dataTable value="#{orderedlistsBB.latestFiles}" var="file"
-                                 styleClass="order-table"
-                                 headerClass="order-table-header"
-                                 rowClasses="order-table-odd-row,order-table-even-row">
+                                 styleClass="table"
+                                 headerClass="table-header"
+                                 rowClasses="table-odd-row">
                         <f:facet name="header">
                             <h:outputText value="Latest Public Uploads" />
                         </f:facet> 
@@ -41,9 +41,9 @@
                 </section>
                 <section id="mostdownloadedfileslists">
                     <h:dataTable value="#{orderedlistsBB.mostDownloaded}" var="file"
-                                 styleClass="order-table"
-                                 headerClass="order-table-header"
-                                 rowClasses="order-table-odd-row,order-table-even-row">
+                                 styleClass="table"
+                                 headerClass="table-header"
+                                 rowClasses="table-odd-row">
                         <f:facet name="header">
                             <h:outputText value="Most downloaded public files" />
                         </f:facet> 

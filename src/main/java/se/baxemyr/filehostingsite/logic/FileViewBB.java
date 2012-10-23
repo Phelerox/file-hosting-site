@@ -73,18 +73,20 @@ public class FileViewBB implements Serializable {
     }
 
     public void submit(String id) {
-        HostedFile file = getFile(id);
-        String content = this.comment;
+        if (!comment.equals("")) {
+            HostedFile file = getFile(id);
+            String content = this.comment;
 
-        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        String username = req.getRemoteUser();
-        if (username != null) {
-            AppUser author = userDB.find(username);
-            Comment c = new Comment(content, author);
-            file.addComment(c);
-            this.hostedFileDB.update(file);   
+            HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+            String username = req.getRemoteUser();
+            if (username != null) {
+                AppUser author = userDB.find(username);
+                Comment c = new Comment(content, author);
+                file.addComment(c);
+                this.hostedFileDB.update(file);   
+            }
+            comment="";
         }
-        comment="";
     }
     
     public List<Comment> getAllComments(String id) {

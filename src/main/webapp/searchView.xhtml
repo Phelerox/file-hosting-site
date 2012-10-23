@@ -20,9 +20,9 @@
                 <h:outputText value="No search results." rendered="#{empty searchBB.searchResults}" />
                     <h:dataTable value="#{searchBB.searchResults}" var="file"
                                  rendered="#{not empty searchBB.searchResults}"
-                                 styleClass="order-table"
-                                 headerClass="order-table-header"
-                                 rowClasses="order-table-odd-row,order-table-even-row">
+                                 styleClass="table"
+                                 headerClass="table-header"
+                                 rowClasses="table-odd-row,table-even-row">
                         <f:facet name="header">
                             <h:outputText value="Search Results" />
                         </f:facet> 

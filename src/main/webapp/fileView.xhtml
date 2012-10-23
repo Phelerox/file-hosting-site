@@ -55,7 +55,7 @@
                          <h:dataTable value="#{fileviewBB.getAllComments(id)}" var="comment"
                                      styleClass="table"
                                      headerClass="table-header"
-                                     rowClasses="comment"
+                                     rowClasses="table-odd-row, table-even-row"
                                      rendered="#{not empty fileviewBB.getAllComments(id)}">
                             
                              <h:column>
