@@ -11,11 +11,18 @@
             
             <ui:param name="id" value="#{param['id']}" />
             <ui:define name="top">
-                Group: #{id}
                 #{displayGroup.setGroup(id)}
+                Group: #{id}
             </ui:define>
+            
 
             <ui:define name="content">
+                <h:form>
+                <h:outputLabel value="New Member Username"/>
+                    <h:inputText value="#{displayGroup.newUser}" size="10" autocomplete="off" required="true"/>
+                    <ui:param name="ide" value="#{param['id']}" />
+                    <h:commandButton value="Add new Member" action="#{displayGroup.addNewMember(ide)}" />
+                </h:form>
                 <h:dataTable var="members" value="#{displayGroup.group.members}" >   
                     <h:column>
                         <f:facet name="header">
