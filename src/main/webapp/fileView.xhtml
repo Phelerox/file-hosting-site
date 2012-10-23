@@ -3,52 +3,54 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:t="http://myfaces.apache.org/tomahawk">
+      xmlns:f="http://java.sun.com/jsf/core">
     <body>
 
         <ui:composition template="./resources/templates/template.xhtml">
 
             
             <ui:define name="content">
+                <ui:param name="id" value="#{param['id']}" />
+                <ui:fragment rendered="#{fileviewBB.access(id) eq 'true'}">
                 <section id="fileInfo">
-                    <h:form action="#{fileviewBB.delete}">
+                    <h:form>
                         <h:outputLabel value="Filename: " style="font-weight:bold" />
-                        <h:outputText value="#{fileviewBB.file.filename}" />
+                        <h:outputText value="#{fileviewBB.filename(id)}" />
                         <br/>
                         <h:outputLabel value="Upload date: " style="font-weight:bold" />
-                        <h:outputText value="#{fileviewBB.file.uploadDate}" />
+                        <h:outputText value="#{fileviewBB.date(id)}" />
                         <br/> 
                         <h:outputLabel value="Downloads: " style="font-weight:bold" />
-                        <h:outputText value="#{fileviewBB.file.downloads}" />
+                        <h:outputText value="#{fileviewBB.downloads(id)}" />
                         <br/> 
-                        <h:commandButton value="download file" action="#{fileviewBB.download}" />
-                        <h:commandButton value="delete file" actionListener="#{fileviewBB.delete}" action="userPage?faces-redirect=true" />
+                        <h:commandButton value="Download" action="#{fileviewBB.download(id)}">
+                            <f:param name="id" value="#{id}"/>
+                        </h:commandButton>
+                        <ui:fragment rendered="#{fileviewBB.owner(id) eq 'true'}">
+                        <h:commandButton value="Delete" action="#{fileviewBB.delete(id)}">
+                            <f:param name="id" value="#{id}"/>
+                        </h:commandButton>
+                        </ui:fragment>
                     </h:form>
                 </section>
+                
                 <section id="commentArea">
-                    <h:form>
-                        <h:inputTextarea cols="50" rows="5" value="#{fileviewBB.comment}"/>
-                        <p><h:commandButton value="comment file" action="#{fileviewBB.submit}"/></p>
-                    </h:form>
-                    
-                    
-                    
-                     <h:dataTable value="#{fileviewBB.allComments}" var="comment"
-                                 styleClass="order-table"
-                                 headerClass="order-table-header"
-                                 rowClasses="order-table-odd-row,order-table-even-row">
-                        <h:column>
-                            <f:facet name="header">Comments</f:facet>
-                            #{comment.content}
-                        </h:column>
-                         <h:column>
-                            <f:facet name="header">Author</f:facet>
-                            #{comment.author}
-                        </h:column>
-
-                    </h:dataTable>
+                    <ui:fragment rendered="#{authBB.isLoggedIn() eq 'true'}">
+                        <h:form>
+                            <h:inputTextarea cols="50" rows="5" value="#{fileviewBB.comment}"/>
+                            <p>
+                                <h:commandButton value="Comment" action="#{fileviewBB.submit(id)}">
+                                    <f:param name="id" value="#{id}"/>
+                                </h:commandButton>
+                            </p>
+                        </h:form>
+                    </ui:fragment>
                 </section>
+                </ui:fragment>
+                <ui:fragment rendered="#{fileviewBB.access(id) eq 'false'}">
+                    <h:outputLabel value="Access denied"/>
+                </ui:fragment>
+                
               
             </ui:define>
 
