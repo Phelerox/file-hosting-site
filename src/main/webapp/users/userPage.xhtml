@@ -43,9 +43,9 @@
                         <h:column>
                             <f:facet name="header">Name</f:facet>
                             <h:form>
-                                <h:commandLink value="#{file.filename}" actionListener="#{fileviewBB.init}" action="fileView?faces-redirect=true">
-                                    <f:attribute name="file" value="#{file}"/>
-                                </h:commandLink>
+                                <h:link value="#{file.filename}" outcome="/fileView?faces-redirect=true">
+                                    <f:param name="id" value="#{file.id}"/>
+                                </h:link>
                             </h:form>
                         </h:column>
                         <h:column>
