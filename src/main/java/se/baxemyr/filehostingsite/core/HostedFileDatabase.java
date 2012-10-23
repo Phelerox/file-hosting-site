@@ -49,4 +49,12 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
         TypedQuery<HostedFile> tq = em.createQuery(query, HostedFile.class);
         return tq.getResultList();
     }
+    
+    public List<HostedFile> getFilesContaining(String name) {
+        EntityManager em = super.emf.createEntityManager();
+        String file = "select f from HostedFile f where LOWER(f.filename) LIKE LOWER(:name)";
+        TypedQuery<HostedFile> tq = em.createQuery(file, HostedFile.class);
+        tq.setParameter("name", "%" + name + "%");
+        return tq.getResultList();
+    }
 }

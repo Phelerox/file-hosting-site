@@ -6,9 +6,9 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
-        <title>Facelets Template</title>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>File Hosting Site</title>
     </h:head>
 
     <h:body> 
@@ -32,6 +32,7 @@
                                 <ui:fragment rendered="#{authBB.isAdminLoggedIn() eq 'true'}">
                                 <li><h:link id="admin" outcome="/admin/administrate">Administrator</h:link></li>
                                 </ui:fragment>
+                                <li><h:link id="search" outcome="/searchView">Search</h:link></li>
                             </h:form>
                         </ul>
                     </nav>
@@ -39,9 +40,7 @@
                 
             </ui:insert>
         </header>
-        <nav>
-            <!-- if any navigation -->
-        </nav>
+        
         <section>
             <ui:insert name="content">Content</ui:insert>
         </section>

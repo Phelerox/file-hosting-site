@@ -45,6 +45,27 @@
                             </p>
                         </h:form>
                     </ui:fragment>
+                    
+                    <!-- COMMENTS -->
+                     <h:dataTable value="#{fileviewBB.getAllComments(id)}" var="comment"
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row">
+                        <h:column>
+                            <f:facet name="header">Comments</f:facet>
+                            #{comment.content}
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">Author</f:facet>
+                            #{comment.author.userName}
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            #{comment.datePosted}
+                        </h:column>
+
+                    </h:dataTable>
+                    
                 </section>
                 </ui:fragment>
                 <ui:fragment rendered="#{fileviewBB.access(id) eq 'false'}">
