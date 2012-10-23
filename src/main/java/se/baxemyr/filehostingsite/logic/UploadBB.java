@@ -63,11 +63,12 @@ public class UploadBB implements Serializable {
             String fileName = FilenameUtils.getName(file.getName());
             String contentType = file.getContentType();
             byte[] bytes = file.getBytes();
-
+            
             HostedFile hostedFile = new HostedFile();
             hostedFile.setFilename(fileName);
             hostedFile.setBytes(bytes);
             hostedFile.setPublic(isPublic);
+            hostedFile.setContentType(contentType);
 
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             String username = request.getRemoteUser();

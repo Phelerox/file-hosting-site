@@ -34,13 +34,7 @@
                         <p><h:commandButton value="comment file" action="#{fileviewBB.submit}"/></p>
                     </h:form>
                 </section>
-                <section>
-                    <h:form>
-                        <ui:repeat value="#{fileviewBB.allComments}" var="comments">
-                            <li><h:outputText value="#{comments.content}"/></li>
-                        </ui:repeat>
-                    </h:form>
-                </section>
+              
             </ui:define>
 
             <ui:define name="bottom">
