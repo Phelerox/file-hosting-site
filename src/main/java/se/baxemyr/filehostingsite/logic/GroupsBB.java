@@ -36,7 +36,7 @@ public class GroupsBB {
         user = userDB.find(username);
 
     }
-
+    
     public void create() {
         AppGroup group = new AppGroup(this.name,user);
         group.addMember(user);

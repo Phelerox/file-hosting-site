@@ -11,7 +11,7 @@
 
             <ui:define name="top">
                 <h:head>
-                GroupPage: Logged in as: ${request.remoteUser}
+                    GroupPage: Logged in as: ${request.remoteUser}
                 </h:head>
             </ui:define>
 
@@ -32,30 +32,21 @@
                     <h:inputText value="#{groups.lookupName}" size="10" autocomplete="off" required="true"/>
                     <h:outputLabel value="New Member Username"/>
                     <h:inputText value="#{groups.newUser}" size="10" autocomplete="off" required="true"/>
-                    
+
                     <h:commandButton value="Add new Member" action="#{groups.addNewMember}" />
                 </h:form>
-                
-                
-                
-                
-                
-                <h:dataTable var="group" value="#{groups.all}" >   
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText  value="Id"/>
-                    </f:facet>
-                    <h:outputText value="#{group.id}"/>
-                </h:column><h:column/>
-                    <h:dataTable var="users" value="#{group.members}">
-                    <h:column>
-                    <f:facet name="header">
-                        <h:outputText  value="Users"/>
-                    </f:facet>
-                        <h:outputText value="#{users.id}"/>
-                </h:column>
-                    </h:dataTable> 
-                </h:dataTable>
+                <h:form>
+                    <h:dataTable var="group" value="#{groups.all}" >   
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText  value="Id"/>
+                            </f:facet>
+                            <h:commandLink value="#{group.id}" action="/users/displayGroup">
+                                <f:param name="id" value="#{group.id}" />
+                            </h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
             </ui:define>
 
             <ui:define name="bottom">
