@@ -33,7 +33,7 @@
                     </h:form>
                     
                     
-                    
+                    <!-- COMMENTS -->
                      <h:dataTable value="#{fileviewBB.allComments}" var="comment"
                                  styleClass="order-table"
                                  headerClass="order-table-header"
@@ -44,7 +44,11 @@
                         </h:column>
                          <h:column>
                             <f:facet name="header">Author</f:facet>
-                            #{comment.author}
+                            #{comment.author.userName}
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            #{comment.datePosted}
                         </h:column>
 
                     </h:dataTable>
