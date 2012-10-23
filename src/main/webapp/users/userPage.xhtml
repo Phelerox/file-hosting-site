@@ -10,17 +10,9 @@
 
         <ui:composition template="../resources/templates/template.xhtml">
 
-        <ui:define name="top">
-                #{request.remoteUser}'s profile
-            </ui:define>
             <ui:define name="content">
-                <section id="Menu">
-                    <nav> 
-                        <ul>
-                            <li><h:link id="home" outcome="/orderedLists">Home</h:link></li>
-                        </ul>
-                    </nav>
-                </section>
+                #{request.remoteUser}'s profile
+                
                 <section id="upload">
                     <h:form enctype="multipart/form-data">
                         <t:inputFileUpload value="#{upload.file}" />

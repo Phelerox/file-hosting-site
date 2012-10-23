@@ -1,4 +1,4 @@
-#top {
+#header {
     position: relative;
     background-color: #036fab;
     color:  white;
@@ -21,6 +21,9 @@
     background-color: azure;
     border-radius: 2em;
     margin: 1em; 
+    display: table;
+    border-radius: 6px;
+    color: red;
 }
 
 #latestfileslists{
