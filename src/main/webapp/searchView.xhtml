@@ -18,7 +18,9 @@
             </h:form>                
 
             <section id="searchresults" >
+                <h:outputText value="No search results." rendered="#{empty searchBB.searchResults}" />
                     <h:dataTable value="#{searchBB.searchResults}" var="file"
+                                 rendered="#{not empty searchBB.searchResults}"
                                  styleClass="order-table"
                                  headerClass="order-table-header"
                                  rowClasses="order-table-odd-row,order-table-even-row">
