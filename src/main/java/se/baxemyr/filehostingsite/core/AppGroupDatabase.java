@@ -4,6 +4,10 @@
  */
 package se.baxemyr.filehostingsite.core;
 
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 /**
  *
  * @author Sam
@@ -16,5 +20,4 @@ public class AppGroupDatabase extends AbstractDAO<AppGroup, String> {
     public static AppGroupDatabase newInstance(String puName){
         return new AppGroupDatabase(puName);
     }
-    
 }

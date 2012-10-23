@@ -24,6 +24,24 @@
                     </h:form>
                 </section>
                 <section id="lists">
+                    <h:form>
+                        <h:outputLabel value="Group Name"/>
+                        <h:inputText value="#{userpageBB.groupname}" size="10" autocomplete="off" required="true"/>
+                        <h:commandButton value="Create new Group" action="#{userpageBB.createGroup}" />
+                    </h:form>
+                    <h:form>
+                    <h:dataTable var="group" value="#{userpageBB.allGroups}"
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row">
+                        <h:column>
+                            <f:facet name="header"><h:outputText value="You are a member in:"/></f:facet>
+                            <h:commandLink value="#{group.id}" action="/users/displayGroup">
+                                <f:param name="id" value="#{group.id}"/>
+                            </h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                    </h:form>
                     <h:dataTable value="#{userpageBB.all}" var="file"
                                  styleClass="order-table"
                                  headerClass="order-table-header"
@@ -44,11 +62,6 @@
                             <f:facet name="header">Owner</f:facet>
                             #{file.owner.id}
                         </h:column>
-                        <!--                     Expriment-->
-                        <!--<h:column>
-                            <h:commandLink value="Get" action="localhost:8080/file-hosting-site/rs/file/"#{file.id}></h:commandLink>
-                        </h:column>-->
-
                     </h:dataTable>
                 </section>
             </ui:define>

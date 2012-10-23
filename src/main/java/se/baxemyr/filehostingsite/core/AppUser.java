@@ -47,7 +47,12 @@ public class AppUser implements Serializable {
         this.regDate = new Date();
         UserAuthentication.changePassword(this, password);
     }
-
+    
+    public List<AppGroup> getGroupList(){
+        groupp.size();
+        return groupp;
+    }
+    
     public void addSubjectGroup(SubjectGroup group) {
         this.groups.add(group);
     }
