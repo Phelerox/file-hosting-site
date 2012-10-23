@@ -27,21 +27,16 @@
                             <f:param name="id" value="#{id}"/>
                         </h:commandButton>
                         <ui:fragment rendered="#{fileviewBB.owner(id) eq 'true'}">
-                            <h:commandButton value="Delete" action="#{fileviewBB.delete(id)}">
-                                <f:param name="id" value="#{id}"/>
-                            </h:commandButton>
+                        <h:commandButton value="Delete" action="#{fileviewBB.delete(id)}">
+                            <f:param name="id" value="#{id}"/>
+                        </h:commandButton>
                         </ui:fragment>
                     </h:form>
-                    <h:outputLink rendered="#{fileviewBB.isPublic(id) eq 'true'}" value="/file-hosting-site/rs/file/#{id}">Public Download Link</h:outputLink>
-                    
                 </section>
                 
                 <section id="commentArea">
                     <ui:fragment rendered="#{authBB.isLoggedIn() eq 'true'}">
                         <h:form>
-                            <br />
-                            Leave a comment:
-                            <br />
                             <h:inputTextarea cols="50" rows="5" value="#{fileviewBB.comment}"/>
                             <p>
                                 <h:commandButton value="Comment" action="#{fileviewBB.submit(id)}">
@@ -50,6 +45,27 @@
                             </p>
                         </h:form>
                     </ui:fragment>
+                    
+                    <!-- COMMENTS -->
+                     <h:dataTable value="#{fileviewBB.getAllComments(id)}" var="comment"
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row">
+                        <h:column>
+                            <f:facet name="header">Comments</f:facet>
+                            #{comment.content}
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">Author</f:facet>
+                            #{comment.author.userName}
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            #{comment.datePosted}
+                        </h:column>
+
+                    </h:dataTable>
+                    
                 </section>
                 </ui:fragment>
                 <ui:fragment rendered="#{fileviewBB.access(id) eq 'false'}">

@@ -5,6 +5,8 @@
 package se.baxemyr.filehostingsite.test;
 
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import junit.framework.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -62,6 +64,12 @@ public class DBTestGet {
        //Assert.assertEquals(file.getUploadDate(), fetchedFiles.get(0).getUploadDate());
         //Assert.assertNotSame(file2.getUploadDate(), fetchedFiles.get(0).getUploadDate());
         Assert.assertEquals(file.getId(), fetchedFiles.get(0).getId());
+    }
+    
+    @Test
+    public void testGetFilesContaining() {
+        List<HostedFile> fetchedFiles = DBTestGet.HostedFileDB.getFilesContaining(DBTestGet.file.getFilename());
+        Assert.assertTrue(fetchedFiles.size()==2);
     }
     
 }

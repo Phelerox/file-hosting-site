@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -84,6 +85,13 @@ public class FileViewBB implements Serializable {
             this.hostedFileDB.update(file);   
         }
     }
+    
+    public List<Comment> getAllComments(String id) {
+        List<Comment> allComments = getFile(id).getComments();
+        this.hostedFileDB.update(getFile(id));
+        return allComments;   
+    }
+    
     public void setComment(String text) {
         this.comment = text;
     }
