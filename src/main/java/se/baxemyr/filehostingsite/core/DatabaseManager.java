@@ -28,11 +28,10 @@ public enum DatabaseManager {
     private void addAdmin(){
         AppUser admin = new AppUser("admin","admin", "admin@admin.com", "admin", SubjectGroup.ADMIN);
         try{
-        if(!(userDatabase.find("admin").getUserName().equals(admin.getUserName()))){
+        if(userDatabase.find(admin.getUserName())==null ) {
            userDatabase.add(admin); 
         }
-        }catch(Exception e){
-            userDatabase.add(admin); 
+        }catch(Exception e){ 
         }
     }
     
