@@ -8,9 +8,7 @@
 
         <ui:composition template="./resources/templates/template.xhtml">
 
-            <ui:define name="top">
-                File-Hosting-Site
-            </ui:define>
+            
             <ui:define name="content">
                 <ui:param name="id" value="#{param['id']}" />
                 <ui:fragment rendered="#{fileviewBB.access(id) eq 'true'}">

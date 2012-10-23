@@ -8,38 +8,16 @@
     <body>
 
         <ui:composition template="./resources/templates/template.xhtml">
-            <ui:define name="top">
-                File Hosting Site
-            </ui:define>
+            
             <ui:define name="content">
-                <section id="Menu">
-                    <nav> 
-                        <ul>
-                            <h:form>
-                                <li><h:link id="home" outcome="/orderedLists">Home</h:link></li>
-                                <ui:fragment rendered="#{authBB.isLoggedIn() eq 'false'}">
-                                <li><h:link id="login" outcome="/login/login">Login</h:link></li>
-                                <li><h:link id="register" outcome="/register">Register</h:link></li>
-                                </ui:fragment>
-                                <ui:fragment rendered="#{authBB.isLoggedIn() eq 'true'}">
-                                <li><h:link id="userPage" outcome="/users/userPage">#{request.remoteUser}</h:link></li>
-                                <li><h:link id="settings" outcome="/users/settings">Settings</h:link></li>
-                                <li><h:commandLink id="logoutBtn" action="#{authBB.logout}" value="Logout" /></li>
-                                </ui:fragment>
-                                <ui:fragment rendered="#{authBB.isAdminLoggedIn() eq 'true'}">
-                                <li><h:link id="admin" outcome="/admin/administrate">Administrator</h:link></li>
-                                </ui:fragment>
-                            </h:form>
-                        </ul>
-                    </nav>
-                </section>
+                
                 <section id="latestfileslists" >
                     <h:dataTable value="#{orderedlistsBB.latestFiles}" var="file"
                                  styleClass="order-table"
                                  headerClass="order-table-header"
                                  rowClasses="order-table-odd-row,order-table-even-row">
                         <f:facet name="header">
-                            <h:outputText value="Latest Uploads" />
+                            <h:outputText value="Latest Public Uploads" />
                         </f:facet> 
 
                         <h:column>
@@ -67,7 +45,7 @@
                                  headerClass="order-table-header"
                                  rowClasses="order-table-odd-row,order-table-even-row">
                         <f:facet name="header">
-                            <h:outputText value="Most downloaded" />
+                            <h:outputText value="Most downloaded public files" />
                         </f:facet> 
 
                         <h:column>

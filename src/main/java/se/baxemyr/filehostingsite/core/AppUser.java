@@ -32,6 +32,8 @@ public class AppUser implements Serializable {
     @CollectionTable(name = "SUBJECT_GROUP")
     @Enumerated(EnumType.STRING)
     private final List<SubjectGroup> groups = new ArrayList<>();
+    @ManyToMany(mappedBy = "members")
+    private List<AppGroup> groupp;
 
     public AppUser() {
         this.regDate = new Date();

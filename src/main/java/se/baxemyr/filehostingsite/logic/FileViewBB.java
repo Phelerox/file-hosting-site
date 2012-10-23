@@ -30,6 +30,7 @@ public class FileViewBB implements Serializable {
     private UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
     private CommentDatabase commentDB = DatabaseManager.INSTANCE.getCommentDatabase();
     private String comment;
+    private List<Comment> allComments;
 
     public void FileViewBB() {
     }
@@ -83,6 +84,17 @@ public class FileViewBB implements Serializable {
             this.hostedFileDB.update(file);
         }
     }
+
+    public List<Comment> getAllComments() {
+        allComments = file.getComments();
+        this.hostedFileDB.update(file);
+        return allComments;   
+    }
+    
+    public void setAllComments(List<Comment> allComments) {
+        this.allComments = allComments;
+    }
+
     public void setComment(String text) {
         this.comment = text;
     }

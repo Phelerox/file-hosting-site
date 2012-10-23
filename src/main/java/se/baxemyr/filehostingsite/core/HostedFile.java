@@ -27,7 +27,7 @@ public class HostedFile implements IEntity<Long> {
     private boolean isPublic;
     
     @OneToMany
-    private List<Comment> commentlist = new ArrayList();
+    private List<Comment> comments = new ArrayList();
     
     private String filename;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -37,7 +37,7 @@ public class HostedFile implements IEntity<Long> {
     private long downloads;
     
     @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private Group ggroup;
+    private AppGroup ggroup;
     
     @ManyToOne (cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private AppUser owner;
@@ -50,11 +50,11 @@ public class HostedFile implements IEntity<Long> {
      this.uploadDate = new Date();
     }
     
-    public void setComment(Comment c){
-        this.commentlist.add(c);
+    public void addComment(Comment c){
+        this.comments.add(c);
     }
     public List<Comment> getComments(){
-        return this.commentlist;
+        return this.comments;
     }
     
     public AppUser getOwner() {
@@ -89,11 +89,11 @@ public class HostedFile implements IEntity<Long> {
         return id;
     }
 
-    public Group getGroup() {
+    public AppGroup getGroup() {
         return this.ggroup;
     }
 
-    public void setGroup(Group group) {
+    public void setGroup(AppGroup group) {
         this.ggroup = group;
     }
     

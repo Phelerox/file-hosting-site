@@ -12,14 +12,18 @@ public enum DatabaseManager {
     private HostedFileDatabase hostedFileDatabase;
     private UserDatabase userDatabase;
     private CommentDatabase commentDatabase;
+    private AppGroupDatabase appGroupDatabase;
 
     private DatabaseManager() {
         hostedFileDatabase = HostedFileDatabase.newInstance("filehosting_pu");
         userDatabase = UserDatabase.newInstance("filehosting_pu");
         commentDatabase = CommentDatabase.newInstance("filehosting_pu");
+        appGroupDatabase = AppGroupDatabase.newInstance("filehosting_pu");
         
         addAdmin();
     }
+
+    
     
     private void addAdmin(){
         AppUser admin = new AppUser("admin","admin", "admin@admin.com", "admin", SubjectGroup.ADMIN);
@@ -47,5 +51,8 @@ public enum DatabaseManager {
     
     public CommentDatabase getCommentDatabase(){
         return commentDatabase;
+    }
+    public AppGroupDatabase getAppGroupDatabase() {
+        return appGroupDatabase;
     }
 }
