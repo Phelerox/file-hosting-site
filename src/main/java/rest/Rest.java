@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package se.baxemyr.filehostingsite.core;
+package rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,7 +11,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
+import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.HostedFile;
+import se.baxemyr.filehostingsite.core.HostedFile;
+import se.baxemyr.filehostingsite.core.HostedFileDatabase;
 import se.baxemyr.filehostingsite.core.HostedFileDatabase;
 
 /**
