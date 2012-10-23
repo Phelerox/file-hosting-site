@@ -36,7 +36,6 @@ public class UserPageBB {
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         String username = request.getRemoteUser();
         if (username != null) {    
-            UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
             AppUser user = userDB.find(username);
             if (user != null) {
                 filelist.addAll(hostedFileDB.getFilesFromOwner(user));
