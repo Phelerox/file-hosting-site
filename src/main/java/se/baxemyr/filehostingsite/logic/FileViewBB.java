@@ -84,6 +84,7 @@ public class FileViewBB implements Serializable {
             file.addComment(c);
             this.hostedFileDB.update(file);   
         }
+        comment="";
     }
     
     public List<Comment> getAllComments(String id) {

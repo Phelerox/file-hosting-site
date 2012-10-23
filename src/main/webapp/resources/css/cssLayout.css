@@ -23,7 +23,6 @@
     margin: 1em; 
     display: table;
     border-radius: 6px;
-    color: red;
 }
 
 #latestfileslists{
@@ -42,6 +41,20 @@
     border-radius: 6px;
     width: 49%;
 }
+
+.comment {
+    background-color: #c2dfef;
+    border-radius: 2em;
+    margin: 1em; 
+    border-radius: 6px;
+   
+}
+
+#commentContent {
+    width: 200px;
+    word-wrap: break-word;
+}
+
 li{
     margin-left: 2em;
 }

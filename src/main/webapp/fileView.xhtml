@@ -4,11 +4,10 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
+ 
     <body>
-
         <ui:composition template="./resources/templates/template.xhtml">
 
-            
             <ui:define name="content">
                 <ui:param name="id" value="#{param['id']}" />
                 <ui:fragment rendered="#{param['id'] ne null}">
@@ -54,12 +53,14 @@
 
                         <!-- COMMENTS -->
                          <h:dataTable value="#{fileviewBB.getAllComments(id)}" var="comment"
-                                     styleClass="order-table"
-                                     headerClass="order-table-header"
-                                     rowClasses="order-table-odd-row,order-table-even-row">
-                            <h:column>
+                                     styleClass="table"
+                                     headerClass="table-header"
+                                     rowClasses="comment"
+                                     rendered="#{not empty fileviewBB.getAllComments(id)}">
+                            
+                             <h:column>
                                 <f:facet name="header">Comments</f:facet>
-                                #{comment.content}
+                                <div id="commentContent"> #{comment.content}</div>
                             </h:column>
                              <h:column>
                                 <f:facet name="header">Author</f:facet>
@@ -69,7 +70,7 @@
                                 <f:facet name="header">Date</f:facet>
                                 #{comment.datePosted}
                             </h:column>
-
+                             
                         </h:dataTable>
 
                     </section>
