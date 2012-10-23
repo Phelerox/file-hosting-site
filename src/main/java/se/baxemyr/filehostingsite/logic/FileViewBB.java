@@ -39,6 +39,7 @@ public class FileViewBB implements Serializable {
     private CommentDatabase commentDB = DatabaseManager.INSTANCE.getCommentDatabase();
     private HostedFile file;
     private String comment;
+    private List<Comment> allComments;
 
     public void FileViewBB() {
     }
@@ -77,21 +78,23 @@ public class FileViewBB implements Serializable {
         String username = req.getRemoteUser();
         AppUser author = userDB.find(username);
 
-        file.setComment(new Comment(content, author));
+        file.addComment(new Comment(content, author));
 
         this.hostedFileDB.update(file);
 
         return null; //"/fileView?faces-redirect=true";
     }
-/*
+
     public List<Comment> getAllComments() {
-        List<Long> ids = new ArrayList();
-        List<Comment> comments = new ArrayList();
-        comments = commentDB.getCommentsIdbyFileId(file.getId());
-        
-        return comments;     
+        allComments = file.getComments();
+        this.hostedFileDB.update(file);
+        return allComments;   
     }
-*/
+    
+    public void setAllComments(List<Comment> allComments) {
+        this.allComments = allComments;
+    }
+
     public void setComment(String text) {
         this.comment = text;
     }

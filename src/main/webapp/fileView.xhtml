@@ -33,6 +33,23 @@
                         <h:inputTextarea cols="50" rows="5" value="#{fileviewBB.comment}"/>
                         <p><h:commandButton value="comment file" action="#{fileviewBB.submit}"/></p>
                     </h:form>
+                    
+                    
+                    
+                     <h:dataTable value="#{fileviewBB.allComments}" var="comment"
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row">
+                        <h:column>
+                            <f:facet name="header">Comments</f:facet>
+                            #{comment.content}
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">Author</f:facet>
+                            #{comment.author}
+                        </h:column>
+
+                    </h:dataTable>
                 </section>
               
             </ui:define>
