@@ -37,7 +37,7 @@ public class HostedFile implements IEntity<Long> {
     private long downloads;
     
     @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private Group ggroup;
+    private AppGroup ggroup;
     
     @ManyToOne (cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private AppUser owner;
@@ -87,11 +87,11 @@ public class HostedFile implements IEntity<Long> {
         return id;
     }
 
-    public Group getGroup() {
+    public AppGroup getGroup() {
         return this.ggroup;
     }
 
-    public void setGroup(Group group) {
+    public void setGroup(AppGroup group) {
         this.ggroup = group;
     }
     
