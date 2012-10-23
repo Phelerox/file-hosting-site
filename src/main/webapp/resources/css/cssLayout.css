@@ -10,7 +10,7 @@
 }
 #upload{
     border-radius: 6px;
-    background-color: lightblue;
+    background-color: lightgreen;
 }
 #maincontent {
     display: table-cell; 
@@ -18,7 +18,7 @@
 }
 
 #Menu{
-    background-color: azure;
+    background-color: #c2dfef;
     border-radius: 2em;
     margin: 1em; 
     display: table;
@@ -42,12 +42,29 @@
     width: 49%;
 }
 
-.comment {
-    background-color: #c2dfef;
+.table {
+    background-color: lightgreen;
     border-radius: 2em;
     margin: 1em; 
     border-radius: 6px;
-   
+}
+
+.table-header {
+    text-align: left;
+}
+
+.table-odd-row {  
+    background-color: lightgreen;
+    border-radius: 2em;
+    margin: 1em; 
+    border-radius: 6px;
+}
+
+.table-even-row { 
+    background-color: #AAFFAA;
+    border-radius: 2em;
+    margin: 1em; 
+    border-radius: 6px;
 }
 
 #commentContent {
