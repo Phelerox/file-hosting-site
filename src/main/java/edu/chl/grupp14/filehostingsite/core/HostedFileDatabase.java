@@ -55,7 +55,7 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
     
     public List<HostedFile> getFilesContaining(String name) {
         EntityManager em = super.emf.createEntityManager();
-        String file = "select f from HostedFile f where LOWER(f.filename) LIKE LOWER(:name)";
+        String file = "select f from HostedFile f where ((LOWER(f.filename) LIKE LOWER(:name)) AND f.isPublic='true' AND f.ggroup IS NULL)";
         TypedQuery<HostedFile> tq = em.createQuery(file, HostedFile.class);
         tq.setParameter("name", "%" + name + "%");
         return tq.getResultList();

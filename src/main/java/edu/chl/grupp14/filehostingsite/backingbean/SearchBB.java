@@ -23,9 +23,7 @@ public class SearchBB implements Serializable {
         searchResults.clear();
         
         for (HostedFile f : hostedFileDB.getFilesContaining(keyword)) {
-            if (f.isPublic()) {
-                searchResults.add(f);
-            }
+            searchResults.add(f);
         }  
         return searchResults;
     }
@@ -36,7 +34,7 @@ public class SearchBB implements Serializable {
     
     public String search() {
         getSearchResults();
-        return "searchView";
+        return "/searchView";
     }
     
     public void setKeyword(String keyword) {
