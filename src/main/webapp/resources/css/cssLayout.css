@@ -143,10 +143,3 @@ nav ul li{
   text-decoration : underline;
 }
 
-.invisibleSearchButton {
-    visibility: hidden;
-    display: none;
-    width: 100px;
-    height: 100px;
-    
-}

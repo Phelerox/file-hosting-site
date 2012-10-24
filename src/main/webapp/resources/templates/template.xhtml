@@ -34,8 +34,7 @@
                                 <li><h:link id="userPage" outcome="/users/userPage">#{request.remoteUser}</h:link></li>
                                 <li><h:link id="settings" outcome="/users/settings">Settings</h:link></li>
                                 
-                                <li><h:link id="groups" outcome="/users/groups" onmouseover="openMenu('groupMenu')" onmouseout="closeMenu()">Groups</h:link></li>
-                               
+                                <li><h:outputLabel value="Groups" id="groups" onmouseover="openMenu('groupMenu')" onmouseout="closeMenu()"/></li>
                                 <ul id="groupMenu" onmouseover="keepMenuOpen()" onmouseout="closeMenu()">
                                   
                                       <h:dataTable var="group" value="#{userpageBB.allGroups}"

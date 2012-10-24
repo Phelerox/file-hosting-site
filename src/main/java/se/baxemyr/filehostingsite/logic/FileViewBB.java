@@ -4,13 +4,9 @@
  */
 package se.baxemyr.filehostingsite.logic;
 
-import java.io.IOException;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +22,7 @@ public class FileViewBB implements Serializable {
     private HostedFileDatabase hostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
     private UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
     private CommentDatabase commentDB = DatabaseManager.INSTANCE.getCommentDatabase();
-    private String comment;
+    private String newComment;
 
     public void FileViewBB() {
     }
@@ -36,10 +32,14 @@ public class FileViewBB implements Serializable {
         return hostedFileDB.find(id);
     }
     
-    public void submit(String id) {
-        if (!comment.equals("")) {
+    private Comment getComment(Long id) {
+        return commentDB.find(id);
+    }
+    
+    public void submitComment(String id) {
+        if (!newComment.equals("")) {
             HostedFile file = getFile(id);
-            String content = this.comment;
+            String content = this.newComment;
 
             HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
             String username = req.getRemoteUser();
@@ -49,15 +49,20 @@ public class FileViewBB implements Serializable {
                 file.addComment(c);
                 this.hostedFileDB.update(file);   
             }
-            comment="";
+            newComment="";
         }
     }
     
-    public void setComment(String text) {
-        this.comment = text;
+    public void setNewComment(String text) {
+        this.newComment = text;
     }
 
-    public String getComment() {
-        return this.comment;
+    public String getNewComment() {
+        return this.newComment;
+    }
+    
+    public String getCommentDate(Long id) {
+        Date date = getComment(id).getDatePosted();
+        return (date.getYear()+1900)+"-"+(date.getMonth()+1)+"-"+date.getDate();
     }
 }

@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
  * @author Marco Baxemyr
  */
 @Entity
-public class Comment implements IEntity{
+public class Comment implements IEntity<Long>{
     
     @Id
     @GeneratedValue
@@ -27,11 +27,12 @@ public class Comment implements IEntity{
     private Date datePosted;
 
     public Comment() {
-        
+        this.datePosted = new Date();
     }
     public Comment(String content, AppUser author){
         this.content = content;
         this.author = author;
+        this.datePosted = new Date();
     }
     
     public AppUser getAuthor() {
@@ -59,7 +60,7 @@ public class Comment implements IEntity{
     }
 
     @Override
-    public Object getId() {
+    public Long getId() {
         return id;
-    } 
+    }
 }

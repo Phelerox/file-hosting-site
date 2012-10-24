@@ -41,9 +41,9 @@
                             Leave a comment:
                             <br />
                             <h:form>
-                                <h:inputTextarea cols="50" rows="5" value="#{fileviewBB.comment}"/>
+                                <h:inputTextarea cols="50" rows="5" value="#{fileviewBB.newComment}"/>
                                 <p>
-                                    <h:commandButton value="Comment" action="#{fileviewBB.submit(id)}">
+                                    <h:commandButton value="Comment" action="#{fileviewBB.submitComment(id)}">
                                         <f:param name="id" value="#{id}"/>
                                     </h:commandButton>
                                 </p>
@@ -68,7 +68,7 @@
                             </h:column>
                              <h:column>
                                 <f:facet name="header">Date</f:facet>
-                                #{comment.datePosted}
+                                #{fileviewBB.getCommentDate(comment.id)}
                             </h:column>
                              
                         </h:dataTable>

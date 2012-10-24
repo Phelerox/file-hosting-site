@@ -29,35 +29,16 @@ public class UserPageBB {
     private HostedFileDatabase hostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
     private UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
     private AppGroupDatabase appGroupDB = DatabaseManager.INSTANCE.getAppGroupDatabase();
-    private String groupname;
     private String username;
 
     public UserPageBB() {
-        getRemoteUser();
+        username = getRemoteUser();
     }
 
-    public void getRemoteUser() {
+    public String getRemoteUser() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        username = request.getRemoteUser();
-    }
-
-    public String getGroupname() {
-        return groupname;
-    }
-
-    public void setGroupname(String groupname) {
-        this.groupname = groupname;
-    }
-
-    public void createGroup() { 
-        //if (username != null) {
-           AppUser user = userDB.find(username);
-       
-           AppGroup group = new AppGroup(this.groupname, user);
-           group.addMember(user);
-           appGroupDB.add(group);
-        //}
+        return request.getRemoteUser();
     }
 
     public List<HostedFile> getAll() {

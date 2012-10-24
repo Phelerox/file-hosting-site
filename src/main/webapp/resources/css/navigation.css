@@ -42,3 +42,16 @@
         top: -10px;
     }
 
+    #Menu li {
+        color: #045491;
+        font-weight : bold;
+        text-decoration: none;
+    }
+
+    .invisibleSearchButton {
+    visibility: hidden;
+    display: none;
+    width: 100px;
+    height: 100px;
+    
+}
