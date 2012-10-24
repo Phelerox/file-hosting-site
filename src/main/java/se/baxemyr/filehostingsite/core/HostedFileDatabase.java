@@ -44,7 +44,7 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
     //Returns a list of the latest PUBLIC files
     public List<HostedFile> getLatestPublicFiles() {
         EntityManager em = super.emf.createEntityManager();
-        String query = "select f from HostedFile f where f.isPublic='true' order by f.uploadDate desc";
+        String query = "select f from HostedFile f where (f.isPublic='true' AND f.ggroup IS NULL) order by f.uploadDate desc";
         TypedQuery<HostedFile> tq = em.createQuery(query, HostedFile.class);
         return tq.getResultList();
     }
@@ -52,7 +52,7 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
     //Returns a list of the most downloaded PUBLIC files
     public List<HostedFile> getMostPublicDownloaded(){
         EntityManager em = super.emf.createEntityManager();
-        String query = "select f from HostedFile f where f.isPublic='true' order by f.downloads desc";
+        String query = "select f from HostedFile f where (f.isPublic='true' AND f.ggroup IS NULL) order by f.downloads desc";
         TypedQuery<HostedFile> tq = em.createQuery(query, HostedFile.class);
         return tq.getResultList();
     }
