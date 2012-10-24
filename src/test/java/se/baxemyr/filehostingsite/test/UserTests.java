@@ -14,10 +14,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import se.baxemyr.filehostingsite.core.AbstractDAO;
-import se.baxemyr.filehostingsite.core.AppUser;
-import se.baxemyr.filehostingsite.logic.UserAuthentication;
-import se.baxemyr.filehostingsite.core.SubjectGroup;
+import chs.edu.grupp14.filehostingsite.core.AbstractDAO;
+import chs.edu.grupp14.filehostingsite.core.AppUser;
+import chs.edu.grupp14.filehostingsite.logic.UserAuthentication;
+import chs.edu.grupp14.filehostingsite.core.SubjectGroup;
 
 /**
  *

@@ -7,9 +7,9 @@ package se.baxemyr.filehostingsite.test;
 import java.util.List;
 import junit.framework.Assert;
 import org.junit.*;
-import se.baxemyr.filehostingsite.core.HostedFile;
-import se.baxemyr.filehostingsite.core.HostedFile;
-import se.baxemyr.filehostingsite.core.HostedFileDatabase;
+import chs.edu.grupp14.filehostingsite.core.HostedFile;
+import chs.edu.grupp14.filehostingsite.core.HostedFile;
+import chs.edu.grupp14.filehostingsite.core.HostedFileDatabase;
 
 /**
  *

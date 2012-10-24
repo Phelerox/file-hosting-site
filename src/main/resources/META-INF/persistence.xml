@@ -2,10 +2,10 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="filehosting_pu" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>se.baxemyr.filehostingsite.core.HostedFile</class>
-    <class>se.baxemyr.filehostingsite.core.AppUser</class>
-    <class>se.baxemyr.filehostingsite.core.Comment</class>
-    <class>se.baxemyr.filehostingsite.core.AppGroup</class>
+    <class>chs.edu.grupp14.filehostingsite.core.HostedFile</class>
+    <class>chs.edu.grupp14.filehostingsite.core.AppGroup</class>
+    <class>chs.edu.grupp14.filehostingsite.core.Comment</class>
+    <class>chs.edu.grupp14.filehostingsite.core.AppUser</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/filehostingdb"/>
