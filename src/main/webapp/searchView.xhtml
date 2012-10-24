@@ -10,11 +10,7 @@
         <ui:composition template="./resources/templates/template.xhtml">
 
             <ui:define name="content">
-            <h:form>
-                <h:inputText value="#{searchBB.keyword}" required="true" />
-                <h:commandButton value="Search" type="submit" action="#{searchBB.search}"/>
-
-            </h:form>                
+                           
 
             <section id="searchresults" >
                 <h:outputText value="No search results." rendered="#{empty searchBB.searchResults}" />

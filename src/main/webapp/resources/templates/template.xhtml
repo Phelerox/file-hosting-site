@@ -35,7 +35,16 @@
                                 <ui:fragment rendered="#{authBB.isAdminLoggedIn() eq 'true'}">
                                 <li><h:link id="admin" outcome="/admin/administrate">Administrator</h:link></li>
                                 </ui:fragment>
-                                <li><h:link id="search" outcome="/searchView">Search</h:link></li>
+                               <!-- <li><h:link id="search" outcome="/searchView">Search</h:link></li> -->
+                               <li>Search: </li>
+                                
+                    
+          <h:form> 
+                <h:inputText value="#{searchBB.keyword}"  />
+                <h:commandButton value="search" type="submit" action="#{searchBB.search}" styleClass="invisibleSearchButton" />
+            </h:form> 
+          
+                                
                             </h:form>
                         </ul>
                     </nav>
