@@ -1,16 +1,11 @@
 package se.baxemyr.filehostingsite.core;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -19,7 +14,7 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
-public class AppGroup implements Serializable {
+public class AppGroup implements IEntity<String> {
     @Id
     @Column(nullable=false, name="ID")
     private String id;
@@ -67,6 +62,7 @@ public class AppGroup implements Serializable {
 //        this.comments = comments;
 //    } 
 
+    @Override
     public String getId() {
         return id;
     }

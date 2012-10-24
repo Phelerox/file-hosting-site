@@ -15,6 +15,7 @@
                 
                 <section id="upload">
                     <h:form enctype="multipart/form-data">
+                        <h3>Upload new file</h3>
                         <t:inputFileUpload value="#{upload.file}" />
                         <h:outputLabel value="Public?" for="public" />
                         <h:selectBooleanCheckbox id="public" value="#{upload.isPublic}"/>
@@ -24,28 +25,15 @@
                     </h:form>
                 </section>
                 <section id="lists">
-                    <h:form>
-                        <h:outputLabel value="Group Name"/>
-                        <h:inputText value="#{userpageBB.groupname}" size="10" autocomplete="off" required="true"/>
-                        <h:commandButton value="Create new Group" action="#{userpageBB.createGroup}" />
-                    </h:form>
-                    <h:form>
-                    <h:dataTable var="group" value="#{userpageBB.allGroups}"
-                                 styleClass="table"
-                                 headerClass="table-header"
-                                 rowClasses="table-odd-row,table-even-row">
-                        <h:column>
-                            <f:facet name="header"><h:outputText value="You are a member in:"/></f:facet>
-                            <h:commandLink value="#{group.id}" action="/users/displayGroup">
-                                <f:param name="id" value="#{group.id}"/>
-                            </h:commandLink>
-                        </h:column>
-                    </h:dataTable>
-                    </h:form>
+                    
+                  
                     <h:dataTable value="#{userpageBB.all}" var="file"
                                  styleClass="table"
                                  headerClass="table-header"
                                  rowClasses="table-odd-row,table-even-row">
+                        <f:facet name="header">
+                            <h3>Your files</h3>
+                        </f:facet> 
                         <h:column>
                             <f:facet name="header">Name</f:facet>
                             <h:form>

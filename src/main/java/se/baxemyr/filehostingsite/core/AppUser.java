@@ -1,6 +1,5 @@
 package se.baxemyr.filehostingsite.core;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +12,7 @@ import se.baxemyr.filehostingsite.logic.UserAuthentication;
  */
 @Entity
 @Table(name = "APPUSER")
-public class AppUser implements Serializable {
+public class AppUser implements IEntity<String> {
 
     
     
@@ -61,6 +60,7 @@ public class AppUser implements Serializable {
         return new ArrayList<SubjectGroup>(this.groups);
     }
 
+    @Override
     public String getId() {
         return id;  //id
     }

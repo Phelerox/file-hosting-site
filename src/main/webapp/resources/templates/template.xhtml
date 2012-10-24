@@ -2,15 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="css/default.css"/>
         <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/navigation.css"/>
         <!--Including javascript here because couldn't get it to work in the relevant .xhtml-files. UGLY. -->
         <h:outputScript name="js/jquery-1.8.2.min.js" target="head" />
         <h:outputScript name="js/registervalidation.js" target="head" />
+        <h:outputScript name="js/menu.js" target="head" />
         <title>File Hosting Site</title>
     </h:head>
 
@@ -30,12 +33,30 @@
                                 <ui:fragment rendered="#{authBB.isLoggedIn() eq 'true'}">
                                 <li><h:link id="userPage" outcome="/users/userPage">#{request.remoteUser}</h:link></li>
                                 <li><h:link id="settings" outcome="/users/settings">Settings</h:link></li>
+                                
+                                <li><h:link id="groups" outcome="/users/groups" onmouseover="openMenu('groupMenu')" onmouseout="closeMenu()">Groups</h:link></li>
+                               
+                                <ul id="groupMenu" onmouseover="keepMenuOpen()" onmouseout="closeMenu()">
+                                  
+                                      <h:dataTable var="group" value="#{userpageBB.allGroups}"
+                                        styleClass="group-sub-menu">
+                                        <h:column>
+                                            <h:link value="#{group.id}" outcome="/users/displayGroup">
+                                                <f:param name="id" value="#{group.id}"/>
+                                            </h:link>
+                                        </h:column>
+                                          <f:facet name="footer">
+                                            <h:link id="newGroup" outcome="/users/newGroup">Create new group</h:link>
+                                          </f:facet>
+                                    </h:dataTable>  
+                               </ul>
+                                
                                 <li><h:commandLink id="logoutBtn" action="#{authBB.logout}" value="Logout" /></li>
                                 </ui:fragment>
                                 <ui:fragment rendered="#{authBB.isAdminLoggedIn() eq 'true'}">
                                 <li><h:link id="admin" outcome="/admin/administrate">Administrator</h:link></li>
                                 </ui:fragment>
-                               <!-- <li><h:link id="search" outcome="/searchView">Search</h:link></li> -->
+                                <!-- <li><h:link id="search" outcome="/searchView">Search</h:link></li> -->
                                <li>Search: </li>
                                 
                     
@@ -48,6 +69,7 @@
                             </h:form>
                         </ul>
                     </nav>
+                        
                 </section>
                 
             </ui:insert>

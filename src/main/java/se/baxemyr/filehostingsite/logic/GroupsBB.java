@@ -37,11 +37,13 @@ public class GroupsBB {
 
     }
     
-    public void create() {
+    public String create() {
         AppGroup group = new AppGroup(this.name,user);
         group.addMember(user);
         groupDB.add(group);
+        return "/users/userPage";
     }
+    
     public void addNewMember(){
         AppGroup group = groupDB.find(this.lookupName);
         group.addMember(userDB.find(newUser));

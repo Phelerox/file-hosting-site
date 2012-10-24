@@ -1,0 +1,44 @@
+/* 
+    Document   : navigation
+    Created on : 2012-okt-24, 14:32:22
+    Author     : Gustav
+    Description:
+        CSS for navigation bar.
+*/
+
+#groupMenu {
+        margin: 1px;
+        padding: 0;
+        position: absolute;
+        visibility: hidden;
+        white-space: nowrap;
+        display: table;
+        z-index: 3;
+    }
+
+    #groupMenu ul a {
+        margin: 0;
+        padding: 2px 10px;
+        background: #3333AA;
+        color: #FFFFFA;
+        font-size:90%;
+        text-align: left;
+        text-decoration: none;
+        font-weight: normal;
+    }
+
+    #groupMenu ul a:hover {
+        background: #5555FF;
+    }
+        
+    .group-sub-menu {
+        background-color: #c2dfef;
+        border-radius: 2em;
+        margin: 1em; 
+        display: table;
+        border-radius: 6px;
+        position: absolute;
+        left: 225px;
+        top: -10px;
+    }
+
