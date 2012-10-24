@@ -14,7 +14,7 @@
   
             <ui:define name="content">
                 #{displayGroup.setGroup(id)}
-                Group: #{id}
+                <h1> #{id} </h1>
                 <h:form>
                     <h:outputLabel value="Add another member to this group (username): "/>
                     <h:inputText value="#{displayGroup.newMember}" size="10" autocomplete="off" required="true"/>
