@@ -79,6 +79,16 @@ public class UploadBB implements Serializable {
             hostedFile.setPublic(true); //Should actually be false, but to get fileView working we set it to true
             hostedFile.setContentType(contentType);
             
+            HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+            String username = request.getRemoteUser();
+            if (username != null) {    
+                UserDatabase userDB = DatabaseManager.INSTANCE.getUserDatabase();
+                AppUser user = userDB.find(username);
+                if (user != null) {
+                    hostedFile.setOwner(user);
+                }
+            }
+            
             if(currentGroup!=null){
                 hostedFile.setGroup(currentGroup);
             }
@@ -118,7 +128,6 @@ public class UploadBB implements Serializable {
                     hostedFile.setOwner(user);
                 }
             }
-
 
             //Save in DB.
             userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();

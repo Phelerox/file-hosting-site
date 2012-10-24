@@ -50,10 +50,7 @@
                                  styleClass="table"
                                  headerClass="table-header"
                                  rowClasses="table-odd-row,table-even-row">
-                        <h:column>
-                            <f:facet name="header">ID</f:facet>
-                            #{file.id}
-                        </h:column>
+                        
                         <h:column>
                             <f:facet name="header">Name</f:facet>
                             <h:form>
@@ -61,6 +58,14 @@
                                     <f:param name="id" value="#{file.id}"/>
                                 </h:link>
                             </h:form>
+                        </h:column>
+                     <h:column>
+                            <f:facet name="header">Author</f:facet>
+                            #{file.owner.id}
+                        </h:column>
+                     <h:column>
+                            <f:facet name="header">Upload date</f:facet>
+                            #{fileBB.date(file.id)}
                         </h:column>
                     </h:dataTable>
 
