@@ -36,18 +36,24 @@ public class GroupsBB {
         user = userDB.find(username);
 
     }
-    
-    public String create() {
-        AppGroup group = new AppGroup(this.name,user);
+        
+    public String create() { 
+        user = userDB.find(user.getUserName());
+        AppGroup group = new AppGroup(this.name, user);
         group.addMember(user);
         groupDB.add(group);
-        return "/users/userPage";
+        user.addGroup(group);
+        userDB.update(user);
+        return "/users/displayGroup?id="+this.name+"&faces-redirect=true";
     }
     
-    public void addNewMember(){
+    public void addNewMember() {
         AppGroup group = groupDB.find(this.lookupName);
-        group.addMember(userDB.find(newUser));
+        AppUser newUserr = userDB.find(newUser);
+        group.addMember(newUserr);
         groupDB.update(group);
+        user.addGroup(group);
+        userDB.update(newUserr);
     }
 
     public String getName() {

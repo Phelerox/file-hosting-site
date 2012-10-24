@@ -47,6 +47,10 @@ public class AppUser implements IEntity<String> {
         UserAuthentication.changePassword(this, password);
     }
     
+    public void addGroup(AppGroup group) {
+        groupp.add(group);
+    }
+    
     public List<AppGroup> getGroupList(){
         return groupp;
     }
