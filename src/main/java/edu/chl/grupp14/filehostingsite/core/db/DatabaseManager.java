@@ -1,4 +1,7 @@
-package edu.chl.grupp14.filehostingsite.core;
+package edu.chl.grupp14.filehostingsite.core.db;
+
+import edu.chl.grupp14.filehostingsite.core.SubjectGroup;
+import edu.chl.grupp14.filehostingsite.core.entities.AppUser;
 
 
 public enum DatabaseManager {

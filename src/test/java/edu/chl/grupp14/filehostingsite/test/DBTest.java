@@ -7,9 +7,9 @@ package edu.chl.grupp14.filehostingsite.test;
 import java.util.List;
 import junit.framework.Assert;
 import org.junit.*;
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
+import edu.chl.grupp14.filehostingsite.core.entities.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.entities.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.db.HostedFileDatabase;
 
 /**
  *

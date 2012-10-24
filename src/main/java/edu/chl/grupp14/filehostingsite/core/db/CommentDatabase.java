@@ -1,5 +1,6 @@
-package edu.chl.grupp14.filehostingsite.core;
+package edu.chl.grupp14.filehostingsite.core.db;
 
+import edu.chl.grupp14.filehostingsite.core.entities.Comment;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

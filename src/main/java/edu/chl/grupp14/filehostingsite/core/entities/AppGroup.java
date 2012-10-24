@@ -1,4 +1,4 @@
-package edu.chl.grupp14.filehostingsite.core;
+package edu.chl.grupp14.filehostingsite.core.entities;
 
 import java.util.ArrayList;
 import java.util.List;

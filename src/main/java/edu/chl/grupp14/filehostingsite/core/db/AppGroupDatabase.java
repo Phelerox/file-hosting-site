@@ -1,5 +1,7 @@
 
-package edu.chl.grupp14.filehostingsite.core;
+package edu.chl.grupp14.filehostingsite.core.db;
+
+import edu.chl.grupp14.filehostingsite.core.entities.AppGroup;
 
 public class AppGroupDatabase extends AbstractDAO<AppGroup, String> {
     public AppGroupDatabase(String puName){

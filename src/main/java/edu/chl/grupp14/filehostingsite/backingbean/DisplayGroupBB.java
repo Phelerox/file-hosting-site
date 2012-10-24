@@ -1,11 +1,11 @@
 package edu.chl.grupp14.filehostingsite.backingbean;
 
-import edu.chl.grupp14.filehostingsite.core.AppGroup;
-import edu.chl.grupp14.filehostingsite.core.AppGroupDatabase;
-import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
-import edu.chl.grupp14.filehostingsite.core.UserDatabase;
+import edu.chl.grupp14.filehostingsite.core.entities.AppGroup;
+import edu.chl.grupp14.filehostingsite.core.db.AppGroupDatabase;
+import edu.chl.grupp14.filehostingsite.core.db.DatabaseManager;
+import edu.chl.grupp14.filehostingsite.core.entities.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.db.HostedFileDatabase;
+import edu.chl.grupp14.filehostingsite.core.db.UserDatabase;
 import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.RequestScoped;

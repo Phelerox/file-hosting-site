@@ -11,12 +11,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
-import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
-import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
+import edu.chl.grupp14.filehostingsite.core.db.DatabaseManager;
+import edu.chl.grupp14.filehostingsite.core.db.DatabaseManager;
+import edu.chl.grupp14.filehostingsite.core.entities.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.entities.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.db.HostedFileDatabase;
+import edu.chl.grupp14.filehostingsite.core.db.HostedFileDatabase;
 
 /**
 *

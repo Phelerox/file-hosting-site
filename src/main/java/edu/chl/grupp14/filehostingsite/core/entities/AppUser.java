@@ -1,5 +1,7 @@
-package edu.chl.grupp14.filehostingsite.core;
+package edu.chl.grupp14.filehostingsite.core.entities;
 
+import edu.chl.grupp14.filehostingsite.core.SubjectGroup;
+import edu.chl.grupp14.filehostingsite.core.UserAuthentication;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

@@ -1,6 +1,13 @@
 
 package edu.chl.grupp14.filehostingsite.backingbean;
 
+import edu.chl.grupp14.filehostingsite.core.db.AppGroupDatabase;
+import edu.chl.grupp14.filehostingsite.core.db.DatabaseManager;
+import edu.chl.grupp14.filehostingsite.core.db.HostedFileDatabase;
+import edu.chl.grupp14.filehostingsite.core.db.UserDatabase;
+import edu.chl.grupp14.filehostingsite.core.entities.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.entities.AppUser;
+import edu.chl.grupp14.filehostingsite.core.entities.AppGroup;
 import edu.chl.grupp14.filehostingsite.core.*;
 import java.io.IOException;
 import java.io.Serializable;

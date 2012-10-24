@@ -1,5 +1,5 @@
 
-package edu.chl.grupp14.filehostingsite.core;
+package edu.chl.grupp14.filehostingsite.core.db;
 
 
 import java.util.List;

@@ -1,8 +1,8 @@
 
 package edu.chl.grupp14.filehostingsite.backingbean;
 
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
+import edu.chl.grupp14.filehostingsite.core.entities.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.db.HostedFileDatabase;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

@@ -14,8 +14,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import edu.chl.grupp14.filehostingsite.core.AbstractDAO;
-import edu.chl.grupp14.filehostingsite.core.AppUser;
+import edu.chl.grupp14.filehostingsite.core.db.AbstractDAO;
+import edu.chl.grupp14.filehostingsite.core.entities.AppUser;
 import edu.chl.grupp14.filehostingsite.core.UserAuthentication;
 import edu.chl.grupp14.filehostingsite.core.SubjectGroup;
 

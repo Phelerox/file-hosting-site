@@ -1,5 +1,12 @@
 package edu.chl.grupp14.filehostingsite.backingbean;
 
+import edu.chl.grupp14.filehostingsite.core.db.CommentDatabase;
+import edu.chl.grupp14.filehostingsite.core.db.DatabaseManager;
+import edu.chl.grupp14.filehostingsite.core.db.HostedFileDatabase;
+import edu.chl.grupp14.filehostingsite.core.db.UserDatabase;
+import edu.chl.grupp14.filehostingsite.core.entities.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.entities.AppUser;
+import edu.chl.grupp14.filehostingsite.core.entities.Comment;
 import edu.chl.grupp14.filehostingsite.core.*;
 import java.io.Serializable;
 import java.util.Date;

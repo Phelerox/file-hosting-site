@@ -1,5 +1,6 @@
 package edu.chl.grupp14.filehostingsite.core;
 
+import edu.chl.grupp14.filehostingsite.core.entities.AppUser;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
