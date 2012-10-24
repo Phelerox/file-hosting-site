@@ -8,11 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-/**
- *
- * @author Marco Baxemyr
- */
-
 @Entity
 public class AppGroup implements IEntity<String> {
     @Id
@@ -24,10 +19,6 @@ public class AppGroup implements IEntity<String> {
    
     @ManyToMany
     private List<AppUser> members = new ArrayList();
-    //private List<Comment> comments;
-    
-//    @OneToMany(mappedBy = "ggroup", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-//    private List<HostedFile> userHostedFiles;
 
     public AppGroup(){
         
@@ -50,18 +41,6 @@ public class AppGroup implements IEntity<String> {
         this.members.add(user);
     }
     
-//    public void removeMember(AppUser user) {
-//        this.members.remove(user);
-//    }
-
-//    public List<Comment> getComments() {
-//        return comments;
-//    }
-//
-//    public void setComments(List<Comment> comments) {
-//        this.comments = comments;
-//    } 
-
     @Override
     public String getId() {
         return id;

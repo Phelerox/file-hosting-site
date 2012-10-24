@@ -7,10 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
-/**
- *
- * @author Marco Baxemyr
- */
 @Entity
 public class Comment implements IEntity<Long>{
     

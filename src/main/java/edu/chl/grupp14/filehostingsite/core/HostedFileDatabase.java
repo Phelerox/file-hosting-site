@@ -4,10 +4,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author Sam, Marco
- */
 public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
 
     private HostedFileDatabase(String puName) {

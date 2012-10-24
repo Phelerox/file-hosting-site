@@ -8,9 +8,7 @@ import javax.persistence.TypedQuery;
 
 /**
  * A container for entities
- *   
  * K is type of id (primary key)
- * 
  * @author hajo
  */
 public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
@@ -32,7 +30,7 @@ public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
             em.persist(t);
             em.getTransaction().commit();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            
         } finally {
             if (em != null) {
                 em.close(); 
@@ -49,7 +47,7 @@ public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
             em.remove(em.find(clazz, id));
             em.getTransaction().commit();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            
         } finally {
             if (em != null) {
                 em.close();
@@ -66,7 +64,7 @@ public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
             em.merge(t);
             em.getTransaction().commit();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            
         } finally {
             if (em != null) {
                 em.close(); 

@@ -1,9 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.chl.grupp14.filehostingsite.backingbean;
 
+import edu.chl.grupp14.filehostingsite.core.AppUser;
+import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
+import edu.chl.grupp14.filehostingsite.core.SubjectGroup;
+import edu.chl.grupp14.filehostingsite.core.UserDatabase;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Logger;
@@ -13,15 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.*;
-import edu.chl.grupp14.filehostingsite.core.AppUser;
-import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
-import edu.chl.grupp14.filehostingsite.core.UserDatabase;
-import edu.chl.grupp14.filehostingsite.core.SubjectGroup;
 
-/**
- *
- * @author anders
- */
 @Named("settingsBB")
 @RequestScoped
 public class SettingsBB implements Serializable {
@@ -56,7 +49,6 @@ public class SettingsBB implements Serializable {
             return null;
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error"));
-            e.printStackTrace();
             return null; // Same page
         }
 }

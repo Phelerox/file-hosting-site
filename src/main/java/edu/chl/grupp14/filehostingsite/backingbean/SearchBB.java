@@ -1,21 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.chl.grupp14.filehostingsite.backingbean;
 
+import edu.chl.grupp14.filehostingsite.core.HostedFile;
+import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
 
-/**
- *
- * @author Gustav
- */
 @Named("searchBB")
 @RequestScoped
 public class SearchBB implements Serializable {
@@ -23,10 +16,9 @@ public class SearchBB implements Serializable {
     private List<HostedFile> searchResults = new ArrayList<>();
     private String keyword;
     
-    public void SearchBB() {
+    public SearchBB() {
         
     }
-    
     public List<HostedFile> getSearchResults(){
         searchResults.clear();
         
@@ -34,8 +26,7 @@ public class SearchBB implements Serializable {
             if (f.isPublic()) {
                 searchResults.add(f);
             }
-        }
-        
+        }  
         return searchResults;
     }
     

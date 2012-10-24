@@ -5,7 +5,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
-import edu.chl.grupp14.filehostingsite.core.AppUser;
 
 /**
  * Based on info from http://crackstation.net/hashing-security.htm

@@ -1,9 +1,5 @@
 package edu.chl.grupp14.filehostingsite.core;
 
-/**
- *
- * @author Marco
- */
 public class UserDatabase extends AbstractDAO<AppUser, String> {
 
     private UserDatabase(String puName) {

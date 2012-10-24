@@ -1,24 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.chl.grupp14.filehostingsite.backingbean;
 
+import edu.chl.grupp14.filehostingsite.core.AppGroup;
+import edu.chl.grupp14.filehostingsite.core.AppGroupDatabase;
+import edu.chl.grupp14.filehostingsite.core.AppUser;
+import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
+import edu.chl.grupp14.filehostingsite.core.UserDatabase;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import edu.chl.grupp14.filehostingsite.core.AppUser;
-import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
-import edu.chl.grupp14.filehostingsite.core.AppGroup;
-import edu.chl.grupp14.filehostingsite.core.AppGroupDatabase;
-import edu.chl.grupp14.filehostingsite.core.UserDatabase;
 
-/**
- *
- * @author Sam
- */
 @Named("groups")
 @RequestScoped
 public class GroupsBB {
@@ -76,6 +68,4 @@ public class GroupsBB {
     public void setLookupName(String lookupName) {
         this.lookupName = lookupName;
     }
-    
-    
 }
