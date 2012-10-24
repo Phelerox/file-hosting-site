@@ -6,9 +6,15 @@ $(function() {
         var hasError = false;
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         
+        var fullnameVal = $("#reg-form\\:username").val();
+        if(fullnameVal == '') {
+            $("#reg-form\\:username").after('<span class="error">Please enter a username.</span>');
+            hasError = true;
+        }
+        
         var fullnameVal = $("#reg-form\\:fullname").val();
         if(fullnameVal == '') {
-            $("#reg-form\\:fullname").after('<span class="error">Please enter your email address.</span>');
+            $("#reg-form\\:fullname").after('<span class="error">Please enter your real name.</span>');
             hasError = true;
         }
         
