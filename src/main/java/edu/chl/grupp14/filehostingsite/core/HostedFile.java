@@ -13,10 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
-/**
- *
- * @author Marco Baxemyr
- */
 @Entity
 public class HostedFile implements IEntity<Long> {
     @Id
@@ -63,18 +59,6 @@ public class HostedFile implements IEntity<Long> {
     public void setOwner(AppUser owner) {
         this.owner = owner;
     }
-    
-//    public List<AppUser> getUsersWithAccess() {
-//        return usersWithAccess;
-//    }
-//
-//    public void grantAccess(AppUser user) {
-//        this.usersWithAccess.add(user);
-//    }
-//    
-//    public void revokeAccess(AppUser user) {
-//        this.usersWithAccess.remove(user);
-//    }  
     
     public byte[] getBytes() {
         return bytes;

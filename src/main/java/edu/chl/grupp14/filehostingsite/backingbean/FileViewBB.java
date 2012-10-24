@@ -1,16 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.chl.grupp14.filehostingsite.backingbean;
 
-import edu.chl.grupp14.filehostingsite.core.AppUser;
-import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
-import edu.chl.grupp14.filehostingsite.core.CommentDatabase;
-import edu.chl.grupp14.filehostingsite.core.Comment;
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
-import edu.chl.grupp14.filehostingsite.core.UserDatabase;
+import edu.chl.grupp14.filehostingsite.core.*;
 import java.io.Serializable;
 import java.util.Date;
 import javax.enterprise.context.RequestScoped;
@@ -18,10 +8,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author Gustav & Anders
- */
 @Named("fileviewBB")
 @RequestScoped
 public class FileViewBB implements Serializable {
@@ -30,7 +16,7 @@ public class FileViewBB implements Serializable {
     private CommentDatabase commentDB = DatabaseManager.INSTANCE.getCommentDatabase();
     private String newComment;
 
-    public void FileViewBB() {
+    public FileViewBB() {
     }
 
     private HostedFile getFile(String idAsString) {

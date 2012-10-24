@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.chl.grupp14.filehostingsite.backingbean;
 
+import edu.chl.grupp14.filehostingsite.core.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Map;
@@ -15,17 +13,9 @@ import javax.inject.*;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
-import edu.chl.grupp14.filehostingsite.core.AppGroup;
-import edu.chl.grupp14.filehostingsite.core.AppGroupDatabase;
-import edu.chl.grupp14.filehostingsite.core.AppUser;
-import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
-import edu.chl.grupp14.filehostingsite.core.HostedFile;
-import edu.chl.grupp14.filehostingsite.core.HostedFileDatabase;
-import edu.chl.grupp14.filehostingsite.core.UserDatabase;
 
 /**
  * This backing bean is used to upload new files to the hosting site.
- * @author Gustav, Marco
  */
 @Named("upload")
 @ConversationScoped
@@ -60,7 +50,7 @@ public class UploadBB implements Serializable {
     
     public void actionListener(ActionEvent e) {
     }
-    
+    //Uploading function for groups
     public String groupSubmit() throws IOException{
         Map<String,String> params;
         FacesContext context = FacesContext.getCurrentInstance();

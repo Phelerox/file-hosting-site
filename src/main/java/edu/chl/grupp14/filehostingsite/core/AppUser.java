@@ -5,16 +5,10 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
-/**
- *
- * @author Marco Baxemyr
- */
 @Entity
 @Table(name = "APPUSER")
 public class AppUser implements IEntity<String> {
 
-    
-    
     @Id
     @Column(nullable=false, name="ID")
     private String id;

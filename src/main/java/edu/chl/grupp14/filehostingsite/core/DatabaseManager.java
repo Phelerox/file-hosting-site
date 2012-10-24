@@ -1,11 +1,6 @@
 package edu.chl.grupp14.filehostingsite.core;
 
 
-
-/**
- * Singleton
- * @author Marco
- */
 public enum DatabaseManager {
 
     INSTANCE;

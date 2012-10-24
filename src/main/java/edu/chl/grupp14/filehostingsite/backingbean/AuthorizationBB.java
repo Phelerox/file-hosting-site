@@ -4,11 +4,12 @@
  */
 package edu.chl.grupp14.filehostingsite.backingbean;
 
+import edu.chl.grupp14.filehostingsite.core.AppUser;
+import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
+import edu.chl.grupp14.filehostingsite.core.SubjectGroup;
 import edu.chl.grupp14.filehostingsite.core.UserAuthentication;
-import java.io.IOException;
+import edu.chl.grupp14.filehostingsite.core.UserDatabase;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -16,15 +17,7 @@ import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
-import edu.chl.grupp14.filehostingsite.core.DatabaseManager;
-import edu.chl.grupp14.filehostingsite.core.AppUser;
-import edu.chl.grupp14.filehostingsite.core.UserDatabase;
-import edu.chl.grupp14.filehostingsite.core.SubjectGroup;
 
-/**
- *
- * @author anders
- */
 @Named("authBB")
 @RequestScoped
 public class AuthorizationBB implements Serializable {
@@ -38,6 +31,7 @@ public class AuthorizationBB implements Serializable {
    
    public AuthorizationBB(){  
    }
+   
    
    public String login() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -82,10 +76,10 @@ public class AuthorizationBB implements Serializable {
     public boolean isAdminLoggedIn() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        String username = request.getRemoteUser();
-        if (username != null) {
+        String remoteuser = request.getRemoteUser();
+        if (remoteuser != null) {
             udb = DatabaseManager.INSTANCE.getUserDatabase();
-            AppUser user = udb.find(username);
+            AppUser user = udb.find(remoteuser);
             if (user != null) {
                 if (user.getSubjectGroups().contains(SubjectGroup.ADMIN)) {
                     return true;
@@ -109,8 +103,5 @@ public class AuthorizationBB implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-   
-    
-    
+    }  
 }

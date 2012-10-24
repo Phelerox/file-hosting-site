@@ -1,17 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.chl.grupp14.filehostingsite.core;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author anders
- */
 public class CommentDatabase extends AbstractDAO<Comment , Long>{
     
     public CommentDatabase(String puName){      
