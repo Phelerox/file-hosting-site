@@ -4,7 +4,7 @@
  */
 package chs.edu.grupp14.filehostingsite.backingbean;
 
-import chs.edu.grupp14.filehostingsite.logic.UserAuthentication;
+import chs.edu.grupp14.filehostingsite.core.UserAuthentication;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;

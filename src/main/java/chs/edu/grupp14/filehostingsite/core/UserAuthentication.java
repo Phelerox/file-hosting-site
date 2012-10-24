@@ -1,4 +1,4 @@
-package chs.edu.grupp14.filehostingsite.logic;
+package chs.edu.grupp14.filehostingsite.core;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

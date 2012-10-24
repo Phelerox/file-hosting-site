@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package se.baxemyr.filehostingsite.test;
+package chs.edu.grupp14.filehostingsite.test;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -16,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import chs.edu.grupp14.filehostingsite.core.AbstractDAO;
 import chs.edu.grupp14.filehostingsite.core.AppUser;
-import chs.edu.grupp14.filehostingsite.logic.UserAuthentication;
+import chs.edu.grupp14.filehostingsite.core.UserAuthentication;
 import chs.edu.grupp14.filehostingsite.core.SubjectGroup;
 
 /**
