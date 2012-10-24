@@ -12,11 +12,11 @@ Class Name: JDBCRealm
 
 JAAS Context:                   jdbcRealm
 JNDI:                           jdbc/filehostingdb
-User Table:                     APP_USER
-User Name Column:               USERNAME
+User Table:                     APPUSER
+User Name Column:               ID
 Password Column:                PASSWORD
 Group Table:                    SUBJECT_GROUP
-Group Table User Name Column:   APPUSER_USERNAME
+Group Table User Name Column:   APPUSER_ID
 Group Name Column:              GROUPS
 Assign Groups:                  default
 Digest Algorithm:               none
