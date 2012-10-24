@@ -31,8 +31,8 @@ public class AppGroup implements Serializable {
     private List<AppUser> members = new ArrayList();
     //private List<Comment> comments;
     
-    @OneToMany(mappedBy = "ggroup", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private List<HostedFile> userHostedFiles;
+//    @OneToMany(mappedBy = "ggroup", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+//    private List<HostedFile> userHostedFiles;
 
     public AppGroup(){
         

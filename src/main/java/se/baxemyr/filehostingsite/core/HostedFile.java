@@ -36,14 +36,14 @@ public class HostedFile implements IEntity<Long> {
     private long ssize;
     private long downloads;
     
-    @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne //(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private AppGroup ggroup;
     
     @ManyToOne (cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private AppUser owner;
     //private List<AppUser> usersWithAccess;
     
-    private String contentType;
+    private String contentType; 
     
     
     public HostedFile() {

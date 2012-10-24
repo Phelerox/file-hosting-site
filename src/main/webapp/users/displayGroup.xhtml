@@ -3,25 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
 
     <body>
 
         <ui:composition template="./../resources/templates/template.xhtml">
-            
+
             <ui:param name="id" value="#{param['id']}" />
             <ui:define name="top">
                 #{displayGroup.setGroup(id)}
                 Group: #{id}
             </ui:define>
-            
+
 
             <ui:define name="content">
                 <h:form>
-                <h:outputLabel value="New Member Username"/>
-                    <h:inputText value="#{displayGroup.newUser}" size="10" autocomplete="off" required="true"/>
-                    <ui:param name="ide" value="#{param['id']}" />
-                    <h:commandButton value="Add new Member" action="#{displayGroup.addNewMember(ide)}" />
+                    <h:outputLabel value="New Member Username"/>
+                    <h:inputText value="#{displayGroup.newMember}" size="10" autocomplete="off" required="true"/>
+                    <!--                    <ui:param name="ide" value="{param['id']}" />-->
+                    <!--                    <h:outputLabel value="Current GroupName"/>
+                                        <h:inputText value="{displayGroup.tempGroup}" size="10" autocomplete="off" required="true"/>-->
+                    <h:commandButton value="Add new Member" action="#{displayGroup.addNewMember()}">
+                        <f:param name="id" value="#{id}" />
+                    </h:commandButton>
                 </h:form>
                 <h:dataTable var="members" value="#{displayGroup.group.members}" >   
                     <h:column>
@@ -31,9 +36,37 @@
                         <h:outputText value="#{members.id}"/> 
                     </h:column>
                 </h:dataTable>
+
+                <section id="upload">
+                    <h:form enctype="multipart/form-data">
+                        <t:inputFileUpload value="#{upload.file}" />
+                        <br />
+                        <h:commandButton value="Upload" action="#{upload.groupSubmit}" >
+                            <f:param name="id" value="#{id}" />
+                        </h:commandButton>
+                        <h:messages />
+                    </h:form>
+                </section>
+
                 
-                
-                
+                 <h:dataTable value="#{displayGroup.all}" var="file"
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            #{file.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            <h:form>
+                                <h:link value="#{file.filename}" outcome="/fileView?faces-redirect=true">
+                                    <f:param name="id" value="#{file.id}"/>
+                                </h:link>
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+
             </ui:define>
 
             <ui:define name="bottom">

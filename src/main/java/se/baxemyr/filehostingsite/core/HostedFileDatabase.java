@@ -33,6 +33,13 @@ public class HostedFileDatabase extends AbstractDAO<HostedFile, Long> {
         tq.setParameter("owner", owner);
         return tq.getResultList();
     }
+    public List<HostedFile> getFilesFromGroup(AppGroup group) {
+        EntityManager em = super.emf.createEntityManager();
+        String file = "select f from HostedFile f where f.ggroup = :ggroup";
+        TypedQuery<HostedFile> tq = em.createQuery(file, HostedFile.class);
+        tq.setParameter("ggroup", group);
+        return tq.getResultList();
+    }
     
     //Returns a list of the latest PUBLIC files
     public List<HostedFile> getLatestPublicFiles() {

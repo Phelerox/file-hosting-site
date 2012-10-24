@@ -6,6 +6,7 @@ package se.baxemyr.filehostingsite.logic;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Map;
 import javax.enterprise.context.*;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -14,6 +15,8 @@ import javax.inject.*;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
+import se.baxemyr.filehostingsite.core.AppGroup;
+import se.baxemyr.filehostingsite.core.AppGroupDatabase;
 import se.baxemyr.filehostingsite.core.AppUser;
 import se.baxemyr.filehostingsite.core.DatabaseManager;
 import se.baxemyr.filehostingsite.core.HostedFile;
@@ -33,6 +36,7 @@ public class UploadBB implements Serializable {
     private boolean isPublic;
     
     private HostedFileDatabase userHostedFileDB;
+    private AppGroupDatabase groupDB = DatabaseManager.INSTANCE.getAppGroupDatabase();
     
     public UploadBB() {
   
@@ -55,6 +59,41 @@ public class UploadBB implements Serializable {
     }
     
     public void actionListener(ActionEvent e) {
+    }
+    
+    public String groupSubmit() throws IOException{
+        Map<String,String> params;
+        FacesContext context = FacesContext.getCurrentInstance();
+        params = context.getExternalContext().getRequestParameterMap();
+        String id = params.get("id");
+        AppGroup currentGroup = groupDB.find(id);
+        
+        if(file!=null){
+            String fileName = FilenameUtils.getName(file.getName());
+            String contentType = file.getContentType();
+            byte[] bytes = file.getBytes();
+            
+            HostedFile hostedFile = new HostedFile();
+            hostedFile.setFilename(fileName);
+            hostedFile.setBytes(bytes);
+            hostedFile.setPublic(true); //Should actually be false, but to get fileView working we set it to true
+            hostedFile.setContentType(contentType);
+            
+            if(currentGroup!=null){
+                hostedFile.setGroup(currentGroup);
+            }
+            
+             //Save in DB.
+            userHostedFileDB = DatabaseManager.INSTANCE.getHostedFileDatabase();
+            userHostedFileDB.add(hostedFile);
+
+            context.addMessage(null, 
+                new FacesMessage(String.format("File successfully uploaded!")));
+            return null;
+        }
+        context.addMessage(null, new FacesMessage(String.format("Select a file!")));
+            return null;
+        
     }
     
     public String submit() throws IOException {

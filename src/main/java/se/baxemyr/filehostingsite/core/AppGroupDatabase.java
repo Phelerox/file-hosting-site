@@ -20,4 +20,5 @@ public class AppGroupDatabase extends AbstractDAO<AppGroup, String> {
     public static AppGroupDatabase newInstance(String puName){
         return new AppGroupDatabase(puName);
     }
+    
 }

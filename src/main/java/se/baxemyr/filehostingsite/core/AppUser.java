@@ -15,7 +15,8 @@ import se.baxemyr.filehostingsite.logic.UserAuthentication;
 @Table(name = "APPUSER")
 public class AppUser implements Serializable {
 
-
+    
+    
     @Id
     @Column(nullable=false, name="ID")
     private String id;
@@ -49,7 +50,6 @@ public class AppUser implements Serializable {
     }
     
     public List<AppGroup> getGroupList(){
-        groupp.size();
         return groupp;
     }
     
