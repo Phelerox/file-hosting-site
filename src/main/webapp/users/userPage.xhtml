@@ -31,9 +31,9 @@
                     </h:form>
                     <h:form>
                     <h:dataTable var="group" value="#{userpageBB.allGroups}"
-                                 styleClass="order-table"
-                                 headerClass="order-table-header"
-                                 rowClasses="order-table-odd-row,order-table-even-row">
+                                 styleClass="table"
+                                 headerClass="table-header"
+                                 rowClasses="table-odd-row,table-even-row">
                         <h:column>
                             <f:facet name="header"><h:outputText value="You are a member in:"/></f:facet>
                             <h:commandLink value="#{group.id}" action="/users/displayGroup">
@@ -43,9 +43,9 @@
                     </h:dataTable>
                     </h:form>
                     <h:dataTable value="#{userpageBB.all}" var="file"
-                                 styleClass="order-table"
-                                 headerClass="order-table-header"
-                                 rowClasses="order-table-odd-row,order-table-even-row">
+                                 styleClass="table"
+                                 headerClass="table-header"
+                                 rowClasses="table-odd-row,table-even-row">
                         <h:column>
                             <f:facet name="header">Name</f:facet>
                             <h:form>
@@ -60,7 +60,7 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">Uploaded</f:facet>
-                            #{file.uploadDate}
+                           #{fileBB.date(file.id)}
                         </h:column>
                     </h:dataTable>
                 </section>
