@@ -11,28 +11,28 @@
             <ui:define name="content">
                 <ui:param name="id" value="#{param['id']}" />
                 <ui:fragment rendered="#{param['id'] ne null}">
-                    <ui:fragment rendered="#{fileviewBB.access(id) eq 'true'}">
+                    <ui:fragment rendered="#{fileBB.access(id) eq 'true'}">
                     <section id="fileInfo">
                         <h:form>
                             <h:outputLabel value="Filename: " style="font-weight:bold" />
-                            <h:outputText value="#{fileviewBB.filename(id)}" />
+                            <h:outputText value="#{fileBB.filename(id)}" />
                             <br/>
                             <h:outputLabel value="Upload date: " style="font-weight:bold" />
-                            <h:outputText value="#{fileviewBB.date(id)}" />
+                            <h:outputText value="#{fileBB.date(id)}" />
                             <br/> 
                             <h:outputLabel value="Downloads: " style="font-weight:bold" />
-                            <h:outputText value="#{fileviewBB.downloads(id)}" />
+                            <h:outputText value="#{fileBB.downloads(id)}" />
                             <br/> 
-                            <h:commandButton value="Download" action="#{fileviewBB.download(id)}">
+                            <h:commandButton value="Download" action="#{fileBB.download(id)}">
                                 <f:param name="id" value="#{id}"/>
                             </h:commandButton>
-                            <ui:fragment rendered="#{fileviewBB.owner(id) eq 'true'}">
-                            <h:commandButton value="Delete" action="#{fileviewBB.delete(id)}">
+                            <ui:fragment rendered="#{fileBB.owner(id) eq 'true'}">
+                            <h:commandButton value="Delete" action="#{fileBB.delete(id)}">
                                 <f:param name="id" value="#{id}"/>
                             </h:commandButton>
                             </ui:fragment>
                         </h:form>
-                        <h:outputLink rendered="#{fileviewBB.isPublic(id) eq 'true'}" value="/file-hosting-site/rs/file/#{id}">Public Download Link</h:outputLink>
+                        <h:outputLink rendered="#{fileBB.isPublic(id) eq 'true'}" value="/file-hosting-site/rs/file/#{id}">Public Download Link</h:outputLink>
                     </section>
 
                     <section id="commentArea">
@@ -52,11 +52,11 @@
                         </ui:fragment>
 
                         <!-- COMMENTS -->
-                         <h:dataTable value="#{fileviewBB.getAllComments(id)}" var="comment"
+                         <h:dataTable value="#{fileBB.getAllComments(id)}" var="comment"
                                      styleClass="table"
                                      headerClass="table-header"
                                      rowClasses="table-odd-row, table-even-row"
-                                     rendered="#{not empty fileviewBB.getAllComments(id)}">
+                                     rendered="#{not empty fileBB.getAllComments(id)}">
                             
                              <h:column>
                                 <f:facet name="header">Comments</f:facet>
@@ -75,7 +75,7 @@
 
                     </section>
                     </ui:fragment>
-                    <ui:fragment rendered="#{fileviewBB.access(id) eq 'false'}">
+                    <ui:fragment rendered="#{fileBB.access(id) eq 'false'}">
                         <h:outputLabel value="Access denied"/>
                     </ui:fragment>
                 </ui:fragment>

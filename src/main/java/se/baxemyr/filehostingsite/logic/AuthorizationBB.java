@@ -47,7 +47,7 @@ public class AuthorizationBB implements Serializable {
             AppUser user = udb.find(username);
             if (user != null) {
                 request.login(username, UserAuthentication.hash(password, user.getSalt()));
-                return "/orderedLists?faces-redirect=true";
+                return "/users/userPage?faces-redirect=true";
             }
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown username", null));
             return null;

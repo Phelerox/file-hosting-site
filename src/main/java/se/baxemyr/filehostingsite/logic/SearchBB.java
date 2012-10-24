@@ -43,8 +43,9 @@ public class SearchBB implements Serializable {
         searchResults = filelist;
     }
     
-    public void search() {
+    public String search() {
         getSearchResults();
+        return "searchView";
     }
     
     public void setKeyword(String keyword) {

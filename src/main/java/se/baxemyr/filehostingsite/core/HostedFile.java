@@ -45,7 +45,6 @@ public class HostedFile implements IEntity<Long> {
     
     private String contentType; 
     
-    
     public HostedFile() {
      this.uploadDate = new Date();
     }
